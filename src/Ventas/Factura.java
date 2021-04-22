@@ -21,6 +21,8 @@ public class Factura {
 		this.valortotal=valortotal;
 		this.atendidopor=atendidopor;
 		
+		
+		
 	}
 	
 	
