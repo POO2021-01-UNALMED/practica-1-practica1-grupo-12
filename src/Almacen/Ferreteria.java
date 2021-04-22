@@ -2,16 +2,17 @@ package Almacen;
 import  Ventas.*;
 import java.util.*;
 
+
 public class Ferreteria {
 	private String Direccion = "carrera";
-	private Dueño dueño;
+	private Jefe jefe;
 	private long NIT = 213123;
 	private String nombre;
-	private Arraylist<Empleado> empleados;
-	private Arraylist<Proveedor> proveedores;
-	private Arraylist<Inventario> inventario;
-	private Arraylist<Cliente> cliente;
-	private Arraylist<Facturas >factura;
+	private ArrayList<Empleado> empleados;
+	private ArrayList<Proveedor> proveedores;
+	private ArrayList<Inventario> inventario;
+	private ArrayList<Cliente> cliente;
+	private ArrayList<Factura >facturas ;
 	private static boolean estado;
 	
 	
