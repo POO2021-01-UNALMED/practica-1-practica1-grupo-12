@@ -1,25 +1,33 @@
 package Almacen;
+import  Ventas.*;
+import java.util.*;
 
 public class Ferreteria {
-	private String Direccion;
+	private String Direccion = "carrera";
 	private Dueño dueño;
-	private long NIT;
+	private long NIT = 213123;
 	private String nombre;
-	private Empleado empleados[];
-	private Proveedor proveedores[];
-	private Inventario inventario[];
-	private Cliente cliente[];
-	private Facturas Factura[];
+	private Arraylist<Empleado> empleados;
+	private Arraylist<Proveedor> proveedores;
+	private Arraylist<Inventario> inventario;
+	private Arraylist<Cliente> cliente;
+	private Arraylist<Facturas >factura;
+	private static boolean estado;
 	
 	
+	public Ferreteria(	) {
+		
+		
+	}
 	
-	public void abrirFerreteria(){
+	public static void abrirFerreteria(){
+		estado = true;
 		
 	}
 
 	
-	public void cerrarFerreteria(){
-		
+	public static void cerrarFerreteria(){
+		estado = true;
 		
 	}
 	
