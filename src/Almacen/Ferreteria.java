@@ -4,10 +4,12 @@ import java.util.*;
 
 
 public class Ferreteria {
-	private String Direccion = "carrera";
+	private final String Direccion = "carrera";   //uso de constante
+	
 	private long NIT = 213123;
 	private String nombre;
 	private ArrayList<Empleado> empleados;
+	private ArrayList<Proveedores> proveedores;
 	private ArrayList<Inventario> inventario;
 	private ArrayList<Cliente> cliente;
 	private ArrayList<Factura >facturas ;
