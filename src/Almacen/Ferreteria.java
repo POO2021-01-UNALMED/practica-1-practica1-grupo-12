@@ -5,11 +5,9 @@ import java.util.*;
 
 public class Ferreteria {
 	private String Direccion = "carrera";
-	private Jefe jefe;
 	private long NIT = 213123;
 	private String nombre;
 	private ArrayList<Empleado> empleados;
-	private ArrayList<Proveedor> proveedores;
 	private ArrayList<Inventario> inventario;
 	private ArrayList<Cliente> cliente;
 	private ArrayList<Factura >facturas ;
