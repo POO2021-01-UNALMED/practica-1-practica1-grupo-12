@@ -4,7 +4,7 @@ import java.util.*;
 
 
 public class Ferreteria {
-	private final String Direccion = "carrera";   //uso de constante
+	private static final String Direccion = "carrera";   //uso de constante
 	
 	private long NIT = 213123;
 	private String nombre;

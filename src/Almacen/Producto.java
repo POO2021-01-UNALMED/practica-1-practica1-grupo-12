@@ -1,6 +1,6 @@
 package Almacen;
 
-public class Producto {
+public abstract class Producto {
 	private int referencia;
 	private String nombre;
 	private double precio;
