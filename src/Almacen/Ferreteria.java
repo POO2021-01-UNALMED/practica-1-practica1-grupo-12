@@ -12,7 +12,7 @@ public class Ferreteria {
 	private ArrayList<Proveedores> proveedores;
 	private ArrayList<Inventario> inventario;
 	private ArrayList<Cliente> cliente;
-	private ArrayList<Factura >facturas ;
+	public static ArrayList<Factura >facturas = new ArrayList<Factura>();
 	private static boolean estado;
 	
 	
@@ -21,15 +21,20 @@ public class Ferreteria {
 		
 	}
 	
-	public static void abrirFerreteria(){
-		estado = true;
-		
-	}
 
 	
-	public static void cerrarFerreteria(){
-		estado = true;
+
+	
+	
 		
+	
+
+	public ArrayList<Factura > getFacturas() {
+		return facturas;
+	}
+
+	public void setFacturas(ArrayList<Factura > facturas) {
+		this.facturas = facturas;
 	}
 	
 }

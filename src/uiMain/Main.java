@@ -1,6 +1,14 @@
 package uiMain;
 import java.util.*;
+
+import Almacen.Empleado;
+import Almacen.Ferreteria;
+import Almacen.Herramienta;
+import Almacen.Inventario;
+import Almacen.Producto;
+import Ventas.Factura;
 public class Main {
+	
 	public static void main(String[] args){
 		
 		
@@ -30,8 +38,7 @@ public class Main {
 
 			case 1: System.out.println("funcionalidad 1");
 					break;
-			case 2: System.out.println("funcionalidad 2");
-					break;
+			case 2:devolucion();break;
 			case 3: System.out.println("funcionalidad 3");
 					break;
 			case 4: System.out.println("funcionalidad 4");
@@ -49,4 +56,62 @@ public class Main {
 		}while(opcion != 6);
 	
 	}
+	static void devolucion() {
+		Scanner input = new Scanner(System.in);
+		
+			System.out.println("DEVOLUCIÓN");
+			System.out.println("----------");
+			
+			ArrayList<Object[]> productosPrueba = new ArrayList<Object[]>();
+			Herramienta h = new Herramienta(123, "martillo", 20000, true,"grande");
+			Herramienta i = new Herramienta(124, "destornillador", 20000, true,"mediano");
+			Object[] objeto = {h,2};
+			Object[] objeto1 = {i,3};
+			productosPrueba.add(objeto);
+			productosPrueba.add(objeto1);
+			Factura factura1 = new Factura(456,"21 Marzo",productosPrueba,"venta",new Empleado(145,"Juan","vendedor",1000000));
+			
+			
+			System.out.println("digite el número de la factura:");
+			int pedido=1;
+			while(pedido != 0) {
+			 pedido = input.nextInt();	
+			for(Factura factura:Ferreteria.facturas) {
+				if(factura.getNumerofactura()==pedido) {
+					pedido=0;
+					System.out.println(" ");
+					factura.MostrarProductos();
+					System.out.println(" ");
+				    int ref=1;
+					while(ref != 0) {
+					
+					System.out.println("Digite la referencia del producto que se desea devolver o 0 para finalizar");
+				    ref = input.nextInt();
+				    if (ref!=0) {
+					System.out.println("Digite la cantidad de productos que se desean devolver");
+					int cantidad = input.nextInt();
+					
+					factura1.RetirarProducto(ref, cantidad);
+					System.out.println(" ");
+					}
+					
+					else {
+						
+						System.out.println("Proceso finalizado, presione 6 para salir");
+						break;
+						
+					}
+				}}
+				
+				else {
+					System.out.println("La factura no existe en el sistema, por favor ingrese un numero de factura válido");
+					
+				}
+			}
+			
+			
+			
+			
+}
+}
 }

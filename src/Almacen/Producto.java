@@ -11,7 +11,7 @@ public abstract class Producto {
 		this.nombre = nombre;
 		this.precio = precio;
 		this.estado = estado;
-	
+		
 		
 	}
 	
@@ -20,6 +20,16 @@ public abstract class Producto {
 		
 		
 	}
-	
+
+	public int getReferencia() {
+		return referencia;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+	public double getPrecio() {
+		return precio;
+	}
 
 }

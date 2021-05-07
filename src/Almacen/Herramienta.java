@@ -1,15 +1,17 @@
 package Almacen;
 
+import java.util.ArrayList;
+
 public class Herramienta extends Producto{
 	
 	String tamaño;
-	Herramienta[] herramnientas;
+	static ArrayList<Herramienta> herramientas= new ArrayList<Herramienta>() ;
 	
 
-	public Herramienta(int referencia, String nombre, double precio, boolean estado,String tamaño, Herramienta[]herramientas) {
+	public Herramienta(int referencia, String nombre, double precio, boolean estado,String tamaño) {
 		super(referencia, nombre, precio, estado);
 		this.tamaño=tamaño;
-		this.herramnientas=herramientas;	
+		herramientas.add(this);
 	}
 
 	
