@@ -310,10 +310,12 @@ public class Main {
 	    if(y==0 && z==0) {
 	    	break;
 	    }
+	    double aux=0;
 	    Object[] a = new Object[2];
 	    a[0] = f.getInventario().buscarProducto(y);
+	    aux=acumulado;
 	    acumulado += Inventario.agregarProducto(y, z);
-	    if(acumulado ==0) {
+	    if(acumulado ==0|| acumulado==aux) {
 	    System.out.println("no existe producto con esa referencia");
 	    }
 	    else {
