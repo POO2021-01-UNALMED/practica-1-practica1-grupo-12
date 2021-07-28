@@ -12,12 +12,9 @@ public abstract class Producto {
 		this.precio = precio;
 		this.estado = estado;
 		
-		
 	}
 	
 	public void SeDaña() {
-		System.out.println("Producto dañado no apto para la venta");
-		
 		
 	}
 

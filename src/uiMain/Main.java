@@ -7,24 +7,31 @@ import Almacen.Herramienta;
 import Almacen.Inventario;
 import Almacen.MaterialDeConstruccion;
 import Almacen.Producto;
+import Almacen.Proveedores;
 import Ventas.Cliente;
 import Ventas.Factura;
 public class Main {
 	
 	public static void main(String[] args){
-		
-		Cliente jaime = new Cliente(2, "jaime", 31231, "cadca");
-		Empleado javier = new Empleado(3,"javier,","cajero",20000);
 		Ferreteria ferr =  new Ferreteria();
+		Proveedores prov1= new Proveedores(true,"javier,",20000);
+		Proveedores prov2= new Proveedores(false,"juan,",20001);
 		
-		
-		Herramienta b = new Herramienta(2, "Martillo", 23.3, true,"Grande");
 		
 		MaterialDeConstruccion g = new MaterialDeConstruccion(3, "CEMENTO", 12.3, true,true);
-		Object a[] = {b,2};
-		Object c[] = {g,3};
-		ferr.getInventario().getProductos().add(a);
-		ferr.getInventario().getProductos().add(c);
+		Herramienta h = new Herramienta(123, "martillo", 20000, true,"grande");
+		Herramienta i = new Herramienta(124, "destornillador", 20000, true,"mediano");
+		Herramienta b = new Herramienta(233, "Martillo", 23.3, true,"Grande");
+	
+		
+	
+		Cliente jaime = new Cliente(2, "jaime", 31231, "cadca");
+		Empleado javier = new Empleado(3,"javier,","cajero",20000);
+		
+		
+	   
+		
+		
 		
 		System.out.println("------------------------------------------");
 		System.out.println("//BIENVEDIOS AL SOFTWARE DE LA FERRETERÍA//");
@@ -51,11 +58,11 @@ public class Main {
 
 			case 1: System.out.println("funcionalidad 1");
 					break;
-			case 2:devolucion();break;
+			case 2:devolucion(ferr);break;
 			case 3: VenderProductos(ferr);
 					break;
 			case 4: System.out.println("funcionalidad 4");
-					break;
+			        pedido(ferr);break;
 			case 5: System.out.println("funcionalidad 5");
 					break;
 			
@@ -72,65 +79,64 @@ public class Main {
 	
 	
 	// Funcionalidad 2
-	static void devolucion() {
+	static void devolucion(Ferreteria f) {
 		Scanner input = new Scanner(System.in);
 		
 			System.out.println("DEVOLUCIÓN");
 			System.out.println("----------");
-			Cliente jaime = new Cliente(2, "jaime", 31231, "cadca");
-			ArrayList<Object[]> productosPrueba = new ArrayList<Object[]>();
-			Herramienta h = new Herramienta(123, "martillo", 20000, true,"grande");
-			Herramienta i = new Herramienta(124, "destornillador", 20000, true,"mediano");
-			Object[] objeto = {h,2};
-			Object[] objeto1 = {i,3};
-			productosPrueba.add(objeto);
-			productosPrueba.add(objeto1);
-			Factura factura1 = new Factura("21 Marzo",productosPrueba,"venta",new Empleado(145,"Juan","vendedor",1000000),jaime);
-			
+		
 			
 			System.out.println("digite el número de la factura:");
 			int pedido=1;
 			while(pedido != 0) {
-			 pedido = input.nextInt();	
-			for(Factura factura:Ferreteria.facturas) {
-				if(factura.getNumerofactura()==pedido) {
-					pedido=0;
-					System.out.println(" ");
-					factura.MostrarProductos();
-					System.out.println(" ");
-				    int ref=1;
-					while(ref != 0) {
-					
-					System.out.println("Digite la referencia del producto que se desea devolver o 0 para finalizar");
-				    ref = input.nextInt();
-				    if (ref!=0) {
-					System.out.println("Digite la cantidad de productos que se desean devolver");
+			pedido = input.nextInt();	
+			 
+			Factura facturabuscar=Ferreteria.buscarFactura(pedido);
+			
+			if(facturabuscar instanceof Factura) {
+				System.out.println("Referencia"+"      "+"nombre"+"                 "+"Cantidad");
+				
+			   for(Object[] p: facturabuscar.getProductosFactura()) {
+				  
+						Producto producto = (Producto) p[0];
+						System.out.println(producto.getReferencia()+"           "+producto.getNombre()+"                     "+p[1]);
+						
+			   }
+			   int referencia=1;
+			   while (referencia!=0) {
+				   System.out.println("Digite la referencia del producto que se desea devolver o 0 para finalizar");
+				   referencia = input.nextInt();
+				   System.out.println("Digite la cantidad de productos que se desean devolver");
 					int cantidad = input.nextInt();
 					
-					factura1.RetirarProducto(ref, cantidad);
+					facturabuscar.RetirarProducto(referencia, cantidad);
 					System.out.println(" ");
-					}
-					
-					else {
-						
-						System.out.println("Proceso finalizado, presione 6 para salir");
-						break;
-						
-					}
-				}}
+				   
+			   }
+			   System.out.println("proceso finalizado");
+			   for(Object[] p: facturabuscar.getProductosFactura()) {
+					Producto producto = (Producto) p[0];
+					System.out.println(producto.getReferencia()+"           "+producto.getNombre()+"                     "+p[1]);
+			   }
+			break;
+			}
+			
+			
+			else if( facturabuscar== (null) ) {
+				System.out.println("La factura no existe en el sistema, por favor ingrese un numero de factura válido");
 				
-				else {
-					System.out.println("La factura no existe en el sistema, por favor ingrese un numero de factura válido");
-					
-				}
 			}
 			
+			 
+			 
+		
 			
 			
 			
-			}
+			
+			
+	    }
 	}
-
 
 
 
@@ -212,6 +218,7 @@ public class Main {
 								System.out.println("ok!");
 								Object productoYcantidad[] = { f.getInventario().buscarProducto(referencia),cantidadPedida};
 								productosPedidos.add(productoYcantidad);
+								System.out.println(f.getInventario().buscarProducto(referencia));
 								f.getInventario().restarProducto(referencia, cantidadPedida);
 								
 								break;
@@ -248,7 +255,104 @@ public class Main {
 	}
 
 
+	// Funcionalidad 4
+	
 
+
+	
+   static void pedido (Ferreteria f) {
+	   
+	   Scanner input = new Scanner(System.in);
+	   System.out.println("HACER PEDIDO");
+		System.out.println("------------");
+		
+		System.out.println("Digite la fecha en el siguiente formato: DIA/MES/AÑO");
+		String fechaf= input.next();
+		
+		System.out.println("total proveedores= "+Proveedores.proveedores.size());
+		System.out.println(" ");
+		System.out.println("Empresas :");
+		System.out.println("Nombre         NIT :");
+		System.out.println(Proveedores.mostrarProveedorese());
+		System.out.println(" ");
+		System.out.println("Personas naturales :");
+		System.out.println("Nombre         Cedula :");
+		System.out.println(Proveedores.mostrarProveedoresp());
+		System.out.println(" ");
+	
+
+		
+	    int confirmacion = 1;
+	    while(confirmacion!=0) {
+	    	System.out.println("Digite la cedula o el Nit del proveedor");
+		    int x=input.nextInt();
+	    confirmacion = Proveedores.buscarIdent(x);
+	    if(confirmacion==0) {
+	    	System.out.println("proveedor encontrado");
+	    }
+	    else {
+	    	System.out.println("proveedor no encontrado");
+	    }
+	    
+	    }
+	    
+	    
+	    double acumulado = 0;
+	    int y = 1,z=1;
+	    ArrayList<Object[]> lista = new ArrayList<Object[]>();
+	   
+	    while(y!=0 || z!=0) {
+	    		
+	    System.out.println("Digite el código de cada producto y la cantidad a pedir,finalice su pedido digitando los dos valores en 0");
+	    y=input.nextInt();
+	    z=input.nextInt();
+	    
+	    if(y==0 && z==0) {
+	    	break;
+	    }
+	    Object[] a = new Object[2];
+	    a[0] = f.getInventario().buscarProducto(y);
+	    acumulado += Inventario.agregarProducto(y, z);
+	    if(acumulado ==0) {
+	    System.out.println("no existe producto con esa referencia");
+	    }
+	    else {
+	    	System.out.println("Agregado");
+	    }
+	    a[1] = z;
+	    
+        if(a[0] instanceof Producto) {
+        	
+        
+	    lista.add(a);}
+	    System.out.println("total pedido:"+ acumulado);
+	    
+	    }
+	    if(acumulado !=0) {
+	    Factura facturaNueva = new Factura(fechaf, lista,"compra",acumulado );
+	    System.out.println("proceso finalizado");
+	    System.out.println("-----------FACTURA-----------");
+	    System.out.println("Número de factura:"+Factura.numerofactura);
+	    System.out.println("fecha: "+ fechaf);
+	    System.out.println("Productos comprados:");
+		System.out.println("Referencia   Cantidad   valor");
+		for(Object[] p : lista) {
+			
+			
+			System.out.println( (((Producto)p[0]).getReferencia()) + "            "+ p[1] +"         "+ ((((Producto)p[0]).getPrecio()/10)*7));
+		 }
+		
+		}
+	    
+	    else {
+		    System.out.println("No se realizó ninguna compra");
+	    }
+			
+		 
+	    System.out.println( "-------------------------------");
+				System.out.println( "total                   "+ acumulado);
+	    
+   }
 
 
 

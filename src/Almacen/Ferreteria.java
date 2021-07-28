@@ -46,7 +46,15 @@ public class Ferreteria {
 	}
 
 
-
+   public static Factura buscarFactura (int referencia) {
+	   for(Factura factura:facturas) {
+			if(factura.getNumerofactura()==referencia) {
+			return factura;	
+			}		
+     }
+	return null;
+	//new Factura(nombre, null, nombre, NIT);
+   }
 
 
 	

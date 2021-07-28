@@ -5,19 +5,21 @@ import java.util.*;
 
 public class Factura {
 
+	public class setProductosFactura {
+
+	}
+
+
 	public static int numerofactura;
 	private String fecha;
-	private ArrayList<Object[]> productosFactura = new ArrayList<Object[]>();
+	private  ArrayList<Object[]> productosFactura = new ArrayList<Object[]>();
 	private String tipo;
 	private double valortotal;
 	private Empleado atendidopor;
 	private Cliente cliente;
-	private static int autoNumerico = 1;
+	private static int autoNumerico = 100;
 	double devolver = 0;
 	
-	
-	
-
 	
 	public Factura (String fecha, ArrayList<Object[]> productos, String tipo,Empleado atendidopor, Cliente cliente) {
 		
@@ -27,25 +29,29 @@ public class Factura {
 		this.tipo=tipo;
 		this.valortotal = valortotal;
 		this.atendidopor=atendidopor;
-		this.productosFactura = productos;
 		this.cliente = cliente;
 		Ferreteria.facturas.add(this);
-		
-	
-		autoNumerico++;
-		
-		
-		
+		autoNumerico++;	
 	}
 
-	
-	public void MostrarProductos() {
-		System.out.println("Referencia"+"  "+"nombre"+"  "+"Cantidad");
+   public Factura (String fecha, ArrayList<Object[]> productos, String tipo,double valortotal) {
 		
-		for(Object[] p: productosFactura) {
-			Producto producto = (Producto) p[0];
-			System.out.println(producto.getReferencia()+" "+producto.getNombre()+" "+p[1]);
-		}
+		this.numerofactura = autoNumerico;
+		this.fecha=fecha;
+		this.productosFactura = productos;
+		this.tipo=tipo;
+		this.valortotal = valortotal;
+		
+		Ferreteria.facturas.add(this);
+		autoNumerico++;	
+	}
+   
+   
+   
+	public void MostrarProductos() {
+		
+		
+		
 	}
 	
 	public void RetirarProducto(int ref, int cantidad) {
@@ -53,18 +59,29 @@ public class Factura {
 		for(Object[] p: productosFactura) {
 			Producto producto = (Producto) p[0];
 			if(ref == producto.getReferencia()) {
+				int aux= (int)p[1];
 				p[1] = (int) p[1] - cantidad;
+				
+				if((int)p[1] >= 0) {
 				devolver = devolver+(producto.getPrecio()*cantidad);
 				
 				Object[] inventario = {producto, cantidad};
 						Inventario.getProductos().add(inventario);
+						
+				
+		      
+		      MostrarProductos();
+		      System.out.println("valor a devolver al cliente: " + devolver);	
+				}
+				else {
+					System.out.println("No es posible eliminar esa cantidad de productos ");
+					p[1]=aux;
+				}
 			}
+			
 			
 	}
 		
-		System.out.println("Estado de la factura:");
-		MostrarProductos();
-		System.out.println("valor a devolver al cliente: " + devolver);
 		
 	}
 	
@@ -111,14 +128,7 @@ public double CalcularValorTotal(){
 	}
 
 
-	public String getTipo() {
-		return tipo;
-	}
-
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+	
 
 
 	public double getValortotal() {

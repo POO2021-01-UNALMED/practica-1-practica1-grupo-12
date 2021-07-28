@@ -8,16 +8,24 @@ public class Inventario {
     private Ferreteria almacen;
     
     
-    /*public Inventario(ArrayList<String> producto,int cantidad,Ferreteria almacen) {
-    	//this.producto = producto;
-    	this.cantidad = cantidad;
-    	this.almacen = almacen;
-    }*/
-    
-    
-    
-    public void agregarProducto() {
-    	
+    public static double agregarProducto(int y,int z) {
+    	double e =0;
+    	if (y==0) {
+    		
+    	}
+    	else {
+    	for (Object[] p : productos) {
+			if( ((Producto) p[0]).getReferencia() == y ) {
+				p[1] =  (int)p[1] + z;
+				e=((((Producto) p[0]).getPrecio()/10)*7)*z;		
+			}
+			
+		}
+          if(e==0) {
+        	  return 0;
+          }
+    	}
+    	return e;
     }
     public void quitarProducto() {
     	
