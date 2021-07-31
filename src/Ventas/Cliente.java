@@ -1,10 +1,11 @@
 package Ventas;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import Almacen.Empleado;
 
-public class Cliente {
+public class Cliente  implements Serializable{
 	private int cedula;
 	private String nombre;
 	private int telefono;

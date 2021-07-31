@@ -43,7 +43,17 @@ public class Empleado {
 	}
 
 
+	public static double SueldoMensualEmpleados(){  // neste método se encarga de recorrer toda la lista empleado para
+		double costo = 0;
+		for(Empleado emp : empleados) {
+			costo += emp.getSueldo();
+		}
+		
+		return costo;
+		
+	}
 
+	
 
 	public int getCedula() {
 		return cedula;
@@ -71,6 +81,8 @@ public class Empleado {
 	}
 
 
+
+	
 
 	
 	

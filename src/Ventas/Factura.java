@@ -1,11 +1,12 @@
 package Ventas;
 
+import java.io.Serializable;
 import java.util.*;
  import Almacen.*;
 
-public class Factura {
+public class Factura implements Serializable{
 
-	public class setProductosFactura {
+	public class setProductosFactura  {
 
 	}
 
@@ -169,6 +170,9 @@ public double CalcularValorTotal(){
 	public static void setAutoNumerico(int autoNumerico) {
 		Factura.autoNumerico = autoNumerico;
 	}
-	
+
+	public String getTipo() {
+		return tipo;
+	}
 	
 }

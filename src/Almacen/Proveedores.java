@@ -1,8 +1,9 @@
 package Almacen;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Proveedores {
+public class Proveedores  implements Serializable{
 	private Boolean esEmpresa;
 	private String nombre;
 	private int identificacion;	
@@ -52,7 +53,7 @@ public class Proveedores {
 			}
 			else {
 				a = 1;
-				break;
+				
 			}
 		}
 		return a;

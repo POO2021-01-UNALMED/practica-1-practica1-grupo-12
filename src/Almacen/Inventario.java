@@ -1,8 +1,9 @@
 package Almacen;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Inventario {
+public class Inventario  implements Serializable {
 	public static ArrayList<Object[]> productos = new ArrayList<Object[]>();
     private int cantidad;
     private Ferreteria almacen;
