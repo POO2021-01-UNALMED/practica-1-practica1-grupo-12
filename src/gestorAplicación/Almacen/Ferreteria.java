@@ -1,9 +1,9 @@
-package Almacen;
+package gestorAplicación.Almacen;
 import  Ventas.*;
 
 import java.io.Serializable;
 import java.util.*;
-import baseDatos.Deserializador;
+
 
 public class Ferreteria  implements Serializable {
 	private static final String Direccion = "carrera";   //uso de constante
@@ -19,10 +19,10 @@ public class Ferreteria  implements Serializable {
 	
 	
 	
-	private static final long serialVersionUID = 1L;
+	
 	
 	public Ferreteria(	) {
-		Deserializador.deserializar(this);
+		
 		
 	}
 	

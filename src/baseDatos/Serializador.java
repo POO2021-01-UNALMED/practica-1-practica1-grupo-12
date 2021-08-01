@@ -13,11 +13,19 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import Almacen.*;
+import Ventas.Cliente;
 public class Serializador {
 
-	private static File rutaTemp = new File("src\\baseDatos\\temp\\testLista.txt");
+	private static File rutaTemp = new File("src\\baseDatos\\temp\\");
 	
 	public static void serializar(Ferreteria ferr) {
+		
+		System.out.println("entrooo");
+		
+		
+		
+		
+		
 		FileOutputStream fos;
 		ObjectOutputStream oos;
 		File[] docs = rutaTemp.listFiles();
@@ -46,6 +54,7 @@ public class Serializador {
 			fos = new FileOutputStream(file);
 			 oos = new ObjectOutputStream(fos); 
 			oos.writeObject(ferr.getFacturas()); 
+			
 			} 
 			catch (FileNotFoundException e) {
 
@@ -55,11 +64,11 @@ public class Serializador {
 			 
 			e.printStackTrace(); 
 			} 
-			}else if (file.getAbsolutePath().contains("invetario")) {
+			}else if (file.getAbsolutePath().contains("clientes")) {
 			 try {
 			 fos = new FileOutputStream(file); 
 			oos = new ObjectOutputStream(fos); 
-			oos.writeObject(ferr.getInventario().getProductos()); 
+			oos.writeObject(Cliente.getClientes()); 
 			} 
 			catch (FileNotFoundException e) {
 			  e.printStackTrace();

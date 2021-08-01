@@ -10,9 +10,11 @@ import Almacen.Producto;
 import Almacen.Proveedores;
 import Ventas.Cliente;
 import Ventas.Factura;
+
+import java.io.Serializable;
 import java.lang.Math;
 import baseDatos.*;
-public class Main {
+public class Main implements Serializable{
 	
 	public static void main(String[] args){
 		
@@ -79,6 +81,7 @@ public class Main {
 				GananciasNetasMensuales(ferr);
 					break;
 			case 6:	System.out.println("salir");
+				salirDelPrograma(ferr);
 					break;
 			 
 			
@@ -178,6 +181,7 @@ public class Main {
 					System.out.println("-----------FACTURA-----------");
 					System.out.println("Fecha: " + facturaNueva.getFecha());
 					System.out.println("Dirección Ferreteria: " + f.getDireccion());
+					System.out.println("Número factura: " + facturaNueva.getNumerofactura());
 					System.out.println("Cedula Cliente: " + facturaNueva.getCliente().getCedula());
 					System.out.println("Nombre Cliente: " + facturaNueva.getCliente().getNombre());
 					System.out.println("Producto regaldo:");
@@ -203,66 +207,65 @@ public class Main {
 			
 		}
 	
-	// Funcionalidad 2
-	static void devolucion(Ferreteria f) {
-		Scanner input = new Scanner(System.in);
-		
-			System.out.println("DEVOLUCIÓN");
-			System.out.println("----------");
-		
+		// Funcionalidad 2
+		static void devolucion(Ferreteria f) {
+			Scanner input = new Scanner(System.in);
 			
-			System.out.println("digite el número de la factura:");
-			int pedido=1;
-			while(pedido != 0) {
-			pedido = input.nextInt();	
-			 
-			Factura facturabuscar=Ferreteria.buscarFactura(pedido);
+				System.out.println("DEVOLUCIÓN");
+				System.out.println("----------");
 			
-			if(facturabuscar instanceof Factura) {
-				System.out.println("Referencia"+"      "+"nombre"+"                 "+"Cantidad");
 				
-			   for(Object[] p: facturabuscar.getProductosFactura()) {
-				  
+				System.out.println("digite el número de la factura:");
+				int pedido=1;
+				while(pedido != 0) {
+				pedido = input.nextInt();	
+				 
+				Factura facturabuscar=Ferreteria.buscarFactura(pedido);
+				
+				if(facturabuscar instanceof Factura) {
+					System.out.println("Referencia"+"      "+"nombre"+"                 "+"Cantidad");
+					
+				   for(Object[] p: facturabuscar.getProductosFactura()) {
+					  
+							Producto producto = (Producto) p[0];
+							System.out.println(producto.getReferencia()+"           "+producto.getNombre()+"                     "+p[1]);
+							
+				   }
+				   int referencia=1;
+				   while (referencia!=0) {
+					   System.out.println("Digite la referencia del producto que se desea devolver o 0 para finalizar");
+					   referencia = input.nextInt();
+					   System.out.println("Digite la cantidad de productos que se desean devolver");
+						int cantidad = input.nextInt();
+						
+						facturabuscar.RetirarProducto(referencia, cantidad);
+						System.out.println(" ");
+					   
+				   }
+				   System.out.println("proceso finalizado");
+				   for(Object[] p: facturabuscar.getProductosFactura()) {
 						Producto producto = (Producto) p[0];
 						System.out.println(producto.getReferencia()+"           "+producto.getNombre()+"                     "+p[1]);
-						
-			   }
-			   int referencia=1;
-			   while (referencia!=0) {
-				   System.out.println("Digite la referencia del producto que se desea devolver o 0 para finalizar");
-				   referencia = input.nextInt();
-				   System.out.println("Digite la cantidad de productos que se desean devolver");
-					int cantidad = input.nextInt();
-					
-					facturabuscar.RetirarProducto(referencia, cantidad);
-					System.out.println(" ");
-				   
-			   }
-			   System.out.println("proceso finalizado");
-			   for(Object[] p: facturabuscar.getProductosFactura()) {
-					Producto producto = (Producto) p[0];
-					System.out.println(producto.getReferencia()+"           "+producto.getNombre()+"                     "+p[1]);
-			   }
-			break;
-			}
-			
-			
-			else if( facturabuscar== (null) ) {
-				System.out.println("La factura no existe en el sistema, por favor ingrese un numero de factura válido");
+				   }
+				break;
+				}
 				
-			}
+				
+				else if( facturabuscar== (null) ) {
+					System.out.println("La factura no existe en el sistema, por favor ingrese un numero de factura válido");
+					
+				}
+				
+				 
+				 
 			
-			 
-			 
-		
-			
-			
-			
-			
-			
-	    }
-	}
-
+				
+				
+				
+				
+				
+		    }
+		}
 
 
 	// Funcionalidad 3
@@ -516,7 +519,9 @@ public class Main {
  		
  	} 
 
- 	private static void salirDelPrograma(Ferreteria f){
+ 	
+ 	
+ 	public static void salirDelPrograma(Ferreteria f){
 			System.out.println("salir");
 			Serializador.serializar(f);
 			System.exit(0);

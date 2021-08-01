@@ -1,4 +1,4 @@
-package Almacen;
+package gestorAplicación.Almacen;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,6 +20,5 @@ public class Herramienta extends Producto implements Serializable {
 		Inventario.productos.add(a);
 	}
 
-		
 	
 }

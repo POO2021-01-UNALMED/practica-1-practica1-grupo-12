@@ -1,8 +1,6 @@
-package Almacen;
+package gestorAplicación.Almacen;
 
-import java.io.Serializable;
-
-public abstract class Producto implements Serializable {
+public abstract class Producto {
 	private int referencia;
 	private String nombre;
 	private double precio;
