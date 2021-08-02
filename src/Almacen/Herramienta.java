@@ -5,13 +5,13 @@ import java.util.ArrayList;
 
 public class Herramienta extends Producto implements Serializable {
 	
-	String tamaño;
+	String tamaÃ±o;
 	static ArrayList<Herramienta> herramientas= new ArrayList<Herramienta>() ;
 	
 
-	public Herramienta(int referencia, String nombre, double precio, boolean estado,String tamaño) {
-		super(referencia, nombre, precio, estado);
-		this.tamaño=tamaño;
+	public Herramienta(int referencia, String nombre, double precio, boolean estado,String tamaÃ±o) {
+		super(referencia, nombre, precio, estado); //USO DE LA HERENCIA
+		this.tamaÃ±o=tamaÃ±o;
 		
 		herramientas.add(this);
 		Object[] a = new Object[2];
@@ -19,7 +19,12 @@ public class Herramienta extends Producto implements Serializable {
 		a[1] = 1;
 		Inventario.productos.add(a);
 	}
-
+    
+	//USO DELMETODO ABSTRACTO
+	public String FormadeVenta() {
+		return "unidades";
 		
+	}    
+
 	
 }
