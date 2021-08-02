@@ -21,11 +21,15 @@ public class Main implements Serializable{
 		
 		Ferreteria ferr =  new Ferreteria();
 		
+		Deserializador.deserializar(ferr);
+		System.out.println(ferr.getFacturas().size());
+		
+		
 		Proveedores prov1= new Proveedores(true,"javier,",20000);
 		Proveedores prov2= new Proveedores(false,"juan,",20001);
 		
 		
-		//MaterialDeConstruccion g = new MaterialDeConstruccion(3, "CEMENTO", 12.3, true,true);
+		MaterialDeConstruccion g = new MaterialDeConstruccion(3, "CEMENTO", 12.3, true,true,"kilos");
 		Herramienta h = new Herramienta(123, "martillo", 20000, true,"grande");
 		//Herramienta i = new Herramienta(124, "destornillador", 20000, true,"mediano");
 		//Herramienta b = new Herramienta(233, "Martillo", 23.3, true,"Grande");
@@ -36,8 +40,7 @@ public class Main implements Serializable{
 		Empleado javier = new Empleado(3,"javier,","cajero",20000);
 		
 		
-	  
-		//[[3,1],[109,0],[13,3],[]]
+		
 		
 		
 		System.out.println("------------------------------------------");
@@ -180,6 +183,7 @@ public class Main implements Serializable{
 					
 					System.out.println("-----------FACTURA-----------");
 					System.out.println("Fecha: " + facturaNueva.getFecha());
+					System.out.println("Número de factura:"+Factura.numerofactura);
 					System.out.println("Dirección Ferreteria: " + f.getDireccion());
 					System.out.println("Número factura: " + facturaNueva.getNumerofactura());
 					System.out.println("Cedula Cliente: " + facturaNueva.getCliente().getCedula());
@@ -189,7 +193,7 @@ public class Main implements Serializable{
 					for (Object[] p : productosFactura) {
 						System.out.println(	
 								((Producto) p[0]).getReferencia() + "            " + ((Producto) p[0]).getNombre()
-										+ "     " + (int) p[1] + "         " + ((Producto) p[0]).getPrecio());
+										+ "     " + (int) p[1] +" "+((Producto) p[0]).FormadeVenta()+   "         " + ((Producto) p[0]).getPrecio());
 
 					}
 					
@@ -309,6 +313,7 @@ public class Main implements Serializable{
 					Factura facturaNueva = new Factura(fecha, productosPedidos, "Venta", empleadoEncargado,Cliente.buscarClientePorCedula(cedulaComprador));
 					System.out.println("-----------FACTURA-----------");
 					System.out.println("Fecha: " + facturaNueva.getFecha());
+					System.out.println("Número de factura:"+Factura.numerofactura);
 					System.out.println("Dirección Ferreteria: " + f.getDireccion());
 					System.out.println("Cedula Cliente: " + facturaNueva.getCliente().getCedula());
 					System.out.println("Nombre Cliente: " + facturaNueva.getCliente().getNombre());
@@ -317,7 +322,7 @@ public class Main implements Serializable{
 					for (Object[] p : productosPedidos) {
 						System.out.println(	
 								((Producto) p[0]).getReferencia() + "            " + ((Producto) p[0]).getNombre()
-										+ "     " + (int) p[1] + "         " + ((Producto) p[0]).getPrecio());
+										+ "     " + (int) p[1]+" "+((Producto) p[0]).FormadeVenta() + "         " + ((Producto) p[0]).getPrecio());
 
 					}
 
@@ -454,7 +459,7 @@ public class Main implements Serializable{
 		    
 		    }
 		    if(acumulado !=0) {
-		    Factura facturaNueva = new Factura(fechaf, lista,"compra",acumulado );
+		    Factura facturaNueva = new Factura(fechaf, lista,"Compra",acumulado );
 		    System.out.println("proceso finalizado");
 		    System.out.println("-----------FACTURA-----------");
 		    System.out.println("Número de factura:"+Factura.numerofactura);
@@ -464,7 +469,7 @@ public class Main implements Serializable{
 			for(Object[] p : lista) {
 				
 				
-				System.out.println( (((Producto)p[0]).getReferencia()) + "            "+ p[1] +"         "+ ((((Producto)p[0]).getPrecio()/10)*7));
+				System.out.println( (((Producto)p[0]).getReferencia()) + "            "+ p[1] +" "+((Producto) p[0]).FormadeVenta()+"         "+ ((((Producto)p[0]).getPrecio()/10)*7));
 			 }
 			
 			}
@@ -512,11 +517,7 @@ public class Main implements Serializable{
  			
  			
  		}
- 		
- 		
- 		
- 		
- 		
+	
  	} 
 
  	
@@ -524,6 +525,8 @@ public class Main implements Serializable{
  	public static void salirDelPrograma(Ferreteria f){
 			System.out.println("salir");
 			Serializador.serializar(f);
+			
+			System.out.println(f.getFacturas().size());
 			System.exit(0);
 		}
 		

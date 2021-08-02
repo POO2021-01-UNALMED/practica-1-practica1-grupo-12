@@ -202,13 +202,13 @@ public class Ferreteria  implements Serializable {
 	}
 
 
-	public ArrayList<Factura> getFacturas() {
+	public static ArrayList<Factura> getFacturas() {
 		return facturas;
 	}
 
 
-	public void setFacturas(ArrayList<Factura> facturas) {
-		this.facturas = facturas;
+	public static ArrayList<Factura> setFacturas(ArrayList<Factura> facturas) {
+		return facturas;
 	}
 
 
