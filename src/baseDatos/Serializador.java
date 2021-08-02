@@ -14,13 +14,14 @@ import java.util.ArrayList;
 
 import Almacen.*;
 import Ventas.Cliente;
+import Ventas.Factura;
 public class Serializador {
 
 	private static File rutaTemp = new File("src\\baseDatos\\temp\\");
 	
 	public static void serializar(Ferreteria ferr) {
 		
-		System.out.println("entrooo");
+		//System.out.println("entrooo");
 		
 		
 		
@@ -53,7 +54,10 @@ public class Serializador {
 			 try { 
 			fos = new FileOutputStream(file);
 			 oos = new ObjectOutputStream(fos); 
-			oos.writeObject(ferr.getFacturas()); 
+			
+		
+			 
+			 oos.writeObject(ferr.getFacturas()); 
 			
 			} 
 			catch (FileNotFoundException e) {
@@ -77,7 +81,38 @@ public class Serializador {
 
 			 e.printStackTrace();
 			}
-		}	 
+		}
+		else if (file.getAbsolutePath().contains("proveedores")) {
+			 try {
+			 fos = new FileOutputStream(file); 
+			oos = new ObjectOutputStream(fos); 
+			oos.writeObject(Proveedores.getProveedores()); 
+			} 
+			catch (FileNotFoundException e) {
+			  e.printStackTrace();
+			 } 
+			catch (IOException e) {
+
+			 e.printStackTrace();
+			}
+		}
+		else if (file.getAbsolutePath().contains("empleados")) {
+			 try {
+			 fos = new FileOutputStream(file); 
+			oos = new ObjectOutputStream(fos); 
+			oos.writeObject(Empleado.getEmpleados()); 
+			} 
+			catch (FileNotFoundException e) {
+			  e.printStackTrace();
+			 } 
+			catch (IOException e) {
+
+			 e.printStackTrace();
+			}
+		}
+			 
+			 
+			 
 		}
 	}
 }

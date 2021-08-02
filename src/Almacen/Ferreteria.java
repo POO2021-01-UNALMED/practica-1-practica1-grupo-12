@@ -60,11 +60,15 @@ public class Ferreteria  implements Serializable {
    
    public static double VentasMensuales(int mes,int año){
 		double ventas_mensuales = 0;
+		
+
 		for(Factura factura : facturas) { // Este for se encarga de recorrer todas las facturas en el arreglo de facturas de la clase Ferreteria
 			
 			int primerSlash = factura.getFecha().indexOf("/");
+			//System.out.println(primerSlash);
 			int segundoSlash = factura.getFecha().lastIndexOf("/");
 			int longitudFecha = factura.getFecha().length();
+			//System.out.println("entro");
 			//System.out.println((factura.getFecha().substring(primerSlash+1,segundoSlash)));
 			//System.out.println(factura.getFecha().substring(segundoSlash+1,longitudFecha));
 			if((factura.getFecha().substring(primerSlash+1,segundoSlash)).equals(mes+"") && factura.getTipo().equals("Venta") && (factura.getFecha().substring(segundoSlash+1,longitudFecha).equals(año+""))) { //este if se encarga de comparar que el mes de la factura coincida con el mes del parametro
@@ -202,13 +206,13 @@ public class Ferreteria  implements Serializable {
 	}
 
 
-	public static ArrayList<Factura> getFacturas() {
+	public ArrayList<Factura> getFacturas() {
 		return facturas;
 	}
 
 
-	public static ArrayList<Factura> setFacturas(ArrayList<Factura> facturas) {
-		return facturas;
+	public void setFacturas(ArrayList<Factura> facturas) {
+		this.facturas = facturas;
 	}
 
 

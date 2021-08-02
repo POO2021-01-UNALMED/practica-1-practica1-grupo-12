@@ -19,10 +19,7 @@ public class Herramienta extends Producto implements Serializable {
 		a[1] = 1;
 		Inventario.productos.add(a);
 	}
- 
-	public String FormadeVenta() {
-		return "unidades";
+
 		
-	}    
 	
 }

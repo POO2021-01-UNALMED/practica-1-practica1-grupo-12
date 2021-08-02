@@ -1,8 +1,9 @@
 package Almacen;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Empleado {
+public class Empleado implements Serializable {
 	protected int cedula;
 	protected String nombre;
 	protected String cargo;
@@ -78,6 +79,18 @@ public class Empleado {
 	}
 	public void setSueldo(int sueldo) {
 		this.sueldo = sueldo;
+	}
+
+
+
+	public static ArrayList<Empleado> getEmpleados() {
+		return empleados;
+	}
+
+
+
+	public static void setEmpleados(ArrayList<Empleado> empleados) {
+		Empleado.empleados = empleados;
 	}
 
 
