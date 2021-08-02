@@ -11,20 +11,21 @@ public class Factura implements Serializable{
 	}
 
 
-	public static int numerofactura;
+	public  int numerofactura;
 	private String fecha;
 	private  ArrayList<Object[]> productosFactura = new ArrayList<Object[]>();
 	private String tipo;
 	private double valortotal;
 	private Empleado atendidopor;
 	private Cliente cliente;
+	
 	private static int autoNumerico = 100;
 	double devolver = 0;
 	
 	
 	public Factura (String fecha, ArrayList<Object[]> productos, String tipo,Empleado atendidopor, Cliente cliente) {
-		
-		this.numerofactura = autoNumerico;
+		//System.out.println("tamaño " + Ferreteria.facturas.size());
+		this.numerofactura = Ferreteria.facturas.size() + 10000;
 		this.fecha=fecha;
 		this.productosFactura = productos;
 		this.tipo=tipo;
@@ -87,10 +88,10 @@ public class Factura implements Serializable{
 	}
 	
 public double CalcularValorTotal(){
-		
+		int valortotal = 0;
 		for (Object[] p : productosFactura){
 			
-			this.valortotal += ((Producto)p[0]).getPrecio() * (int)p[1];
+			valortotal += ((Producto)p[0]).getPrecio() * (int)p[1];
 			
 		}
 		

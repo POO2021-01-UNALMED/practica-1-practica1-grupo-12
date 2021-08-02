@@ -106,6 +106,26 @@ public class Deserializador {
 					e.printStackTrace();
 				}
 			}
+			
+			else if (file.getAbsolutePath().contains("productos")) {
+				try {
+					fis = new FileInputStream(file);
+					ois = new ObjectInputStream(fis);
+
+					Inventario.setProductos((ArrayList<Object[]>) ois.readObject());
+				}
+
+				catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		
 		}
 	}

@@ -21,27 +21,69 @@ public class Main implements Serializable{
 		
 		Ferreteria ferr =  new Ferreteria();
 		
-		Deserializador.deserializar(ferr);
-		System.out.println(ferr.getFacturas().size());
+	
 		
 		
-		Proveedores prov1= new Proveedores(true,"javier,",20000);
-		Proveedores prov2= new Proveedores(false,"juan,",20001);
+		/*
+		MaterialDeConstruccion g = new MaterialDeConstruccion(121, "Arena",6500, true,true);
+		MaterialDeConstruccion g2 = new MaterialDeConstruccion(122, "CEMENTO",5000, true,true);
+		MaterialDeConstruccion b = new MaterialDeConstruccion(125, "Clavos", 200, true,false);
+		MaterialDeConstruccion g1 = new MaterialDeConstruccion(122, "Ladrillo",5000, true,true);
 		
 		
-		MaterialDeConstruccion g = new MaterialDeConstruccion(3, "CEMENTO", 12.3, true,true,"kilos");
+		Herramienta h2 = new Herramienta(120, "Pinzas", 13500, true,"Mediano");
+		Herramienta h3 = new Herramienta(121, "Cincel", 25000, true,"Mediano");
+		Herramienta h1 = new Herramienta(122, "Candado", 10000, true,"grande");
 		Herramienta h = new Herramienta(123, "martillo", 20000, true,"grande");
-		//Herramienta i = new Herramienta(124, "destornillador", 20000, true,"mediano");
-		//Herramienta b = new Herramienta(233, "Martillo", 23.3, true,"Grande");
-	
-		
-	
-		Cliente jaime = new Cliente(2, "jaime", 31231, "cadca");
-		Empleado javier = new Empleado(3,"javier,","cajero",20000);
-		
-		
+		Herramienta i = new Herramienta(124, "destornillador", 20000, true,"mediano de estrella");
+		Herramienta a = new Herramienta(125, "Alicates", 17000, true,"marca ACME");
+		Herramienta c = new Herramienta(126, "Metro", 20000, true,"100 cm de largo");
+		Herramienta c1 = new Herramienta(127, "Serrucho", 20000, true,"punta muy afilada");
+		Herramienta c2 = new Herramienta(128, "Botador", 19000, true,"mediano punta cuadrada");
+		Herramienta c3 = new Herramienta(129, "Botador 2", 19000, true,"mediano punta triangulada");
+		*/
 		
 		
+		//ArrayList<Object[]> b = new ArrayList<Object[]>();
+		//Object r[] = {i,10};
+		//Object r2[] = {h,3};
+		
+		//b.add(r);
+		//b.add(r2);
+		//Proveedores prov1= new Proveedores(true,"javier,",20000);
+		//Proveedores prov2= new Proveedores(false,"juan,",20001);
+
+		//Cliente jaime = new Cliente(2, "jaime", 31231, "cadca");
+		//Cliente cl2 = new Cliente(4, "Daniel",323123 , "cra 20 # 30a3");
+		//Cliente cl2 = new Cliente(5, "Dalí",323123 );
+		
+		
+		//serializar herramienta
+		
+		//Serializar empleados
+		/*Empleado emp1 = new Empleado(11,"Camilo,","cajero",200000);
+		Empleado emp2 = new Empleado(12,"Cristian,","cajero",200000);
+		Empleado emp3 = new Empleado(13,"David,","cajero",300000);
+		Empleado emp4 = new Empleado(14,"Daniel Sanchez,","cajero",100000);
+		Empleado emp5 = new Empleado(15,"Hugo Alberto,","cajero",250000);*/
+		
+		
+		//serializar herramienta
+		
+		//Factura f1 = new Factura("12/3/2020" ,b, "Venta",javier, cl2);
+		
+	  
+		//[[3,1],[109,0],[13,3],[]]
+		
+		for(Factura f: Ferreteria.facturas) {
+			System.out.println(f.getNumerofactura());
+			System.out.println(f.getFecha());
+			System.out.println(f.CalcularValorTotal());
+			System.out.println(f.getProductosFactura().get(0)[1]);
+		}
+		
+		System.out.println("numero +" + Ferreteria.facturas.size());
+		System.out.println("numero +" + Factura.getAutoNumerico());
 		
 		System.out.println("------------------------------------------");
 		System.out.println("//BIENVEDIOS AL SOFTWARE DE LA FERRETERÍA//");
@@ -183,7 +225,6 @@ public class Main implements Serializable{
 					
 					System.out.println("-----------FACTURA-----------");
 					System.out.println("Fecha: " + facturaNueva.getFecha());
-					System.out.println("Número de factura:"+Factura.numerofactura);
 					System.out.println("Dirección Ferreteria: " + f.getDireccion());
 					System.out.println("Número factura: " + facturaNueva.getNumerofactura());
 					System.out.println("Cedula Cliente: " + facturaNueva.getCliente().getCedula());
@@ -193,7 +234,7 @@ public class Main implements Serializable{
 					for (Object[] p : productosFactura) {
 						System.out.println(	
 								((Producto) p[0]).getReferencia() + "            " + ((Producto) p[0]).getNombre()
-										+ "     " + (int) p[1] +" "+((Producto) p[0]).FormadeVenta()+   "         " + ((Producto) p[0]).getPrecio());
+										+ "     " + (int) p[1] + "         " + ((Producto) p[0]).getPrecio());
 
 					}
 					
@@ -281,7 +322,7 @@ public class Main implements Serializable{
 		int cedulaComprador = input.nextInt();
 
 		if (Cliente.buscarCedula(cedulaComprador) == true) {
-			System.out.println("Digite la cedula del empleado que lo atendió");
+			System.out.println("Digite la cedula del empleado que lo atendió"); 
 			Empleado empleadoEncargado = null;
 			boolean a = true;
 			do {
@@ -313,8 +354,8 @@ public class Main implements Serializable{
 					Factura facturaNueva = new Factura(fecha, productosPedidos, "Venta", empleadoEncargado,Cliente.buscarClientePorCedula(cedulaComprador));
 					System.out.println("-----------FACTURA-----------");
 					System.out.println("Fecha: " + facturaNueva.getFecha());
-					System.out.println("Número de factura:"+Factura.numerofactura);
 					System.out.println("Dirección Ferreteria: " + f.getDireccion());
+					System.out.println("Número factura: " + facturaNueva.getNumerofactura());
 					System.out.println("Cedula Cliente: " + facturaNueva.getCliente().getCedula());
 					System.out.println("Nombre Cliente: " + facturaNueva.getCliente().getNombre());
 					System.out.println("Productos comprados:");
@@ -322,11 +363,11 @@ public class Main implements Serializable{
 					for (Object[] p : productosPedidos) {
 						System.out.println(	
 								((Producto) p[0]).getReferencia() + "            " + ((Producto) p[0]).getNombre()
-										+ "     " + (int) p[1]+" "+((Producto) p[0]).FormadeVenta() + "         " + ((Producto) p[0]).getPrecio());
+										+ "     " + (int) p[1] + "         " + ((Producto) p[0]).getPrecio());
 
 					}
 
-					//f.getFacturas().add(facturaNueva); <---- posiblemente tenga que quitar esta linea
+					//f.getFacturas().add(facturaNueva); //<---- posiblemente tenga que quitar esta linea
 
 					System.out.println("Valor total " + facturaNueva.CalcularValorTotal());
 					break;
@@ -459,17 +500,17 @@ public class Main implements Serializable{
 		    
 		    }
 		    if(acumulado !=0) {
-		    Factura facturaNueva = new Factura(fechaf, lista,"Compra",acumulado );
+		    Factura facturaNueva = new Factura(fechaf, lista,"compra",acumulado );
 		    System.out.println("proceso finalizado");
 		    System.out.println("-----------FACTURA-----------");
-		    System.out.println("Número de factura:"+Factura.numerofactura);
+		    System.out.println("Número de factura:"+ facturaNueva.getNumerofactura());
 		    System.out.println("fecha: "+ fechaf);
 		    System.out.println("Productos comprados:");
 			System.out.println("Referencia   Cantidad   valor");
 			for(Object[] p : lista) {
 				
 				
-				System.out.println( (((Producto)p[0]).getReferencia()) + "            "+ p[1] +" "+((Producto) p[0]).FormadeVenta()+"         "+ ((((Producto)p[0]).getPrecio()/10)*7));
+				System.out.println( (((Producto)p[0]).getReferencia()) + "            "+ p[1] +"         "+ ((((Producto)p[0]).getPrecio()/10)*7));
 			 }
 			
 			}
@@ -503,7 +544,7 @@ public class Main implements Serializable{
  		System.out.println("Dijite el año de consulta");
  		int año = input.nextInt();
  		
- 		
+ 		f.VentasMensuales(1,2020);
  		
  		System.out.println("                                    " + año);
  		System.out.println("Mes"+ "        " +"Ganancias Totales"+ "        " +"Gastos Totales"+ "        " + "Ganancias Netas" + "        " + "Cliente con más compras");
@@ -517,16 +558,19 @@ public class Main implements Serializable{
  			
  			
  		}
-	
+ 		
+ 		
+ 		
+ 		
+ 		
  	} 
+ 	
 
  	
  	
  	public static void salirDelPrograma(Ferreteria f){
 			System.out.println("salir");
 			Serializador.serializar(f);
-			
-			System.out.println(f.getFacturas().size());
 			System.exit(0);
 		}
 		

@@ -8,18 +8,17 @@ public abstract class Producto implements Serializable {
 	private double precio;
 	private boolean estado;
 	
-	
 	public Producto(int referencia,String nombre,double precio,boolean estado) {
 		this.referencia = referencia;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.estado = estado;
 		
-		
 	}
 	
-    public abstract String FormadeVenta();
-    
+	public void SeDaña() {
+		
+	}
 
 	public int getReferencia() {
 		return referencia;
@@ -31,8 +30,5 @@ public abstract class Producto implements Serializable {
 	public double getPrecio() {
 		return precio;
 	}
-
-
-
 
 }

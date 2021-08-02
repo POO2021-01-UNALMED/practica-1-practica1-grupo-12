@@ -110,7 +110,20 @@ public class Serializador {
 			 e.printStackTrace();
 			}
 		}
-			 
+		else if (file.getAbsolutePath().contains("productos")) {
+			 try {
+			 fos = new FileOutputStream(file); 
+			oos = new ObjectOutputStream(fos); 
+			oos.writeObject(Inventario.getProductos()); 
+			} 
+			catch (FileNotFoundException e) {
+			  e.printStackTrace();
+			 } 
+			catch (IOException e) {
+
+			 e.printStackTrace();
+			}
+		}	 
 			 
 			 
 		}
