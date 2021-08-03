@@ -2,11 +2,18 @@ package Almacen;
 
 import java.io.Serializable;
 
+/*-------------------------------------------------------------------------------------------------------------------------------------
+ * CREACIÃ“N DE LA CLASE ABSTRACT
+ */
+
 public abstract class Producto implements Serializable {
 	private int referencia;
 	private String nombre;
 	private double precio;
 	private boolean estado;
+	
+	
+	//CONSTRUCTOR DE LA CLASE
 	
 	public Producto(int referencia,String nombre,double precio,boolean estado) {
 		this.referencia = referencia;
@@ -16,9 +23,11 @@ public abstract class Producto implements Serializable {
 		
 	}
 	
-	public void SeDaña() {
-		
-	}
+	// METODO ABSTRACTO
+
+    public abstract String FormadeVenta(); 
+    
+    
 
 	public int getReferencia() {
 		return referencia;
