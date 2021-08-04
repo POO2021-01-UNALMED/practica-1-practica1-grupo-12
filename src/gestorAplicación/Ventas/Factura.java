@@ -1,12 +1,12 @@
-package gestorAplicaci髇.Ventas;
+package gestorAplicaci贸n.Ventas;
 
 import java.io.Serializable;
 import java.util.*;
 
-import gestorAplicaci髇.Almacen.Empleado;
-import gestorAplicaci髇.Almacen.Ferreteria;
-import gestorAplicaci髇.Almacen.Inventario;
-import gestorAplicaci髇.Almacen.Producto;
+import gestorAplicaci贸n.Almacen.Empleado;
+import gestorAplicaci贸n.Almacen.Ferreteria;
+import gestorAplicaci贸n.Almacen.Inventario;
+import gestorAplicaci贸n.Almacen.Producto;
 
 public class Factura implements Serializable,Imprimir{
 
@@ -28,7 +28,7 @@ public class Factura implements Serializable,Imprimir{
 	
 	
 	public Factura (String fecha, ArrayList<Object[]> productos, String tipo,Empleado atendidopor, Cliente cliente) {
-		//System.out.println("tama駉 " + Ferreteria.facturas.size());
+		//System.out.println("tama帽o " + Ferreteria.facturas.size());
 		this.numerofactura = Ferreteria.facturas.size() + 10000;
 		this.fecha=fecha;
 		this.productosFactura = productos;
@@ -179,5 +179,11 @@ public class Factura implements Serializable,Imprimir{
 	public String getTipo() {
 		return tipo;
 	}
-	
+	@Override
+	public String Mostrar(Object[] p) {
+		
+		return ((Producto) p[0]).getReferencia() + "            " + ((Producto) p[0]).getNombre()
+		+ "     " + (int) p[1] +" "+((Producto) p[0]).FormadeVenta()+   "         " + ((Producto) p[0]).getPrecio();
+		
+	}
 }
