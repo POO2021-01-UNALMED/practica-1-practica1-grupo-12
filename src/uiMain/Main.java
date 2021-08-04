@@ -14,6 +14,7 @@ import Ventas.Factura;
 import java.io.Serializable;
 import java.lang.Math;
 import baseDatos.*;
+import gestorAplicación.Almacen.Imprimir;
 public class Main implements Serializable{
 	
 	public static void main(String[] args){
@@ -22,6 +23,7 @@ public class Main implements Serializable{
 		Ferreteria ferr =  new Ferreteria();
 		
 	
+		
 		
 		
 		MaterialDeConstruccion g = new MaterialDeConstruccion(121, "Arena",6500, true,true,"kilos");
@@ -42,6 +44,7 @@ public class Main implements Serializable{
 		Herramienta c3 = new Herramienta(129, "Botador 2", 19000, true,"mediano punta triangulada");
 		
 		
+		
 		//ArrayList<Object[]> b = new ArrayList<Object[]>();
 		//Object r[] = {i,10};
 		//Object r2[] = {h,3};
@@ -59,8 +62,8 @@ public class Main implements Serializable{
 		//serializar herramienta
 		
 		//Serializar empleados
-		/*Empleado emp1 = new Empleado(11,"Camilo,","cajero",200000);
-		Empleado emp2 = new Empleado(12,"Cristian,","cajero",200000);
+		Empleado emp1 = new Empleado(11,"Camilo,","cajero",200000);
+		/*Empleado emp2 = new Empleado(12,"Cristian,","cajero",200000);
 		Empleado emp3 = new Empleado(13,"David,","cajero",300000);
 		Empleado emp4 = new Empleado(14,"Daniel Sanchez,","cajero",100000);
 		Empleado emp5 = new Empleado(15,"Hugo Alberto,","cajero",250000);*/
@@ -230,9 +233,8 @@ public class Main implements Serializable{
 					System.out.println("Producto regaldo:");
 					System.out.println("Referencia    Nombre    Cantidad   PrecioUnidad");
 					for (Object[] p : productosFactura) {
-						System.out.println(	
-								((Producto) p[0]).getReferencia() + "            " + ((Producto) p[0]).getNombre()
-										+ "     " + (int) p[1] +" "+((Producto) p[0]).FormadeVenta()+   "         " + ((Producto) p[0]).getPrecio());
+						System.out.println(facturaNueva.Mostrar(p));
+				
 
 
 					}
@@ -267,24 +269,31 @@ public class Main implements Serializable{
 				Factura facturabuscar=Ferreteria.buscarFactura(pedido);
 				
 				if(facturabuscar instanceof Factura) {
-					System.out.println("Referencia"+"      "+"nombre"+"                 "+"Cantidad");
+					System.out.println("Referencia      Nombre    Cantidad   PrecioUnidad");
 					
 				   for(Object[] p: facturabuscar.getProductosFactura()) {
 					  
-							Producto producto = (Producto) p[0];
-							System.out.println(producto.getReferencia()+"           "+producto.getNombre()+"                     "+p[1]);
+					   System.out.println(facturabuscar.Mostrar(p));
 							
 				   }
 				   int referencia=1;
 				   while (referencia!=0) {
+					   double devuelta;
 					   System.out.println("Digite la referencia del producto que se desea devolver o 0 para finalizar");
 					   referencia = input.nextInt();
 					   System.out.println("Digite la cantidad de productos que se desean devolver");
 						int cantidad = input.nextInt();
 						
-						facturabuscar.RetirarProducto(referencia, cantidad);
+						devuelta=facturabuscar.RetirarProducto(referencia, cantidad);
 						System.out.println(" ");
+						
+						if( devuelta != 0) {
+							System.out.println("valor a devolver al cliente: " + devuelta);
+						}
+						
+						
 					   
+						
 				   }
 				   System.out.println("proceso finalizado");
 				   for(Object[] p: facturabuscar.getProductosFactura()) {
@@ -312,7 +321,7 @@ public class Main implements Serializable{
 		}
 
 
-	// Funcionalidad 3
+
 	// Funcionalidad 3
 	static void VenderProductos(Ferreteria f) {
 		Scanner input = new Scanner(System.in);
@@ -358,11 +367,10 @@ public class Main implements Serializable{
 					System.out.println("Cedula Cliente: " + facturaNueva.getCliente().getCedula());
 					System.out.println("Nombre Cliente: " + facturaNueva.getCliente().getNombre());
 					System.out.println("Productos comprados:");
-					System.out.println("Referencia    Nombre    Cantidad   PrecioUnidad");
+					System.out.println("Referencia    Nombre    Cantidad      PrecioUnidad");
 					for (Object[] p : productosPedidos) {
-						System.out.println(	
-								((Producto) p[0]).getReferencia() + "            " + ((Producto) p[0]).getNombre()
-										+ "     " + (int) p[1]+" "+((Producto) p[0]).FormadeVenta() + "         " + ((Producto) p[0]).getPrecio());
+						
+								System.out.println(facturaNueva.Mostrar(p));
 
 
 					}
@@ -511,7 +519,6 @@ public class Main implements Serializable{
 				
 				
 				System.out.println( (((Producto)p[0]).getReferencia()) + "            "+ p[1] +" "+((Producto) p[0]).FormadeVenta()+"         "+ ((((Producto)p[0]).getPrecio()/10)*7));
-			
 			 }
 			
 			}
