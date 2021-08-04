@@ -228,7 +228,8 @@ public class Main implements Serializable{
 					System.out.println("Producto regaldo:");
 					System.out.println("Referencia    Nombre    Cantidad   PrecioUnidad");
 					for (Object[] p : productosFactura) {
-						System.out.println(facturaNueva.Mostrar(p));	}
+						System.out.println(facturaNueva.Mostrar(p));
+					}
 					
 					break;
 				
@@ -351,10 +352,11 @@ public class Main implements Serializable{
 					System.out.println("Cedula Cliente: " + facturaNueva.getCliente().getCedula());
 					System.out.println("Nombre Cliente: " + facturaNueva.getCliente().getNombre());
 					System.out.println("Productos comprados:");
-					System.out.println("Referencia    Nombre    Cantidad      PrecioUnidad");
+					System.out.println("Referencia    Nombre    Cantidad   PrecioUnidad");
 					for (Object[] p : productosPedidos) {
 						
-								System.out.println(facturaNueva.Mostrar(p));
+						System.out.println(facturaNueva.Mostrar(p));
+					}
 
 					//f.getFacturas().add(facturaNueva); //<---- posiblemente tenga que quitar esta linea
 
