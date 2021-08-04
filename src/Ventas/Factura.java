@@ -3,8 +3,9 @@ package Ventas;
 import java.io.Serializable;
 import java.util.*;
  import Almacen.*;
+import gestorAplicación.Almacen.Imprimir;
 
-public class Factura implements Serializable{
+public class Factura implements Serializable, Imprimir{
 
 	public class setProductosFactura  {
 
@@ -20,11 +21,11 @@ public class Factura implements Serializable{
 	private Cliente cliente;
 	
 	private static int autoNumerico = 100;
-	double devolver = 0;
+	
 	
 	
 	public Factura (String fecha, ArrayList<Object[]> productos, String tipo,Empleado atendidopor, Cliente cliente) {
-		//System.out.println("tama�o " + Ferreteria.facturas.size());
+		//System.out.println("tamaño " + Ferreteria.facturas.size());
 		this.numerofactura = Ferreteria.facturas.size() + 10000;
 		this.fecha=fecha;
 		this.productosFactura = productos;
@@ -56,8 +57,8 @@ public class Factura implements Serializable{
 		
 	}
 	
-	public void RetirarProducto(int ref, int cantidad) {
-		
+	public double RetirarProducto(int ref, int cantidad) {
+		double devolver = 0;
 		for(Object[] p: productosFactura) {
 			Producto producto = (Producto) p[0];
 			if(ref == producto.getReferencia()) {
@@ -73,19 +74,23 @@ public class Factura implements Serializable{
 				
 		      
 		      MostrarProductos();
-		      System.out.println("valor a devolver al cliente: " + devolver);	
+		      
+		      
 				}
-				else {
+				else {  
 					System.out.println("No es posible eliminar esa cantidad de productos ");
 					p[1]=aux;
+					break;
 				}
-			}
+				}
+			}return devolver;
 			
 			
 	}
 		
 		
-	}
+		
+	
 	
 public double CalcularValorTotal(){
 		int valortotal = 0;
@@ -175,5 +180,14 @@ public double CalcularValorTotal(){
 	public String getTipo() {
 		return tipo;
 	}
+   
+@Override
+	public String Mostrar(Object[] p) {
+		
+		return ((Producto) p[0]).getReferencia() + "            " + ((Producto) p[0]).getNombre()
+		+ "     " + (int) p[1] +" "+((Producto) p[0]).FormadeVenta()+   "         " + ((Producto) p[0]).getPrecio();
+		
+	}
 	
 }
+
