@@ -89,4 +89,20 @@ public class Proveedores  implements Serializable{
 	public void setEsEmpresa(Boolean esEmpresa) {
 		this.esEmpresa = esEmpresa;
 	}
+
+
+
+
+	public static ArrayList<Proveedores> getProveedores() {
+		return proveedores;
+	}
+
+
+
+
+	public static void setProveedores(ArrayList<Proveedores> proveedores) {
+		Proveedores.proveedores = proveedores;
+	}
+	
+	
 }

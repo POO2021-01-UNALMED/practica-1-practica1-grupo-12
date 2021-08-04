@@ -10,7 +10,7 @@ public class Herramienta extends Producto implements Serializable {
 	
 
 	public Herramienta(int referencia, String nombre, double precio, boolean estado,String tamaño) {
-		super(referencia, nombre, precio, estado);
+		super(referencia, nombre, precio, estado); //USO DE LA HERENCIA
 		this.tamaño=tamaño;
 		
 		herramientas.add(this);
@@ -19,6 +19,12 @@ public class Herramienta extends Producto implements Serializable {
 		a[1] = 1;
 		Inventario.productos.add(a);
 	}
+    
+	//USO DELMETODO ABSTRACTO
+	public String FormadeVenta() {
+		return "unidades";
+		
+	}    
 
 	
 }

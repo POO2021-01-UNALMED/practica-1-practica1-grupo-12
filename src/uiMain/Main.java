@@ -1,20 +1,17 @@
 package uiMain;
 import java.util.*;
-
-import Almacen.Empleado;
-import Almacen.Ferreteria;
-import Almacen.Herramienta;
-import Almacen.Inventario;
-import Almacen.MaterialDeConstruccion;
-import Almacen.Producto;
-import Almacen.Proveedores;
-import Ventas.Cliente;
-import Ventas.Factura;
-
 import java.io.Serializable;
 import java.lang.Math;
 import baseDatos.*;
-import gestorAplicaciÃ³n.Almacen.Imprimir;
+import gestorAplicación.Almacen.Empleado;
+import gestorAplicación.Almacen.Ferreteria;
+import gestorAplicación.Almacen.Herramienta;
+import gestorAplicación.Almacen.Inventario;
+import gestorAplicación.Almacen.MaterialDeConstruccion;
+import gestorAplicación.Almacen.Producto;
+import gestorAplicación.Almacen.Proveedores;
+import gestorAplicación.Ventas.Cliente;
+import gestorAplicación.Ventas.Factura;
 public class Main implements Serializable{
 	
 	public static void main(String[] args){
@@ -25,24 +22,24 @@ public class Main implements Serializable{
 	
 		
 		
+		/*
+		MaterialDeConstruccion g = new MaterialDeConstruccion(130, "Arena",6500, true,true,"kg"); 10
+		MaterialDeConstruccion g2 = new MaterialDeConstruccion(131, "CEMENTO",5000, true,true,"kg");
+		MaterialDeConstruccion b = new MaterialDeConstruccion(132, "Clavos", 200, true,false,"unidad");
+		MaterialDeConstruccion g1 = new MaterialDeConstruccion(133, "Ladrillo",5000, true,true,"unidad");
 		
-		MaterialDeConstruccion g = new MaterialDeConstruccion(121, "Arena",6500, true,true,"kilos");
-		MaterialDeConstruccion g2 = new MaterialDeConstruccion(122, "CEMENTO",5000, true,true, "kilos");
-		MaterialDeConstruccion b = new MaterialDeConstruccion(125, "Clavos", 200, true,false,"paquetes");
-		MaterialDeConstruccion g1 = new MaterialDeConstruccion(122, "Ladrillo",5000, true,true,"bloques");
 		
-		
-		Herramienta h2 = new Herramienta(120, "Pinzas", 13500, true,"Mediano");
-		Herramienta h3 = new Herramienta(121, "Cincel", 25000, true,"Mediano");
-		Herramienta h1 = new Herramienta(122, "Candado", 10000, true,"grande");
-		Herramienta h = new Herramienta(123, "martillo", 20000, true,"grande");
-		Herramienta i = new Herramienta(124, "destornillador", 20000, true,"mediano de estrella");
-		Herramienta a = new Herramienta(125, "Alicates", 17000, true,"marca ACME");
-		Herramienta c = new Herramienta(126, "Metro", 20000, true,"100 cm de largo");
-		Herramienta c1 = new Herramienta(127, "Serrucho", 20000, true,"punta muy afilada");
-		Herramienta c2 = new Herramienta(128, "Botador", 19000, true,"mediano punta cuadrada");
-		Herramienta c3 = new Herramienta(129, "Botador 2", 19000, true,"mediano punta triangulada");
-		
+		Herramienta h2 = new Herramienta(120, "Pinzas", 13500, true,"Mediano"); 6
+		Herramienta h3 = new Herramienta(121, "Cincel", 25000, true,"Mediano"); 5
+		Herramienta h1 = new Herramienta(122, "Candado", 10000, true,"grande"); 4
+		Herramienta h = new Herramienta(123, "martillo", 20000, true,"grande"); 3
+		Herramienta i = new Herramienta(124, "destornillador", 20000, true,"mediano de estrella"); 10	
+		Herramienta a = new Herramienta(125, "Alicates", 17000, true,"marca ACME"); 12
+		Herramienta c = new Herramienta(126, "Metro", 20000, true,"100 cm de largo"); 2
+		Herramienta c1 = new Herramienta(127, "Serrucho", 20000, true,"punta muy afilada"); 3
+		Herramienta c2 = new Herramienta(128, "Botador", 19000, true,"mediano punta cuadrada"); 4
+		Herramienta c3 = new Herramienta(129, "Botador 2", 19000, true,"mediano punta triangulada"); 1
+		*/
 		
 		
 		//ArrayList<Object[]> b = new ArrayList<Object[]>();
@@ -53,17 +50,18 @@ public class Main implements Serializable{
 		//b.add(r2);
 		//Proveedores prov1= new Proveedores(true,"javier,",20000);
 		//Proveedores prov2= new Proveedores(false,"juan,",20001);
-
-		//Cliente jaime = new Cliente(2, "jaime", 31231, "cadca");
-		//Cliente cl2 = new Cliente(4, "Daniel",323123 , "cra 20 # 30a3");
-		//Cliente cl2 = new Cliente(5, "DalÃ­",323123 );
-		
+		/*
+		Cliente jaime = new Cliente(1, "jaime", 31231, "cra 43 # 32a8");
+		Cliente cl2 = new Cliente(2, "Daniel",323123 , "cra 20 # 30a3");
+		Cliente cl3 = new Cliente(3, "Dalí",323123 );
+		*/
 		
 		//serializar herramienta
 		
 		//Serializar empleados
+		/*
 		Empleado emp1 = new Empleado(11,"Camilo,","cajero",200000);
-		/*Empleado emp2 = new Empleado(12,"Cristian,","cajero",200000);
+		Empleado emp2 = new Empleado(12,"Cristian,","cajero",200000);
 		Empleado emp3 = new Empleado(13,"David,","cajero",300000);
 		Empleado emp4 = new Empleado(14,"Daniel Sanchez,","cajero",100000);
 		Empleado emp5 = new Empleado(15,"Hugo Alberto,","cajero",250000);*/
@@ -71,9 +69,6 @@ public class Main implements Serializable{
 		
 		//serializar herramienta
 		
-		//Factura f1 = new Factura("12/3/2020" ,b, "Venta",javier, cl2);
-		
-	  
 		//[[3,1],[109,0],[13,3],[]]
 		
 		for(Factura f: Ferreteria.facturas) {
@@ -87,13 +82,13 @@ public class Main implements Serializable{
 		System.out.println("numero +" + Factura.getAutoNumerico());
 		
 		System.out.println("------------------------------------------");
-		System.out.println("//BIENVEDIOS AL SOFTWARE DE LA FERRETERÃA//");
+		System.out.println("//BIENVEDIOS AL SOFTWARE DE LA FERRETERÍA//");
 		System.out.println("------------------------------------------");
-		System.out.println("Selecciona el nÃºmero correspondiente a la funcionalidad");
+		System.out.println("Selecciona el número correspondiente a la funcionalidad");
 		System.out.println("1.Registrar cliente"); // cuando se crea un cliente se le va a regalar un material de construccion o una herramienta que se le ofrezca de manera aletoria, suponermos que todos los clientes que se vayan a registrar van a comprar otras cosas
 		System.out.println("2.Devolver producto"); //tomar numero factura ---> revisar si existe ---> meter productos a inventario ---> verificar si se devuelven todos o no ---> en caso de devolver todos los productos se anula la factura
 		System.out.println("3. Vender producto"); // Se pedile la cedula--> en caso de no estar registrado el programa para e imprime "cliente no registrado precione la opcion 1" --->. En caso de estar registrado,escribir el nombre del empleado que lo atendio, pedir los productos de la siguiente manera "referencia, cantidad",revisar en inventario las cantidades si se puede satisfacer el producto imprime ok si no ingrese se imprimira que cantidades insuficientes y cuantas hay en inventario. Oprimir 0,0 para parar. Luego mostrar el total. 
-		System.out.println("4.Hacer pedido");// Se seleccion el proveedor---> la ferraterÃ­a pide los productos --> "referencia, cantidad" --> en caso de que no haya referencia se procede a crear el producto en nuestra ferreteria(tendrÃ­a que pedir todos los atributos,automaticamente el precio de venta es 30% mÃ¡s caro que el precio de compra), y de esta manera para cada referencia que no estÃ© creada.Al final calcular el valor total del pedido,ver en utilidad si hay plata para cumplir con el pedido, se procede a  crear factura, almacenarla en un arreglo y depositar los productos en el inventario en caso en contrario se cancela el pedido.
+		System.out.println("4.Hacer pedido");// Se seleccion el proveedor---> la ferratería pide los productos --> "referencia, cantidad" --> en caso de que no haya referencia se procede a crear el producto en nuestra ferreteria(tendría que pedir todos los atributos,automaticamente el precio de venta es 30% más caro que el precio de compra), y de esta manera para cada referencia que no esté creada.Al final calcular el valor total del pedido,ver en utilidad si hay plata para cumplir con el pedido, se procede a  crear factura, almacenarla en un arreglo y depositar los productos en el inventario en caso en contrario se cancela el pedido.
 		System.out.println("5.Ganancia neta por meses"); 
 		System.out.println("Presione  6 para salir");
 		
@@ -144,10 +139,10 @@ public class Main implements Serializable{
 			//
 			Scanner input = new Scanner(System.in);
 			
-			System.out.println("Digite la fecha en el siguiente formato: DIA/MES/AÃ‘O");
+			System.out.println("Digite la fecha en el siguiente formato: DIA/MES/AÑO");
 			String fecha = input.next();
 			
-			System.out.println("digite el nÃºmero de la cÃ©dula del empleado");
+			System.out.println("digite el número de la cédula del empleado");
 			Empleado empleadoEncargado = null;
 			boolean a = true;
 			do {
@@ -159,14 +154,14 @@ public class Main implements Serializable{
 				}
 			} while (!a);
 			
-			System.out.println("digite el nÃºmero de la cÃ©dula del nuevo cliente");
+			System.out.println("digite el número de la cédula del nuevo cliente");
 			int cedula = 0;
 			Cliente clienteBuscar = null;
 			boolean a1 = true;
 			do {
 				cedula = input.nextInt();
 				a = Cliente.buscarCedula(cedula);
-				clienteBuscar = Cliente.buscarClientePorCedula(cedula);
+				clienteBuscar = Cliente.buscarCedula((long)cedula);  //sobrecarga
 				//System.out.println("entro");
 				//System.out.println(clienteBuscar);
 				if (a == true) {
@@ -178,10 +173,10 @@ public class Main implements Serializable{
 			System.out.println("digite el nombre completo del nuevo cliente");
 			String nombre = input.next();
 			
-			System.out.println("digite el telÃ©fono del nuevo cliente,cero en caso contrario");
+			System.out.println("digite el teléfono del nuevo cliente,cero en caso contrario");
 			int telefono = input.nextInt();
 			
-			System.out.println("digite la direcciÃ³n del nuevo cliente,cero en caso contrario");
+			System.out.println("digite la dirección del nuevo cliente,cero en caso contrario");
 			String direccion = input.next();
 			
 			if(direccion.equals("0") && telefono == 0  ){
@@ -226,16 +221,16 @@ public class Main implements Serializable{
 					
 					System.out.println("-----------FACTURA-----------");
 					System.out.println("Fecha: " + facturaNueva.getFecha());
-					System.out.println("DirecciÃ³n Ferreteria: " + f.getDireccion());
-					System.out.println("NÃºmero factura: " + facturaNueva.getNumerofactura());
+					System.out.println("Dirección Ferreteria: " + f.getDireccion());
+					System.out.println("Número factura: " + facturaNueva.getNumerofactura());
 					System.out.println("Cedula Cliente: " + facturaNueva.getCliente().getCedula());
 					System.out.println("Nombre Cliente: " + facturaNueva.getCliente().getNombre());
 					System.out.println("Producto regaldo:");
 					System.out.println("Referencia    Nombre    Cantidad   PrecioUnidad");
 					for (Object[] p : productosFactura) {
-						System.out.println(facturaNueva.Mostrar(p));
-				
-
+						System.out.println(	
+								((Producto) p[0]).getReferencia() + "            " + ((Producto) p[0]).getNombre()
+										+ "     " + (int) p[1] +" "+((Producto) p[0]).FormadeVenta()+   "         " + ((Producto) p[0]).getPrecio());
 
 					}
 					
@@ -257,11 +252,11 @@ public class Main implements Serializable{
 		static void devolucion(Ferreteria f) {
 			Scanner input = new Scanner(System.in);
 			
-				System.out.println("DEVOLUCIÃ“N");
+				System.out.println("DEVOLUCIÓN");
 				System.out.println("----------");
 			
 				
-				System.out.println("digite el nÃºmero de la factura:");
+				System.out.println("digite el número de la factura:");
 				int pedido=1;
 				while(pedido != 0) {
 				pedido = input.nextInt();	
@@ -269,31 +264,24 @@ public class Main implements Serializable{
 				Factura facturabuscar=Ferreteria.buscarFactura(pedido);
 				
 				if(facturabuscar instanceof Factura) {
-					System.out.println("Referencia      Nombre    Cantidad   PrecioUnidad");
+					System.out.println("Referencia"+"      "+"nombre"+"                 "+"Cantidad");
 					
 				   for(Object[] p: facturabuscar.getProductosFactura()) {
 					  
-					   System.out.println(facturabuscar.Mostrar(p));
+							Producto producto = (Producto) p[0];
+							System.out.println(producto.getReferencia()+"           "+producto.getNombre()+"                     "+p[1]);
 							
 				   }
 				   int referencia=1;
 				   while (referencia!=0) {
-					   double devuelta;
 					   System.out.println("Digite la referencia del producto que se desea devolver o 0 para finalizar");
 					   referencia = input.nextInt();
 					   System.out.println("Digite la cantidad de productos que se desean devolver");
 						int cantidad = input.nextInt();
 						
-						devuelta=facturabuscar.RetirarProducto(referencia, cantidad);
+						facturabuscar.RetirarProducto(referencia, cantidad);
 						System.out.println(" ");
-						
-						if( devuelta != 0) {
-							System.out.println("valor a devolver al cliente: " + devuelta);
-						}
-						
-						
 					   
-						
 				   }
 				   System.out.println("proceso finalizado");
 				   for(Object[] p: facturabuscar.getProductosFactura()) {
@@ -305,7 +293,7 @@ public class Main implements Serializable{
 				
 				
 				else if( facturabuscar== (null) ) {
-					System.out.println("La factura no existe en el sistema, por favor ingrese un numero de factura vÃ¡lido");
+					System.out.println("La factura no existe en el sistema, por favor ingrese un numero de factura válido");
 					
 				}
 				
@@ -321,7 +309,7 @@ public class Main implements Serializable{
 		}
 
 
-
+	// Funcionalidad 3
 	// Funcionalidad 3
 	static void VenderProductos(Ferreteria f) {
 		Scanner input = new Scanner(System.in);
@@ -330,7 +318,7 @@ public class Main implements Serializable{
 		int cedulaComprador = input.nextInt();
 
 		if (Cliente.buscarCedula(cedulaComprador) == true) {
-			System.out.println("Digite la cedula del empleado que lo atendiÃ³"); 
+			System.out.println("Digite la cedula del empleado que lo atendió"); 
 			Empleado empleadoEncargado = null;
 			boolean a = true;
 			do {
@@ -342,7 +330,7 @@ public class Main implements Serializable{
 				}
 			} while (!a);
 
-			System.out.println("Digite la fecha en el siguiente formato: DIA/MES/AÃ‘O");
+			System.out.println("Digite la fecha en el siguiente formato: DIA/MES/AÑO");
 			String fecha = input.next();
 			String producto = "hola";
 
@@ -356,22 +344,22 @@ public class Main implements Serializable{
 				int cantidadPedida = Integer.parseInt(producto2[1]);
 
 				// este if se encarga de determinar de parar la funcionalidad (de que ya no se
-				// pida mÃ¡s productos para vender)
+				// pida más productos para vender)
 				if (producto.equals("0,0")) {
 
-					Factura facturaNueva = new Factura(fecha, productosPedidos, "Venta", empleadoEncargado,Cliente.buscarClientePorCedula(cedulaComprador));
+					Factura facturaNueva = new Factura(fecha, productosPedidos, "Venta", empleadoEncargado,Cliente.buscarCedula((long)cedulaComprador));   //sobrecarga
 					System.out.println("-----------FACTURA-----------");
 					System.out.println("Fecha: " + facturaNueva.getFecha());
-					System.out.println("DirecciÃ³n Ferreteria: " + f.getDireccion());
-					System.out.println("NÃºmero factura: " + facturaNueva.getNumerofactura());
+					System.out.println("Dirección Ferreteria: " + f.getDireccion());
+					System.out.println("Número factura: " + facturaNueva.getNumerofactura());
 					System.out.println("Cedula Cliente: " + facturaNueva.getCliente().getCedula());
 					System.out.println("Nombre Cliente: " + facturaNueva.getCliente().getNombre());
 					System.out.println("Productos comprados:");
-					System.out.println("Referencia    Nombre    Cantidad      PrecioUnidad");
+					System.out.println("Referencia    Nombre    Cantidad   PrecioUnidad");
 					for (Object[] p : productosPedidos) {
-						
-								System.out.println(facturaNueva.Mostrar(p));
-
+						System.out.println(	
+								((Producto) p[0]).getReferencia() + "            " + ((Producto) p[0]).getNombre()
+										+ "     " + (int) p[1] +" "+((Producto) p[0]).FormadeVenta() + "         " + ((Producto) p[0]).getPrecio());
 
 					}
 
@@ -409,7 +397,7 @@ public class Main implements Serializable{
 						}
 					}
 
-					// se aÃ±ade la facutara del compradaor a la lista de facturas de la ferreteria
+					// se añade la facutara del compradaor a la lista de facturas de la ferreteria
 
 				}
 
@@ -443,7 +431,7 @@ public class Main implements Serializable{
 		   System.out.println("HACER PEDIDO");
 			System.out.println("------------");
 			
-			System.out.println("Digite la fecha en el siguiente formato: DIA/MES/AÃ‘O");
+			System.out.println("Digite la fecha en el siguiente formato: DIA/MES/AÑO");
 			String fechaf= input.next();
 			
 			System.out.println("total proveedores= "+Proveedores.proveedores.size());
@@ -480,7 +468,7 @@ public class Main implements Serializable{
 		   
 		    while(y!=0 || z!=0) {
 		    		
-		    System.out.println("Digite el cÃ³digo de cada producto y la cantidad a pedir,finalice su pedido digitando los dos valores en 0");
+		    System.out.println("Digite el código de cada producto y la cantidad a pedir,finalice su pedido digitando los dos valores en 0");
 		    y=input.nextInt();
 		    z=input.nextInt();
 		    
@@ -511,7 +499,7 @@ public class Main implements Serializable{
 		    Factura facturaNueva = new Factura(fechaf, lista,"compra",acumulado );
 		    System.out.println("proceso finalizado");
 		    System.out.println("-----------FACTURA-----------");
-		    System.out.println("NÃºmero de factura:"+ facturaNueva.getNumerofactura());
+		    System.out.println("Número de factura:"+ facturaNueva.getNumerofactura());
 		    System.out.println("fecha: "+ fechaf);
 		    System.out.println("Productos comprados:");
 			System.out.println("Referencia   Cantidad   valor");
@@ -524,7 +512,7 @@ public class Main implements Serializable{
 			}
 		    
 		    else {
-			    System.out.println("No se realizÃ³ ninguna compra");
+			    System.out.println("No se realizó ninguna compra");
 		    }
 				
 			 
@@ -543,24 +531,24 @@ public class Main implements Serializable{
  		
  		
  		
- 		//ir a facturas, ordenarlas por mes, buscar el cliente que mÃ¡s se repite,, usar un metodo de la clase cliente
+ 		//ir a facturas, ordenarlas por mes, buscar el cliente que más se repite,, usar un metodo de la clase cliente
  		
  		
  		
  		Scanner input = new Scanner(System.in);
  		
- 		System.out.println("Dijite el aÃ±o de consulta");
- 		int aÃ±o = input.nextInt();
+ 		System.out.println("Dijite el año de consulta");
+ 		int año = input.nextInt();
  		
  		f.VentasMensuales(1,2020);
  		
- 		System.out.println("                                    " + aÃ±o);
- 		System.out.println("Mes"+ "        " +"Ganancias Totales"+ "        " +"Gastos Totales"+ "        " + "Ganancias Netas" + "        " + "Cliente con mÃ¡s compras");
+ 		System.out.println("                                    " + año);
+ 		System.out.println("Mes"+ "        " +"Ganancias Totales"+ "        " +"Gastos Totales"+ "        " + "Ganancias Netas" + "        " + "Cliente con más compras");
  		System.out.println("----------------------------------------------------------------------------------------------------");
  		
  		for(int i = 1; i<=12 ;i++){
  			
- 			System.out.println(i + "               " + f.VentasMensuales(i,aÃ±o)+ "                   " + (Empleado.SueldoMensualEmpleados() + f.ComprasMensuales(i, aÃ±o))+ "                " + (f.VentasMensuales(i,aÃ±o) - (Empleado.SueldoMensualEmpleados() + f.ComprasMensuales(i, aÃ±o)) ) + "                "  + f.ClienteMayorCompras(i, aÃ±o).getCedula());
+ 			System.out.println(i + "               " + f.VentasMensuales(i,año)+ "                   " + (Empleado.SueldoMensualEmpleados() + f.ComprasMensuales(i, año))+ "                " + (f.VentasMensuales(i,año) - (Empleado.SueldoMensualEmpleados() + f.ComprasMensuales(i, año)) ) + "                "  + f.ClienteMayorCompras(i, año).getCedula());
  			
  			
  			

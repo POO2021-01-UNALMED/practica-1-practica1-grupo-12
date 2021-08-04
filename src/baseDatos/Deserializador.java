@@ -16,8 +16,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.*;
-import Almacen.*;
-import Ventas.*;
+
+
+import gestorAplicación.Almacen.Empleado;
+import gestorAplicación.Almacen.Ferreteria;
+import gestorAplicación.Almacen.Inventario;
+import gestorAplicación.Almacen.Proveedores;
+import gestorAplicación.Ventas.Cliente;
+import gestorAplicación.Ventas.Factura;
 
 public class Deserializador {
 	

@@ -12,9 +12,12 @@ import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import Almacen.*;
-import Ventas.Cliente;
-import Ventas.Factura;
+import gestorAplicación.Almacen.Empleado;
+import gestorAplicación.Almacen.Ferreteria;
+import gestorAplicación.Almacen.Inventario;
+import gestorAplicación.Almacen.Proveedores;
+import gestorAplicación.Ventas.Cliente;
+import gestorAplicación.Ventas.Factura;
 public class Serializador {
 
 	private static File rutaTemp = new File("src\\baseDatos\\temp\\");

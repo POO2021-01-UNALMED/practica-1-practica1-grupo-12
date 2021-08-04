@@ -92,8 +92,6 @@ public class Empleado implements Serializable {
 	public static void setEmpleados(ArrayList<Empleado> empleados) {
 		Empleado.empleados = empleados;
 	}
-	
-	
 
 
 

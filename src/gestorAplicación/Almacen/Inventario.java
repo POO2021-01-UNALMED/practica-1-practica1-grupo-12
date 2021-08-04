@@ -74,8 +74,8 @@ public class Inventario  implements Serializable {
 		return productos;
 	}
 
-	public void setProductos(ArrayList<Object[]> productos) {
-		this.productos = productos;
+	public static void setProductos(ArrayList<Object[]> productos) {
+		Inventario.productos = productos;
 	}
 
 	public int getCantidad() {

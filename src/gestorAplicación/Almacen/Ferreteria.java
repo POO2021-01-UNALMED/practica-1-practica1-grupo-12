@@ -1,9 +1,11 @@
 package gestorAplicación.Almacen;
-import  Ventas.*;
+
 
 import java.io.Serializable;
 import java.util.*;
-
+import baseDatos.Deserializador;
+import gestorAplicación.Ventas.Cliente;
+import gestorAplicación.Ventas.Factura;
 
 public class Ferreteria  implements Serializable {
 	private static final String Direccion = "carrera";   //uso de constante
@@ -19,10 +21,10 @@ public class Ferreteria  implements Serializable {
 	
 	
 	
-	
+	private static final long serialVersionUID = 1L;
 	
 	public Ferreteria(	) {
-		
+		Deserializador.deserializar(this);
 		
 	}
 	
@@ -60,11 +62,15 @@ public class Ferreteria  implements Serializable {
    
    public static double VentasMensuales(int mes,int año){
 		double ventas_mensuales = 0;
+		
+
 		for(Factura factura : facturas) { // Este for se encarga de recorrer todas las facturas en el arreglo de facturas de la clase Ferreteria
 			
 			int primerSlash = factura.getFecha().indexOf("/");
+			//System.out.println(primerSlash);
 			int segundoSlash = factura.getFecha().lastIndexOf("/");
 			int longitudFecha = factura.getFecha().length();
+			//System.out.println("entro");
 			//System.out.println((factura.getFecha().substring(primerSlash+1,segundoSlash)));
 			//System.out.println(factura.getFecha().substring(segundoSlash+1,longitudFecha));
 			if((factura.getFecha().substring(primerSlash+1,segundoSlash)).equals(mes+"") && factura.getTipo().equals("Venta") && (factura.getFecha().substring(segundoSlash+1,longitudFecha).equals(año+""))) { //este if se encarga de comparar que el mes de la factura coincida con el mes del parametro
