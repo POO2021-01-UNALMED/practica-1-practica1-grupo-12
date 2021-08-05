@@ -18,66 +18,7 @@ public class Main implements Serializable{
 		
 		
 		Ferreteria ferr =  new Ferreteria();
-		//hola
-	
 		
-		/*
-		MaterialDeConstruccion g = new MaterialDeConstruccion(130, "Arena",6500,"kg"); 
-		MaterialDeConstruccion g2 = new MaterialDeConstruccion(131, "CEMENTO",5000, "kg");
-		MaterialDeConstruccion b = new MaterialDeConstruccion(132, "Clavos", 200,"unidad");
-		MaterialDeConstruccion g1 = new MaterialDeConstruccion(133, "Ladrillo",5000,"unidad");
-		
-		
-		Herramienta h2 = new Herramienta(120, "Pinzas", 13500,"Mediano"); 6
-		Herramienta h3 = new Herramienta(121, "Cincel", 25000, "Mediano"); 5
-		Herramienta h1 = new Herramienta(122, "Candado", 10000,"grande"); 4
-		Herramienta h = new Herramienta(123, "martillo", 20000,"grande"); 3
-		Herramienta i = new Herramienta(124, "destornillador", 20000,"mediano de estrella"); 	
-		Herramienta a = new Herramienta(125, "Alicates", 17000,"marca ACME"); 
-		Herramienta c = new Herramienta(126, "Metro", 20000, "100 cm de largo"); 
-		Herramienta c1 = new Herramienta(127, "Serrucho", 20000,"punta muy afilada"); 
-		Herramienta c2 = new Herramienta(128, "Botador", 19000, "mediano punta cuadrada"); 
-		Herramienta c3 = new Herramienta(129, "Botador 2", 19000,"mediano punta triangulada"); 
-		*/
-		
-		
-		//ArrayList<Object[]> b = new ArrayList<Object[]>();
-		//Object r[] = {i,10};
-		//Object r2[] = {h,3};
-		
-		//b.add(r);
-		//b.add(r2);
-		//Proveedores prov1= new Proveedores(true,"javier,",20000);
-		//Proveedores prov2= new Proveedores(false,"juan,",20001);
-		/*
-		Cliente jaime = new Cliente(1, "jaime", 31231, "cra 43 # 32a8");
-		Cliente cl2 = new Cliente(2, "Daniel",323123 , "cra 20 # 30a3");
-		Cliente cl3 = new Cliente(3, "Dalí",323123 );
-		*/
-		
-		//serializar herramienta
-		
-		//Serializar empleados
-		/*
-		Empleado emp1 = new Empleado(11,"Camilo,","cajero",200000);
-		Empleado emp2 = new Empleado(12,"Cristian,","cajero",200000);
-		Empleado emp3 = new Empleado(13,"David,","cajero",300000);
-		Empleado emp4 = new Empleado(14,"Daniel Sanchez,","cajero",100000);
-		Empleado emp5 = new Empleado(15,"Hugo Alberto,","cajero",250000);	*/
-		
-		
-		//serializar herramienta
-		
-		//[[3,1],[109,0],[13,3],[]]
-		
-		/*for(Factura f: Ferreteria.facturas) {
-			System.out.println(f.getNumerofactura());
-			System.out.println(f.getFecha());
-			System.out.println(f.CalcularValorTotal());
-			System.out.println(f.getProductosFactura().get(0)[1]);
-		}
-		
-		System.out.println("numero +" + Ferreteria.facturas.size()); */
 		
 		
 		System.out.println("------------------------------------------");
@@ -170,7 +111,8 @@ public class Main implements Serializable{
 			
 			
 			System.out.println("digite el nombre completo del nuevo cliente");
-			String nombre = input.next();
+			input.nextLine();
+			String nombre = input.nextLine();
 			
 			System.out.println("digite el teléfono del nuevo cliente,cero en caso contrario");
 			int telefono = input.nextInt();
@@ -204,7 +146,7 @@ public class Main implements Serializable{
 			int cantidadObjetos = 0;
 			while(cantidadObjetos == 0) {
 				int indiceProductoAleatorio = (int)(Math.random() * longitudInvetario); //error
-				System.out.println(indiceProductoAleatorio);
+				
 				cantidadObjetos =  (int)(f.getInventario().getProductos().get(indiceProductoAleatorio))[1];
 				
 			
@@ -229,6 +171,7 @@ public class Main implements Serializable{
 					for (Object[] p : productosFactura) {
 						System.out.println(facturaNueva.Mostrar(p));
 					}
+					System.out.println("valor total 0");
 					
 					break;
 				
@@ -241,7 +184,8 @@ public class Main implements Serializable{
 			
 			
 			
-			
+			System.out.println("Dijite el código de otra funcionalidad");
+
 		}
 	
 		// Funcionalidad 2
@@ -305,6 +249,9 @@ public class Main implements Serializable{
 				
 				
 		    }
+				
+				System.out.println("Dijite el código de otra funcionalidad");
+
 		}
 
 
@@ -413,7 +360,7 @@ public class Main implements Serializable{
 			System.out.println("Cliente no registrado, precione la opcion 1");
 
 		}
-
+		System.out.println("Dijite el código de otra funcionalidad");
 	}
 
 
@@ -515,7 +462,9 @@ public class Main implements Serializable{
 			 
 		    System.out.println( "-------------------------------");
 					System.out.println( "total                   "+ acumulado);
-		    
+					
+					System.out.println("Dijite el código de otra funcionalidad");
+   
 	   }
 
    
@@ -553,7 +502,8 @@ public class Main implements Serializable{
  		
  		
  		
- 		
+ 		System.out.println("Dijite el código de otra funcionalidad");
+
  		
  	} 
  	
