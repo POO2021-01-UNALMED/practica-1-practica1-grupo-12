@@ -1,8 +1,8 @@
-package gestorAplicaciÃ³n.Almacen;
+package gestorAplicación.Almacen;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-//CreaciÃ³n de la clase Inventario
+//Creación de la clase Inventario
 public class Inventario  implements Serializable {
 	public static ArrayList<Object[]> productos = new ArrayList<Object[]>();
     private int cantidad;

@@ -1,17 +1,17 @@
-package gestorAplicaciÃ³n.Almacen;
+package gestorAplicación.Almacen;
 
 import java.util.ArrayList;
-//CreaciÃ³n de la clase MaterialDeConstruccion que es subclase de Producto
+//Creación de la clase MaterialDeConstruccion que es subclase de Producto
 public class MaterialDeConstruccion extends Producto {
 	static ArrayList<MaterialDeConstruccion> material= new ArrayList<MaterialDeConstruccion>() ;
-	boolean perecedero;
+	
 	String medida;
 
 	//constructor
-	public  MaterialDeConstruccion(int referencia, String nombre, double precio, boolean estado,boolean perecedero,String medida) {
-		super(referencia, nombre, precio, estado); //uso de la herencia de la clase Producto
+	public  MaterialDeConstruccion(int referencia, String nombre, double precio,String medida) {
+		super(referencia, nombre, precio); //uso de la herencia de la clase Producto
 		
-		this.perecedero=perecedero;
+	
 		material.add(this);//Se agrega el producto a la lista de materiales
 	    Object[] a = new Object[2];
 	    a[0] = this;
@@ -25,6 +25,22 @@ public class MaterialDeConstruccion extends Producto {
 	public String FormadeVenta() {
 		
 		return medida;
+	}
+
+	public static ArrayList<MaterialDeConstruccion> getMaterial() {
+		return material;
+	}
+
+	public static void setMaterial(ArrayList<MaterialDeConstruccion> material) {
+		MaterialDeConstruccion.material = material;
+	}
+
+	public String getMedida() {
+		return medida;
+	}
+
+	public void setMedida(String medida) {
+		this.medida = medida;
 	}
 
 }

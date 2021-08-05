@@ -1,11 +1,11 @@
-package gestorAplicaciÃ³n.Almacen;
+package gestorAplicación.Almacen;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 
 
-//CreaciÃ³n de la clase Proveedores
+//Creación de la clase Proveedores
 
 public class Proveedores  implements Serializable{
 	private Boolean esEmpresa;
@@ -44,7 +44,7 @@ public class Proveedores  implements Serializable{
 	}
 	
 	
-//Metodo buscarIdent busca la identificaciÃ³n del proveedor, ya sea nit o cedula
+//Metodo buscarIdent busca la identificación del proveedor, ya sea nit o cedula
 	public static int buscarIdent (int x) {
 		int a = 1;
 		
@@ -64,12 +64,7 @@ public class Proveedores  implements Serializable{
 		
 	}
 	
-	public void entregarProductos(){	
-	}
-	public void recogerDefectuosos(){
-		
-	}
-
+	
 	public String getNombre() {
 		return nombre;
 	}

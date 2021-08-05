@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import gestorAplicación.Almacen.Empleado;
+//Clase Ferreteria, autores  Santiago y Jose Daniel Bustamante Arango 
+//Esta clase es para crear Clientes.
+
+
 
 public class Cliente  implements Serializable{
 	private int cedula;
@@ -12,29 +16,29 @@ public class Cliente  implements Serializable{
 	private String direccion;
 	private static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	
-	
+	//Sobrecarga de constructores
 	public Cliente(int cedula, String nombre){
-		this(cedula,nombre,0,"null");
+		this(cedula,nombre,0,"null");  //uso del this() para desambiaguar 
 		clientes.add(this);
 
 		
 	}
 
-	
+	//Sobrecarga de constructores
 	public Cliente(int cedula, String nombre,int telefono){
-		this(cedula,nombre,telefono,"null");
+		this(cedula,nombre,telefono,"null"); //uso del this() para desambiaguar
 		clientes.add(this);
 
 		
 	}
-	
+	//Sobrecarga de constructores
 	public Cliente(int cedula, String nombre,String direccion){
-		this(cedula,nombre,0,direccion);
+		this(cedula,nombre,0,direccion); //uso del this() para desambiaguar
 		clientes.add(this);
 
 	}
 	
-	
+	//Sobrecarga de constructores
 	public Cliente(int cedula, String nombre, int telefono, String direccion) {
 		super();
 		this.cedula = cedula;
@@ -46,7 +50,8 @@ public class Cliente  implements Serializable{
 	}
 
 
-	
+	//Sobrecarga de método
+	//Este método recibe un int, la cedula de un cliente, luego lo busca en el arreglo cliente de la clase Clientes. Regresa true si está en el arreglo o false en caso contrario
 	public static boolean buscarCedula(int cedula) {
 		for (Cliente cliente : clientes) {
 			if (cliente.cedula == cedula) {
@@ -56,7 +61,8 @@ public class Cliente  implements Serializable{
 		return false;
 	}
 
-
+	//Sobrecarga de método
+	//Este método recibe un long, la cedula de un cliente, luego lo busca en el arreglo cliente de la clase Clientes. Regresa el cliente si está en el arreglo o null en caso contrario
 	public static Cliente buscarCedula(long cedula) {
 		for (Cliente cliente : clientes) {
 			if (cliente.getCedula() == cedula) {

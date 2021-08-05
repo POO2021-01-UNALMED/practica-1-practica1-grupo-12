@@ -1,66 +1,61 @@
-package gestorAplicaci贸n.Ventas;
+package gestorAplicaci髇.Ventas;
 
 import java.io.Serializable;
 import java.util.*;
 
-import gestorAplicaci贸n.Almacen.Empleado;
-import gestorAplicaci贸n.Almacen.Ferreteria;
-import gestorAplicaci贸n.Almacen.Inventario;
-import gestorAplicaci贸n.Almacen.Producto;
+import gestorAplicaci髇.Almacen.Empleado;
+import gestorAplicaci髇.Almacen.Ferreteria;
+import gestorAplicaci髇.Almacen.Inventario;
+import gestorAplicaci髇.Almacen.Producto;
+//Clase Ferreteria, autores  Santiago y Jose Daniel Bustamante Arango 
+//Esta clase se encarga de crear una factura, la cual puede ser una venta de la ferreteria o una compra a los proveedores
 
 public class Factura implements Serializable,Imprimir{
 
-	public class setProductosFactura  {
-
-	}
 
 
 	public  int numerofactura;
 	private String fecha;
 	private  ArrayList<Object[]> productosFactura = new ArrayList<Object[]>();
 	private String tipo;
-	private double valortotal;
+	
 	private Empleado atendidopor;
 	private Cliente cliente;
 	
-	private static int autoNumerico = 100;
+	
+	
 	double devolver = 0;
 	
-	
+	//Sobrecarga de constructores. Este constructor se usa para las Ventas
 	public Factura (String fecha, ArrayList<Object[]> productos, String tipo,Empleado atendidopor, Cliente cliente) {
-		//System.out.println("tama帽o " + Ferreteria.facturas.size());
 		this.numerofactura = Ferreteria.facturas.size() + 10000;
 		this.fecha=fecha;
 		this.productosFactura = productos;
 		this.tipo=tipo;
-		this.valortotal = valortotal;
+		
 		this.atendidopor=atendidopor;
 		this.cliente = cliente;
 		Ferreteria.facturas.add(this);
-		autoNumerico++;	
+		
 	}
-
+	//Sobrecarga de constructores. Este constructor se usa para las Compras
    public Factura (String fecha, ArrayList<Object[]> productos, String tipo,double valortotal) {
 		
-		this.numerofactura = autoNumerico;
+		this.numerofactura = Ferreteria.facturas.size() + 10000;
 		this.fecha=fecha;
 		this.productosFactura = productos;
 		this.tipo=tipo;
-		this.valortotal = valortotal;
-		
 		Ferreteria.facturas.add(this);
-		autoNumerico++;	
-	}
-   
-   
-   
-	public void MostrarProductos() {
-		
-		
 		
 	}
+   
+   
+   
+
 	
-	public void RetirarProducto(int ref, int cantidad) {
+	
+	//Este m閠odo recibe 2 int, una referencia de un producto y una cantidad. Se encarga de retirar productos de una referencia de la factura.
+	public double RetirarProducto(int ref, int cantidad) {
 		
 		for(Object[] p: productosFactura) {
 			Producto producto = (Producto) p[0];
@@ -76,8 +71,7 @@ public class Factura implements Serializable,Imprimir{
 						
 				
 		      
-		      MostrarProductos();
-		      System.out.println("valor a devolver al cliente: " + devolver);	
+					
 				}
 				else {
 					System.out.println("No es posible eliminar esa cantidad de productos ");
@@ -87,10 +81,22 @@ public class Factura implements Serializable,Imprimir{
 			
 			
 	}
+		return devolver;
 		
 		
 	}
 	
+	//Este m閠odo se encarga de mostrar los datos 
+	@Override
+	public String Mostrar(Object[] p) {
+		
+		return ((Producto) p[0]).getReferencia() + "            " + ((Producto) p[0]).getNombre()
+		+ "     " + (int) p[1] +" "+((Producto) p[0]).FormadeVenta()+   "         " + ((Producto) p[0]).getPrecio();
+		
+	}
+	
+	
+	//Este m閠odo se encarga de sumar todos los productos de la factura y luego regresa este valor.
 	public double CalcularValorTotal(){
 		int valortotal = 0;
 		for (Object[] p : productosFactura){
@@ -137,14 +143,6 @@ public class Factura implements Serializable,Imprimir{
 	
 
 
-	public double getValortotal() {
-		return valortotal;
-	}
-
-
-	public void setValortotal(double valortotal) {
-		this.valortotal = valortotal;
-	}
 
 
 	public Empleado getAtendidopor() {
@@ -167,23 +165,8 @@ public class Factura implements Serializable,Imprimir{
 	}
 
 
-	public static int getAutoNumerico() {
-		return autoNumerico;
-	}
-
-
-	public static void setAutoNumerico(int autoNumerico) {
-		Factura.autoNumerico = autoNumerico;
-	}
-
 	public String getTipo() {
 		return tipo;
 	}
-	@Override
-	public String Mostrar(Object[] p) {
-		
-		return ((Producto) p[0]).getReferencia() + "            " + ((Producto) p[0]).getNombre()
-		+ "     " + (int) p[1] +" "+((Producto) p[0]).FormadeVenta()+   "         " + ((Producto) p[0]).getPrecio();
-		
-	}
+	
 }

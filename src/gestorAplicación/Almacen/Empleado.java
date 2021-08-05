@@ -2,12 +2,14 @@ package gestorAplicación.Almacen;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+//Clase Ferreteria, autores  Santiago y Jose Daniel Bustamante Arango 
+//Esta clase se encarga de crear un Empleado, la cual va almacenar varios atributos y un arreglo de los empleados creados
 
 public class Empleado implements Serializable {
-	protected int cedula;
-	protected String nombre;
-	protected String cargo;
-	protected int sueldo;
+	private int cedula;
+	private String nombre;
+	private String cargo;
+	private int sueldo;
 	private static ArrayList<Empleado> empleados = new ArrayList<Empleado>();
 	
 	public Empleado(int cedula, String nombre, String cargo, int sueldo) {
@@ -19,21 +21,9 @@ public class Empleado implements Serializable {
 	}
 	
 	
-	
-	public void venderProducto(){
-		
-	}
-
-	public void enseñarProducto(){
-		
-		
-	}
-
-	public void verificarEstado(){
-		
-	}
 
 
+	//Este método recibe un int, la cedula de un empleado, y luego si en el arreglo empleados,hay un empleado con tal cedula, si este es el caso regrea true, en caso contrario false
 	public static boolean buscarCedulaEmpleado(int cedula) {
 		for (Empleado empleado : empleados) {
 			if (empleado.cedula == cedula) {
@@ -43,7 +33,7 @@ public class Empleado implements Serializable {
 		return false;
 	}
 
-
+	// Este método se encarga de realizar la suma de todos los sueldos de los empleados que se encuentran en el arrelo empleados y regresa esa suma
 	public static double SueldoMensualEmpleados(){  // neste método se encarga de recorrer toda la lista empleado para
 		double costo = 0;
 		for(Empleado emp : empleados) {

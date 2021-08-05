@@ -24,7 +24,7 @@ public class Serializador {
 	
 	public static void serializar(Ferreteria ferr) {
 		
-		//System.out.println("entrooo");
+	
 		
 		
 		

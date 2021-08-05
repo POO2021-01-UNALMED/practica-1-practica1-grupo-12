@@ -1,25 +1,25 @@
-package gestorAplicaciÃ³n.Almacen;
+package gestorAplicación.Almacen;
 
 import java.io.Serializable;
 
 /*-------------------------------------------------------------------------------------------------------------------------------------
- * CREACIÃ“N DE LA CLASE ABSTRACT
+ * CREACIÓN DE LA CLASE ABSTRACT
  */
 
 public abstract class Producto implements Serializable {
 	protected int referencia;
 	protected String nombre;
 	protected double precio;
-	protected boolean estado;
+	
 	
 	
 	//constructor de la clase 
 	
-	public Producto(int referencia,String nombre,double precio,boolean estado) {
+	public Producto(int referencia,String nombre,double precio) {
 		this.referencia = referencia;
 		this.nombre = nombre;
 		this.precio = precio;
-		this.estado = estado;
+		
 		
 	}
 	
