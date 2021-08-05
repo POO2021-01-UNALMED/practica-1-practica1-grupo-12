@@ -1,7 +1,11 @@
-package gestorAplicaci�n.Almacen;
+package gestorAplicación.Almacen;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+
+
+//Creación de la clase Proveedores
 
 public class Proveedores  implements Serializable{
 	private Boolean esEmpresa;
@@ -9,7 +13,7 @@ public class Proveedores  implements Serializable{
 	private int identificacion;	
 	
 	public static ArrayList<Proveedores> proveedores = new ArrayList<Proveedores>();
-	
+//Constructor	
 	public Proveedores(Boolean esEmpresa, String nombre, int identificacion) {
 		this.esEmpresa=esEmpresa;
 		this.nombre=nombre;
@@ -19,7 +23,7 @@ public class Proveedores  implements Serializable{
 
 	
 	
-	
+// Metodos MostrarProveedores e/p muestra aparte los proveedores empresa y personas	
 	public static String mostrarProveedorese()	{
 		String x = null;
 		for(Proveedores p: proveedores) {
@@ -40,7 +44,7 @@ public class Proveedores  implements Serializable{
 	}
 	
 	
-	
+//Metodo buscarIdent busca la identificación del proveedor, ya sea nit o cedula
 	public static int buscarIdent (int x) {
 		int a = 1;
 		
