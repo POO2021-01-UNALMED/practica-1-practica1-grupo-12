@@ -1,14 +1,14 @@
-package gestorAplicaci�n.Almacen;
+package gestorAplicación.Almacen;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
+//Creación de la clase Inventario
 public class Inventario  implements Serializable {
 	public static ArrayList<Object[]> productos = new ArrayList<Object[]>();
     private int cantidad;
     private Ferreteria almacen;
     
-    
+//Metodo agregarProducto, se usa cuando se hace una compra al proveedor     
     public static double agregarProducto(int y,int z) {
     	double e =0;
     	if (y==0) {
@@ -18,7 +18,7 @@ public class Inventario  implements Serializable {
     	for (Object[] p : productos) {
 			if( ((Producto) p[0]).getReferencia() == y ) {
 				p[1] =  (int)p[1] + z;
-				e=((((Producto) p[0]).getPrecio()/10)*7)*z;		
+				e=((((Producto) p[0]).getPrecio()/10)*7)*z;//el precio de compra equivale a un 70% del valor de venta, asi se genera utilidad		
 			}
 			
 		}
@@ -28,14 +28,9 @@ public class Inventario  implements Serializable {
     	}
     	return e;
     }
-    public void quitarProducto() {
-    	
-    }
-    public void verificarProducto() {
-    	
-    }
+    
 
-	
+  //Metodo restarProducto, se usa cuando se hace una venta a un cliente 	
 	public void restarProducto(int referenciaProducto ,int cantidad) {
 		for (Object[] p : productos) {
 			if( ((Producto) p[0]).getReferencia() == referenciaProducto ) {
@@ -44,7 +39,7 @@ public class Inventario  implements Serializable {
 			
 		}
 	}
-
+	//Metodo buscarExistenciaProducto, busca si un producto se encuentra la lista de productos 
 	public  boolean buscarExistenciaProducto(int referenciaProducto) {
 		for (Object[] p : productos) {
 			if( ((Producto) p[0]).getReferencia() == referenciaProducto ) {
@@ -56,7 +51,7 @@ public class Inventario  implements Serializable {
 		return false;
 
 	}
-	
+	//Metodo buscarProducto, a diferencia del anterior este metodo devuelve el producto
 	public Producto buscarProducto(int referenciaProducto){
 		for (Object[] p : productos) {
 			if( ((Producto) p[0]).getReferencia() == referenciaProducto ) {
