@@ -1,4 +1,5 @@
 package uiMain;
+import GUI.*;
 import java.util.*;
 import java.io.Serializable;
 import java.lang.Math;
@@ -19,7 +20,8 @@ public class Main implements Serializable{
 		
 		Ferreteria ferr =  new Ferreteria();
 		
-		
+		Inicio i = new Inicio();
+		i.MostrarVentanaInicio(null);
 		
 		System.out.println("------------------------------------------");
 		System.out.println("//BIENVEDIOS AL SOFTWARE DE LA FERRETERÍA//");
