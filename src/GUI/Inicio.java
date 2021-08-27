@@ -6,6 +6,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -25,15 +28,29 @@ public class Inicio extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		HBox Scene = new HBox();
-		Scene.setStyle("-fx-background-color: #DAF2F5;");
-		Scene scene = new Scene(Scene, 1100, 700);
+//colores #FD793C=naranja  	#2E7F86=verde	#DAF2F5=fondo
 		
+
+		HBox Scene1 = new HBox();
+		
+		MenuBar barramenu = new MenuBar();
+	   	Menu inicio = new Menu("Inicio");
+	   	barramenu.getMenus().add(inicio);
+	   	MenuItem descripcion = new MenuItem("Descripción");
+	   	MenuItem salir = new MenuItem("Salir");
+	   	inicio.getItems().addAll(descripcion,salir);
+	   	
+	   	barramenu.setStyle("-fx-background-color: #FD793C;");
+	    barramenu.setPadding(new Insets(10,250,5,10));
+	    
+		Scene1.setStyle("-fx-background-color: #DAF2F5;");
+		Scene scene = new Scene(Scene1, 1100, 700);
+
 		
 		//Se crea el area de texto p3
 		TextArea p3 = new TextArea("\n Bienvenidos al software de la Ferretería ABC \n             el lugar donde encontrarás todo lo \n relacionado con herramientas de construccion, \n          reparación y accesorios para el hogar.");
 		p3.setEditable(false);
-		p3.setStyle(" -fx-text-inner-color: #2E7F86; -fx-background-color: #DAF2F5 ; -fx-border-radius: 7;");
+		p3.setStyle(" -fx-text-inner-color: #2E7F86 ; -fx-background-color: #DAF2F5 ; -fx-border-radius: 7;");
 		p3.setFont(Font.font ("Georgia",FontWeight.BOLD, 16));
 		p3.setPrefHeight(120); 
 		p3.setPrefWidth(420);
@@ -60,7 +77,8 @@ public class Inicio extends Application {
 		FlowPane p1 = new FlowPane();
 		p1.setVgap(50);
 		p1.setHgap(700);
-	    p1.setPadding(new Insets(70,5, 50, 40));
+	    p1.setPadding(new Insets(20,5, 50, 40));
+	    p1.getChildren().add(barramenu);
 		p1.getChildren().add(p3);
 		p1.getChildren().add(p4);
 		//p1.setStyle("-fx-background-color: blue;");
@@ -91,14 +109,14 @@ public class Inicio extends Application {
 		Label fot4 = new Label("", new ImageView(foto4));
 		FlowPane fotos=new FlowPane();
 	    fotos.getChildren().addAll(fot1,fot2,fot3,fot4);
-	    fotos.setVgap(4);
-		fotos.setHgap(6);
+	    fotos.setVgap(8);
+		fotos.setHgap(8);
 		
 		
 		FlowPane p2 = new FlowPane();
 		p2.setVgap(50);
 		p2.setHgap(700);
-	    p2.setPadding(new Insets(70,5, 50, 40));
+	    p2.setPadding(new Insets(90,5, 50, 40));
 	   // p2.setStyle("-fx-background-color: red;");
 	    p2.getChildren().addAll(titulo1,presentacion,fotos);
 		
@@ -108,12 +126,12 @@ public class Inicio extends Application {
 	    
 	    
 	    
-		Scene.getChildren().addAll(p1,p2);
+		Scene1.getChildren().addAll(p1,p2);
 		
 		
 		
 		
-		primaryStage.setTitle("Inicio");
+		primaryStage.setTitle("Ferreteria ABC");
 		primaryStage.setScene(scene);
 		//primaryStage.setScene(scene2);
 		primaryStage.show();
@@ -124,4 +142,5 @@ public class Inicio extends Application {
 	}
 	
 }
+
 
