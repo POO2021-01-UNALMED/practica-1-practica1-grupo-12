@@ -67,11 +67,32 @@ public class Inicio extends Application {
 		
 		
 		Label titulo1=new Label();
-		titulo1.setText("Acerca de los programadores:");
+		titulo1.setText(" Acerca de los programadores:        ");
 		titulo1.setFont(Font.font ("Georgia",FontWeight.BOLD, 18));
 		titulo1.setTextFill(Color.web("#FD793C"));
+		titulo1.setStyle("-fx-border-color:#2E7F86;");
 		Label presentacion= new Label();
-		presentacion.setText("Nombre: Santiago Montoya Orozco       \nEdad: 24 Años  \nCiudad de residencia: Medellín\nOcupación: Estudiante Ing de Sistemas");
+		presentacion.setPrefHeight(120);
+		presentacion.setPrefWidth(320);
+		presentacion.setStyle("-fx-background-color: #2E7F86;-fx-border-color: white;");
+		presentacion.setTextFill(Color.WHITE);
+		presentacion.setText("  Nombre: Santiago Montoya Orozco       \n  Edad: 24 Años  \n  Ciudad de residencia: Medellín\n  Ocupación: Estudiante Ing de Sistemas");
+		presentacion.setFont(Font.font ("Arial",FontWeight.BOLD, 14));
+		
+		
+		
+		Image foto1 = new Image(getClass().getResourceAsStream("./imagenes/foto1.jpg"),150,150,false,false);
+		Label fot1 = new Label("", new ImageView(foto1));
+		Image foto2 = new Image(getClass().getResourceAsStream("./imagenes/foto2.jpg"),150,150,false,false);
+		Label fot2 = new Label("", new ImageView(foto2));
+		Image foto3 = new Image(getClass().getResourceAsStream("./imagenes/foto3.jpg"),150,150,false,false);
+		Label fot3 = new Label("", new ImageView(foto3));
+		Image foto4 = new Image(getClass().getResourceAsStream("./imagenes/foto4.jpg"),150,150,false,false);
+		Label fot4 = new Label("", new ImageView(foto4));
+		FlowPane fotos=new FlowPane();
+	    fotos.getChildren().addAll(fot1,fot2,fot3,fot4);
+	    fotos.setVgap(4);
+		fotos.setHgap(6);
 		
 		
 		FlowPane p2 = new FlowPane();
@@ -79,7 +100,7 @@ public class Inicio extends Application {
 		p2.setHgap(700);
 	    p2.setPadding(new Insets(70,5, 50, 40));
 	   // p2.setStyle("-fx-background-color: red;");
-	    p2.getChildren().addAll(titulo1,presentacion);
+	    p2.getChildren().addAll(titulo1,presentacion,fotos);
 		
 	    
 	    
