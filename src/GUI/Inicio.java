@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -24,24 +25,24 @@ public class Inicio extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		VBox Scene = new VBox();
+		HBox Scene = new HBox();
 		Scene.setStyle("-fx-background-color: #DAF2F5;");
-		
+		Scene scene = new Scene(Scene, 1100, 700);
 		
 		
 		//Se crea el area de texto p3
 		TextArea p3 = new TextArea("\n Bienvenidos al software de la Ferretería ABC \n             el lugar donde encontrarás todo lo \n relacionado con herramientas de construccion, \n          reparación y accesorios para el hogar.");
 		p3.setEditable(false);
-		p3.setStyle(" -fx-text-inner-color: #2E7F86; -fx-background-color: #DAF2F5 ; -fx-border-radius: 7;-fx-base: #DAF2F5");
+		p3.setStyle(" -fx-text-inner-color: #2E7F86; -fx-background-color: #DAF2F5 ; -fx-border-radius: 7;");
 		p3.setFont(Font.font ("Georgia",FontWeight.BOLD, 16));
 		p3.setPrefHeight(120); 
 		p3.setPrefWidth(420);
 		
 
-		
+		//Se crea la imagen y el boton en p4
 		
 		Image imagen = new Image(getClass().getResourceAsStream("./imagenes/img1.jpg"),300,300,false,false);
-		Label label = new Label("", new ImageView(imagen));
+		Label img = new Label("", new ImageView(imagen));
 		FlowPane p4 = new FlowPane();
 		p4.setVgap(40);
 		p4.setHgap(80);
@@ -50,7 +51,7 @@ public class Inicio extends Application {
 		entrar.setStyle("-fx-border-radius: 7;-fx-border-color: #FD793C;-fx-base: #DAF2F5;-fx-text-fill: #2E7F86;");
 		
 		entrar.setPadding(new Insets(10,100,5,100));
-		p4.getChildren().add(label);
+		p4.getChildren().add(img);
 		p4.getChildren().add(entrar);
 		
 		
@@ -63,15 +64,29 @@ public class Inicio extends Application {
 		p1.getChildren().add(p3);
 		p1.getChildren().add(p4);
 		//p1.setStyle("-fx-background-color: blue;");
-		Scene scene = new Scene(Scene, 1100, 700);
+		
+		
+		Label titulo1=new Label();
+		titulo1.setText("Acerca de los programadores:");
+		titulo1.setFont(Font.font ("Georgia",FontWeight.BOLD, 18));
+		titulo1.setTextFill(Color.web("#FD793C"));
+		Label presentacion= new Label();
+		presentacion.setText("Nombre: Santiago Montoya Orozco       \nEdad: 24 Años  \nCiudad de residencia: Medellín\nOcupación: Estudiante Ing de Sistemas");
+		
 		
 		FlowPane p2 = new FlowPane();
 		p2.setVgap(50);
 		p2.setHgap(700);
 	    p2.setPadding(new Insets(70,5, 50, 40));
 	   // p2.setStyle("-fx-background-color: red;");
-	    //p2.getChildren().addAll(p3,p4);
+	    p2.getChildren().addAll(titulo1,presentacion);
 		
+	    
+	    
+	    
+	    
+	    
+	    
 		Scene.getChildren().addAll(p1,p2);
 		
 		
@@ -88,3 +103,4 @@ public class Inicio extends Application {
 	}
 	
 }
+
