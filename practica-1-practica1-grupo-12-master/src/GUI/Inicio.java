@@ -28,6 +28,10 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class Inicio extends Application {
+	
+	public static Stage primaryStage;
+	
+	
 	int contador;
 	int contador2;
 	@Override
@@ -225,6 +229,17 @@ public class Inicio extends Application {
 			
 		}
 		);
+	 
+	    entrar.setOnAction(new EventHandler<ActionEvent>(){
+			@Override
+			public void handle(ActionEvent event) {
+				primaryStage.setScene(new VentanaUsuario().getEscena());
+				
+			}
+			
+		}
+		);
+				
 
 	    
 	    
@@ -244,5 +259,3 @@ public class Inicio extends Application {
 	}
 	
 }
-
-
