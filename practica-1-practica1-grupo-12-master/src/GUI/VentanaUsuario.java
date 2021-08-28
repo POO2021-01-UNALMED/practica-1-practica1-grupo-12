@@ -32,24 +32,39 @@ public class VentanaUsuario  {
    private Scene scene1; 
    
    public VentanaUsuario() {
-	   BorderPane panel0= new BorderPane();
+	   Image log = new Image(getClass().getResourceAsStream("./imagenes/logo.png"),110,110,false,false);
+		Label logo = new Label("", new ImageView(log));
+		BorderPane panel0= new BorderPane();
 	   panel0.setStyle("-fx-background-color: #DAF2F5;");
-	   Label nombreApp = new Label ("Ferretería ABC");
+	   Label nombreApp = new Label ("FerreterÃ­a ABC");
+	   nombreApp.setFont(Font.font ("Arial",FontWeight.BOLD, 50));
+	   nombreApp.setTextFill(Color.web("#2E7F86"));
+	   nombreApp.setPadding(new Insets(30,5, 50, 40));
 	   VBox panel1= new VBox();
 	   HBox barraBotones = new HBox();
+	   barraBotones.setStyle("-fx-background-color: #FD793C;");
+	   barraBotones.setPadding(new Insets(2,2, 2, 2));
+	   HBox Ini = new HBox ();
+	   Ini.getChildren().addAll(logo, nombreApp);
 	   
 	   
 	   
 	   
 	   MenuBar barramenu1 = new MenuBar();
+	   barramenu1.setStyle("-fx-background-color: #FD793C;");
 	   Menu archivo = new Menu("Archivo");
+	   archivo.setStyle("-fx-border-radius: 7;-fx-border-color: white;-fx-background-color: #FFA27B;");
 	   Menu procesos = new Menu("Procesos y Consultas");
+	   procesos.setStyle("-fx-border-radius: 7;-fx-border-color: white;-fx-background-color: #FFA27B;");
 	   Menu ayuda = new Menu("Ayuda");
-	   
+	   ayuda.setStyle("-fx-border-radius: 7;-fx-border-color: white;-fx-background-color: #FFA27B;");
 	   
 	   VBox proceso =new VBox();
 	   Label titulo= new Label("titulo del proceso");
+	   titulo.setFont(Font.font ("Georgia",FontWeight.BOLD, 20));
+	   titulo.setPadding(new Insets(20,2, 20, 460));
 	   TextField descripcion=new TextField("este proceso trata de.......");
+	   descripcion.setEditable(false);
 	   GridPane areadetrabajo =new GridPane();
 	   
 	   proceso.getChildren().addAll(titulo, descripcion, areadetrabajo);
@@ -60,7 +75,8 @@ public class VentanaUsuario  {
 	   
 	   panel1.getChildren().addAll(barraBotones, proceso);
 	   
-	   panel0.setTop(nombreApp);
+	   panel0.setTop(Ini);
+	  
 	   panel0.setCenter(panel1);
 	   
 	   scene1=new Scene (panel0, 1100, 700);
