@@ -30,8 +30,10 @@ import javafx.stage.Stage;
 public class Inicio extends Application {
 	
 	public static Stage primaryStage;
+	private static Scene scene;
+	VentanaUsuario v = new VentanaUsuario();
 	
-	
+
 	int contador;
 	int contador2;
 	@Override
@@ -56,7 +58,7 @@ public class Inicio extends Application {
 	    barramenu.setPadding(new Insets(10,250,5,10));
 	    
 		Scene1.setStyle("-fx-background-color: #DAF2F5;");
-		Scene scene = new Scene(Scene1, 1100, 700);
+		 scene = new Scene(Scene1, 1100, 700);
 
 		
 		//Se crea el area de texto p3
@@ -233,13 +235,24 @@ public class Inicio extends Application {
 	    entrar.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent event) {
-				primaryStage.setScene(new VentanaUsuario().getEscena());
+				primaryStage.setScene(v.getEscena());
 				
 			}
 			
 		}
 		);
+	    
+	    v.getSalir().setOnAction(new EventHandler<ActionEvent>(){
+			@Override
+			public void handle(ActionEvent event) {
+				primaryStage.setScene(scene);
 				
+			}
+			
+		}
+		);
+	    
+	   		
 
 	    
 	    
@@ -256,6 +269,11 @@ public class Inicio extends Application {
 	
 	public static void main (String[] args) {
 		launch(args);
+	}
+	
+	
+	public static Scene getScene() {
+		return scene;
 	}
 	
 }
