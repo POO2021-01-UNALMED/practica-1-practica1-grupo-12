@@ -28,6 +28,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import uiMain.Main;
 
 public class VentanaUsuario  {
 	
@@ -98,10 +99,10 @@ public VentanaUsuario() {
 	   Label titulo= new Label("Interfaz de Inicio");
 	   titulo.setFont(Font.font ("Georgia",FontWeight.BOLD, 20));
 	   titulo.setPadding(new Insets(20,2, 20, 460));
-	   TextArea descripcion = new TextArea("\n Información de como usar la aplcación\n "
+	   TextArea descripcion = new TextArea("\n InformaciÃ³n de como usar la aplcaciÃ³n\n "
 	   		+ "Seleccione la opcion de procesos y consultas ubicada en la parte superior para poder acceder a cada una de las 5 funcionalidades. \n "
-	   		+ "Una vez seleccione una funcionalidad se desplagará un forumulario con información necesaria para llevar a cabo cada proceso \n "
-	   		+ "El formulario contiene campos que se deben llenar y otros que no para el buen funcionamiento de la aplicación ");
+	   		+ "Una vez seleccione una funcionalidad se desplagarÃ¡ un forumulario con informaciÃ³n necesaria para llevar a cabo cada proceso \n "
+	   		+ "El formulario contiene campos que se deben llenar y otros que no para el buen funcionamiento de la aplicaciÃ³n ");
 	   descripcion.setEditable(false);
 	   descripcion.setStyle(" -fx-text-inner-color: #2E7F86 ; -fx-background-color: #DAF2F5 ; -fx-border-radius: 7;");
 	   descripcion.setFont(Font.font ("Georgia",FontWeight.BOLD, 16));
@@ -133,8 +134,8 @@ public VentanaUsuario() {
 		@Override
 		public void handle(ActionEvent arg0) {
 			diag.setAlertType(AlertType.INFORMATION);
-			diag.setTitle("Aplicación");
-			diag.setHeaderText("descripcion de la aplicación");
+			diag.setTitle("AplicaciÃ³n");
+			diag.setHeaderText("descripcion de la aplicaciÃ³n");
 			diag.show();
 		}
 		
@@ -149,7 +150,7 @@ public VentanaUsuario() {
 			public void handle(ActionEvent arg0) {
 				diag.setAlertType(AlertType.INFORMATION);
 				diag.setTitle("Acerca de:");
-				diag.setHeaderText("Autores de la apicación:\n José Daniel Bustamante Arango \n Santiago Montoya Orozco");
+				diag.setHeaderText("Autores de la apicaciÃ³n:\n JosÃ© Daniel Bustamante Arango \n Santiago Montoya Orozco");
 				diag.show();
 			}
 			
@@ -182,7 +183,7 @@ public VentanaUsuario() {
 				descripcion.setFont(Font.font ("Georgia",FontWeight.BOLD, 16));
 				descripcion.setPrefHeight(120); 
 				descripcion.setPrefWidth(420);
-				String[] criterios = {"Fecha","Cédula Empleado","Cédula cliente","Nombre Cliente","Teléfono Cliente","Direccion Cliente"};
+				String[] criterios = {"Fecha","CÃ©dula Empleado","CÃ©dula cliente","Nombre Cliente","TelÃ©fono Cliente","Direccion Cliente"};
 				String[] valores = {};
 				boolean[] habilitado = null;
 				FieldPanel f1 = new FieldPanel("Criterio",criterios,"valor",valores,null);
@@ -207,12 +208,13 @@ public VentanaUsuario() {
 				descripcion.setFont(Font.font ("Georgia",FontWeight.BOLD, 16));
 				descripcion.setPrefHeight(120); 
 				descripcion.setPrefWidth(420);
-				String[] criterios = {"Número factura","Referencia del Producto","Cantidad de producto"};
+				String[] criterios = {"NÃºmero factura","Referencia del Producto","Cantidad de producto"};
 				String[] valores = {};
 				boolean[] habilitado = null;
 				FieldPanel f1 = new FieldPanel("Criterio",criterios,"valor",valores,null);
 				proceso.getChildren().addAll(titulo, descripcion);
 				proceso.getChildren().add(f1.getRaiz());
+				
 			}
 			
 		}
@@ -222,7 +224,7 @@ public VentanaUsuario() {
 			@Override
 			public void handle(ActionEvent event) {
 				proceso.getChildren().clear();
-				Label titulo = new Label("Devolver Producto");
+				Label titulo = new Label("Vender Producto");
 				TextArea descripcion = new TextArea("Esta funcionalidad se encarga de vender un producto a un cliente");
 				descripcion.setEditable(false);
 				titulo.setFont(Font.font ("Georgia",FontWeight.BOLD, 20));
@@ -231,12 +233,72 @@ public VentanaUsuario() {
 				descripcion.setFont(Font.font ("Georgia",FontWeight.BOLD, 16));
 				descripcion.setPrefHeight(120); 
 				descripcion.setPrefWidth(420);
-				String[] criterios = {"Cédula del comprador","Cédula Empleado","fecha"};
+				String[] criterios = {"CÃ©dula del comprador","CÃ©dula Empleado","fecha","referencia","cantidad"};
 				String[] valores = {};
 				boolean[] habilitado = null;
 				FieldPanel f1 = new FieldPanel("Criterio",criterios,"valor",valores,null);
 				proceso.getChildren().addAll(titulo, descripcion);
 				proceso.getChildren().add(f1.getRaiz());
+				
+				
+		
+			}
+			
+		}
+		);
+	   
+	   funcionalidad4.setOnAction(new EventHandler<ActionEvent>(){
+			@Override
+			public void handle(ActionEvent event) {
+				proceso.getChildren().clear();
+				Label titulo = new Label("Hacer pedido");
+				TextArea descripcion = new TextArea("Esta funcionalidad se encarga de hacer el pedido de productos al proveedor");
+				descripcion.setEditable(false);
+				titulo.setFont(Font.font ("Georgia",FontWeight.BOLD, 20));
+				titulo.setPadding(new Insets(20,2, 20, 460));
+				descripcion.setStyle(" -fx-text-inner-color: #2E7F86 ; -fx-background-color: #DAF2F5 ; -fx-border-radius: 7;");
+				descripcion.setFont(Font.font ("Georgia",FontWeight.BOLD, 16));
+				descripcion.setPrefHeight(120); 
+				descripcion.setPrefWidth(420);
+				String[] criterios = {"fecha","ID del proveedor","referencia","cantidad"};
+				String[] valores = {};
+				boolean[] habilitado = null;
+				FieldPanel f1 = new FieldPanel("Criterio",criterios,"valor",valores,null);
+				proceso.getChildren().addAll(titulo, descripcion);
+				proceso.getChildren().add(f1.getRaiz());
+		
+				
+			
+					
+					
+			
+			}
+			
+		}
+		);
+	   
+	   funcionalidad5.setOnAction(new EventHandler<ActionEvent>(){
+			@Override
+			public void handle(ActionEvent event) {
+				proceso.getChildren().clear();
+				Label titulo = new Label("Ganancias netas por mes");
+				TextArea descripcion = new TextArea("Esta funcionalidad muestra el estado de cuenta de la ferreteria en un aÃ±o ");
+				descripcion.setEditable(false);
+				titulo.setFont(Font.font ("Georgia",FontWeight.BOLD, 20));
+				titulo.setPadding(new Insets(20,2, 20, 460));
+				descripcion.setStyle(" -fx-text-inner-color: #2E7F86 ; -fx-background-color: #DAF2F5 ; -fx-border-radius: 7;");
+				descripcion.setFont(Font.font ("Georgia",FontWeight.BOLD, 16));
+				descripcion.setPrefHeight(120); 
+				descripcion.setPrefWidth(420);
+				String[] criterios = {"AÃ±o de consulta"};
+				String[] valores = {};
+				boolean[] habilitado = null;
+				FieldPanel f1 = new FieldPanel("Criterio",criterios,"valor",valores,null);
+				proceso.getChildren().addAll(titulo, descripcion);
+				proceso.getChildren().add(f1.getRaiz());
+				
+				
+				
 			}
 			
 		}
@@ -265,4 +327,5 @@ public VentanaUsuario() {
 	
 	
 }
+
 
