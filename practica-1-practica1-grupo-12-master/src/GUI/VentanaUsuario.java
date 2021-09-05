@@ -34,7 +34,7 @@ public class VentanaUsuario  {
 	
    private Scene scene1;
    public MenuItem salir;
-   
+   public static TextArea resultadoFuncionalidad;
   
 
 
@@ -108,7 +108,7 @@ public VentanaUsuario() {
 	   descripcion.setFont(Font.font ("Georgia",FontWeight.BOLD, 16));
 	   descripcion.setPrefHeight(120); 
 	   descripcion.setPrefWidth(420);
-	   TextArea resultadoFuncionalidad = new TextArea("holaaaaaaaaa");
+	   resultadoFuncionalidad = new TextArea("");
 	  
 	   
 	   proceso.getChildren().addAll(titulo, descripcion);
@@ -301,6 +301,7 @@ public VentanaUsuario() {
 				proceso.getChildren().addAll(titulo, descripcion);
 				proceso.getChildren().add(f1.getRaiz());
 				proceso.getChildren().add(resultadoFuncionalidad);
+				resultadoFuncionalidad.setText(Main.resultado);
 				
 				
 			}

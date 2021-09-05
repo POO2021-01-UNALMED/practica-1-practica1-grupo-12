@@ -2,6 +2,7 @@ package GUI;
 
 import java.util.ArrayList;
 
+import gestorAplicación.Almacen.Ferreteria;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -122,7 +123,7 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 				for (int i=0;i < resultados.size();i++) {
 					System.out.println("dato"+(i+1)+" "+resultados.get(i));
 				}
-				Main.GananciasNetasMensuales(new Main().getFerr(), Integer.parseInt(resultados.get(0)));
+				
 			} 
 			
 			
@@ -148,6 +149,8 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 				for (int i=0;i < resultados.size();i++) {
 					System.out.println("dato"+(i+1)+" "+resultados.get(i));
 				}
+				Main.GananciasNetasMensuales(new Ferreteria(),  Integer.parseInt(resultados.get(0)));
+				VentanaUsuario.resultadoFuncionalidad.setText(Main.resultado);
 			}
 			
 	

@@ -275,5 +275,7 @@ public class Inicio extends Application {
 	public static Scene getScene() {
 		return scene;
 	}
+
+	
 	
 }

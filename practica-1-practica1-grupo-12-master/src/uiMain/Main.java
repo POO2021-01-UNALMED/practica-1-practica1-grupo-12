@@ -16,12 +16,14 @@ import gestorAplicación.Ventas.Factura;
 public class Main implements Serializable{
 	public static int opcion = 0;
 	static Ferreteria ferr;
+	public static String resultado = "";
 	public static void main(String[] args){
 		ferr = new Ferreteria();
 		
 		
 		
-		Inicio i = new Inicio();
+		//Inicio i = new Inicio();
+		
 		//i.MostrarVentanaInicio(null);
 		
 		System.out.println("------------------------------------------");
@@ -62,7 +64,7 @@ public class Main implements Serializable{
 					System.out.println("funcionalidad 4");
 			        pedido(ferr);break;
 			case 5: System.out.println("funcionalidad 5");
-				GananciasNetasMensuales(ferr);
+					GananciasNetasMensuales(ferr, opcion);
 					break;
 			case 6:	System.out.println("salir");
 				salirDelPrograma(ferr);
@@ -487,7 +489,9 @@ public class Main implements Serializable{
  		Scanner input = new Scanner(System.in);
  		
  		System.out.println("Dijite el año de consulta");
- 		 
+ 		resultado = resultado + "                                    " + año + "\n";
+ 		resultado = resultado +  "Mes"+ "        " +"Ganancias Totales"+ "        " +"Gastos Totales"+ "        " + "Ganancias Netas" + "        " + "Cliente con más compras" + "\n";
+ 		resultado = resultado +  "----------------------------------------------------------------------------------------------------" + "\n";
  		
  		
  		System.out.println("                                    " + año);
@@ -495,7 +499,7 @@ public class Main implements Serializable{
  		System.out.println("----------------------------------------------------------------------------------------------------");
  		
  		for(int i = 1; i<=12 ;i++){
- 			
+ 			resultado = resultado + i + "               " + f.VentasMensuales(i,año)+ "                   " + (Empleado.SueldoMensualEmpleados() + f.ComprasMensuales(i, año))+ "                " + (f.VentasMensuales(i,año) - (Empleado.SueldoMensualEmpleados() + f.ComprasMensuales(i, año)) ) + "                "  + f.ClienteMayorCompras(i, año).getCedula() + "\n";
  			System.out.println(i + "               " + f.VentasMensuales(i,año)+ "                   " + (Empleado.SueldoMensualEmpleados() + f.ComprasMensuales(i, año))+ "                " + (f.VentasMensuales(i,año) - (Empleado.SueldoMensualEmpleados() + f.ComprasMensuales(i, año)) ) + "                "  + f.ClienteMayorCompras(i, año).getCedula());
  			
  			
@@ -504,7 +508,7 @@ public class Main implements Serializable{
  		}
  		
  		
- 		
+ 		 //resultado = "";
  		System.out.println("Dijite el código de otra funcionalidad");
 
  		
