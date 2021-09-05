@@ -108,8 +108,8 @@ public VentanaUsuario() {
 	   descripcion.setFont(Font.font ("Georgia",FontWeight.BOLD, 16));
 	   descripcion.setPrefHeight(120); 
 	   descripcion.setPrefWidth(420);
-		
-	   
+	   TextArea resultadoFuncionalidad = new TextArea("holaaaaaaaaa");
+	  
 	   
 	   proceso.getChildren().addAll(titulo, descripcion);
 	   
@@ -189,6 +189,7 @@ public VentanaUsuario() {
 				FieldPanel f1 = new FieldPanel("Criterio",criterios,"valor",valores,null);
 				proceso.getChildren().addAll(titulo, descripcion);
 				proceso.getChildren().add(f1.getRaiz());
+				proceso.getChildren().add(resultadoFuncionalidad);
 			}
 			
 		}
@@ -214,6 +215,7 @@ public VentanaUsuario() {
 				FieldPanel f1 = new FieldPanel("Criterio",criterios,"valor",valores,null);
 				proceso.getChildren().addAll(titulo, descripcion);
 				proceso.getChildren().add(f1.getRaiz());
+				proceso.getChildren().add(resultadoFuncionalidad);
 				
 			}
 			
@@ -239,6 +241,8 @@ public VentanaUsuario() {
 				FieldPanel f1 = new FieldPanel("Criterio",criterios,"valor",valores,null);
 				proceso.getChildren().addAll(titulo, descripcion);
 				proceso.getChildren().add(f1.getRaiz());
+				proceso.getChildren().add(resultadoFuncionalidad);
+			
 				
 				
 		
@@ -266,7 +270,7 @@ public VentanaUsuario() {
 				FieldPanel f1 = new FieldPanel("Criterio",criterios,"valor",valores,null);
 				proceso.getChildren().addAll(titulo, descripcion);
 				proceso.getChildren().add(f1.getRaiz());
-		
+				proceso.getChildren().add(resultadoFuncionalidad);
 				
 			
 					
@@ -296,7 +300,7 @@ public VentanaUsuario() {
 				FieldPanel f1 = new FieldPanel("Criterio",criterios,"valor",valores,null);
 				proceso.getChildren().addAll(titulo, descripcion);
 				proceso.getChildren().add(f1.getRaiz());
-				
+				proceso.getChildren().add(resultadoFuncionalidad);
 				
 				
 			}

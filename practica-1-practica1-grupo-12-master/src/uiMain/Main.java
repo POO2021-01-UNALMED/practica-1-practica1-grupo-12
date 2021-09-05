@@ -14,11 +14,12 @@ import gestorAplicación.Almacen.Proveedores;
 import gestorAplicación.Ventas.Cliente;
 import gestorAplicación.Ventas.Factura;
 public class Main implements Serializable{
-	
+	public static int opcion = 0;
+	static Ferreteria ferr;
 	public static void main(String[] args){
+		ferr = new Ferreteria();
 		
 		
-		Ferreteria ferr =  new Ferreteria();
 		
 		Inicio i = new Inicio();
 		//i.MostrarVentanaInicio(null);
@@ -36,11 +37,11 @@ public class Main implements Serializable{
 		
 		Scanner input = new Scanner(System.in);
 		
-		int opcion = 0;
+		
 		
 		
 		do{
-			opcion = input.nextInt();
+			
 		switch(opcion){
 		
 
@@ -472,7 +473,7 @@ public class Main implements Serializable{
    
  //funcionalidad 5
 	
- 	static void GananciasNetasMensuales(Ferreteria f) {
+ 	public static void GananciasNetasMensuales(Ferreteria f,int año) {
  		
  	
  		
@@ -486,7 +487,7 @@ public class Main implements Serializable{
  		Scanner input = new Scanner(System.in);
  		
  		System.out.println("Dijite el año de consulta");
- 		int año = input.nextInt();
+ 		 
  		
  		
  		System.out.println("                                    " + año);
@@ -517,6 +518,12 @@ public class Main implements Serializable{
 			Serializador.serializar(f);
 			System.exit(0);
 		}
+	public Ferreteria getFerr() {
+		return ferr;
+	}
+	public void setFerr(Ferreteria ferr) {
+		this.ferr = ferr;
+	}
 		
 		
 

@@ -7,11 +7,13 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import uiMain.Main;
-
+import uiMain.*;
 public class FieldPanel extends Pane {
 
 	private String tituloCriterios;
@@ -20,11 +22,12 @@ public class FieldPanel extends Pane {
 	private String[] valores;
 	private boolean[] habilitado;
 	private GridPane raiz;
+	private HBox raiz1;
 	private int contador = 1;
 	private ArrayList<TextField> arregloTextos=new ArrayList<TextField>();
-	private ArrayList<String> resultados=new ArrayList<String>();
+	public static ArrayList<String> resultados=new ArrayList<String>();
 	private ArrayList<Object> listaobj= new ArrayList<Object>();
-	
+	private ListView<String> lista;
 /**
 crea un nuevo objeto de tipo FieldPanel
 @arg tituloCriterios titulo para la columna "Criterio"
@@ -35,9 +38,9 @@ crea un nuevo objeto de tipo FieldPanel
 */
 public FieldPanel(String tituloCriterios, String[] criterios, String tituloValores, String[] valores, boolean[]habilitado) {
 	this.tituloCriterios = tituloCriterios;
-	
+	raiz1 = new HBox();
 	raiz = new GridPane();
-	
+	raiz1.getChildren().add(raiz);
 	
 	for(String criterio: criterios){
 		Label criterio2 = new Label(criterio);
@@ -59,12 +62,20 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 	Button borrar = new Button("Borrar");
 	raiz.add(aceptar, 0, contador);
 	raiz.add(borrar, 1, contador);
+	lista = new ListView<String>();
+	
 	
 	
 	//se agrega el boton de agregar productos solo a las funcionalidades que tienen 3,4 o 5 criterios
 	
 	if(arregloTextos.size()==3||arregloTextos.size()==5||arregloTextos.size()==4) {
 	raiz.add(agregar, 2, contador-1);
+	lista.setPrefWidth(200);
+	lista.setPrefHeight(30);
+
+	raiz1.getChildren().add(lista);
+	
+	
 	}
 
 	
@@ -111,6 +122,7 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 				for (int i=0;i < resultados.size();i++) {
 					System.out.println("dato"+(i+1)+" "+resultados.get(i));
 				}
+				Main.GananciasNetasMensuales(new Main().getFerr(), Integer.parseInt(resultados.get(0)));
 			} 
 			
 			
@@ -159,10 +171,12 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 				Object[] producto= new Object[2]; //se crea un objeto de dos parametros
 				producto[0]=arregloTextos.get(1).getText();
 				producto[1]=arregloTextos.get(2).getText();//se agrega al objeto los dos ultimos criterios: referencia y cantidad
+				lista.getItems().add("Referencia producto:"+arregloTextos.get(1).getText() + " " + "Cantidad:"+arregloTextos.get(2).getText());
 				arregloTextos.get(1).clear();
 				arregloTextos.get(2).clear();// se remueven los dos ultimos valores de los text fields
 				listaobj.add(producto); //se agrega el objeto a una lista
 				System.out.println(listaobj.size());
+				
 				
 			}
 			
@@ -170,6 +184,7 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 				Object[] producto= new Object[2];
 				producto[0]=arregloTextos.get(3).getText();
 				producto[1]=arregloTextos.get(4).getText();
+				lista.getItems().add("Referencia producto:"+arregloTextos.get(3).getText() + " " + "Cantidad:"+arregloTextos.get(4).getText());
 				arregloTextos.get(3).clear();
 				arregloTextos.get(4).clear();
 				listaobj.add(producto);
@@ -179,6 +194,7 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 				Object[] producto= new Object[2];
 				producto[0]=arregloTextos.get(2).getText();
 				producto[1]=arregloTextos.get(3).getText();
+				lista.getItems().add("Referencia producto:"+arregloTextos.get(2).getText() + " " + "Cantidad:"+arregloTextos.get(3).getText());
 				arregloTextos.get(2).clear();
 				arregloTextos.get(3).clear();
 				listaobj.add(producto);
@@ -194,6 +210,12 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 	
 	
 }
+
+
+
+public ListView<String> getLista() {
+	return lista;
+}
 /**
 @arg criterio el criterio cuyo valor se quiere obtener
 @return el valor del criterio cuyo nombre es 'criterio'
@@ -201,8 +223,8 @@ public String getValue(String criterio) {
 ...
 }
 */
-public GridPane getRaiz() {
-	return raiz;
+public HBox getRaiz() {
+	return raiz1;
 }
 public void setRaiz(GridPane raiz) {
 	this.raiz = raiz;
