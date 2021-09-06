@@ -47,7 +47,7 @@ public class Inicio extends Application {
 		MenuBar barramenu = new MenuBar();
 	   	Menu inicio = new Menu("Inicio");
 	   	barramenu.getMenus().add(inicio);
-	   	Menu descripcion = new Menu("DescripciÃƒÂ³n");
+	   	Menu descripcion = new Menu("Descripción");
 	   	MenuItem salir = new MenuItem("Salir");
 	   	MenuItem texto = new MenuItem("Descripcion del sistemasffffffffffffffffffffffffffffffff \n descripcion del sistema");
 	   	
@@ -62,7 +62,7 @@ public class Inicio extends Application {
 
 		
 		//Se crea el area de texto p3
-		TextArea p3 = new TextArea("\n Bienvenidos al software de la FerreterÃ­a ABC \n             el lugar donde encontrarÃ¡s todo lo \n relacionado con herramientas de construccion, \n          reparaciÃƒÂ³n y accesorios para el hogar.");
+		TextArea p3 = new TextArea("\n Bienvenidos al software de la Ferretería ABC \n             el lugar donde encontrarás todo lo \n relacionado con herramientas de construccion, \n          reparación y accesorios para el hogar.");
 		
 		p3.setEditable(false);
 		p3.setStyle(" -fx-text-inner-color: #2E7F86 ; -fx-background-color: #DAF2F5 ; -fx-border-radius: 7;");
@@ -111,8 +111,8 @@ public class Inicio extends Application {
 		titulo1.setTextFill(Color.web("#FD793C"));
 		titulo1.setStyle("-fx-border-color:#2E7F86;");
 		Label presentacion= new Label();
-		String hojaDeVida1 = " Nombre: Santiago Montoya Orozco       \n  Edad: 24 AÃƒÂ±os  \n  Ciudad de residencia: MedellÃƒÂ­n\n  OcupaciÃƒÂ³n: Estudiante Ing de Sistemas";
-		String hojaDeVida2 = " Nombre: JosÃ© Daniel Bustamante Arango       \n  Edad: 20 ÃƒÂ±os  \n  Ciudad de residencia: MedellÃƒÂ­n\n  OcupaciÃƒÂ³n: Estudiante Ing de Sistemas";
+		String hojaDeVida1 = " Nombre: Santiago Montoya Orozco       \n  Edad: 24 Años  \n  Ciudad de residencia: Medellín\n  Ocupación: Estudiante Ing de Sistemas";
+		String hojaDeVida2 = " Nombre: José Daniel Bustamante Arango       \n  Edad: 20 Años  \n  Ciudad de residencia: Medellín\n  Ocupación: Estudiante Ing de Sistemas";
 		presentacion.setPrefHeight(120);
 		presentacion.setPrefWidth(320);
 		presentacion.setStyle("-fx-background-color: #2E7F86;-fx-border-color: white;");

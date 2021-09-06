@@ -54,7 +54,7 @@ public class Main implements Serializable{
 					break;
 			case 2:
 					System.out.println("funcionalidad 2");
-					devolucion(ferr);
+					devolucion(ferr,0,0,0);
 					break;
 			case 3: 
 					System.out.println("funcionalidad 3");
@@ -194,7 +194,7 @@ public class Main implements Serializable{
 		}
 	
 		// Funcionalidad 2
-		static void devolucion(Ferreteria f) {
+		public static void devolucion(Ferreteria f,int pedido1, int referencia1, int cantidad1) {
 			Scanner input = new Scanner(System.in);
 			
 				System.out.println("DEVOLUCIÓN");
@@ -204,7 +204,7 @@ public class Main implements Serializable{
 				System.out.println("digite el número de la factura:");
 				int pedido=1;
 				while(pedido != 0) {
-				pedido = input.nextInt();	
+				pedido = pedido1;	
 				 
 				Factura facturabuscar=Ferreteria.buscarFactura(pedido);
 				
@@ -221,9 +221,9 @@ public class Main implements Serializable{
 				   while (referencia!=0) {
 					   double devolver =0;
 					   System.out.println("Digite la referencia del producto que se desea devolver o 0 para finalizar");
-					   referencia = input.nextInt();
+					   referencia = referencia1;
 					   System.out.println("Digite la cantidad de productos que se desean devolver");
-						int cantidad = input.nextInt();
+						int cantidad = cantidad1;
 						
 						devolver = facturabuscar.RetirarProducto(referencia, cantidad);
 						System.out.println(" ");
