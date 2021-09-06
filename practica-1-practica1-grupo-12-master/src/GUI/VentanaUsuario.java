@@ -173,6 +173,9 @@ public VentanaUsuario() {
 	   funcionalidad1.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent event) {
+				VentanaUsuario.resultadoFuncionalidad.setText("");
+				Main.resultado = "";
+				VentanaUsuario.resultadoFuncionalidad.setText("");
 				proceso.getChildren().clear();
 				Label titulo = new Label("Registrar Clientes");
 				TextArea descripcion = new TextArea("Esta funcionalidad se encarga de registrar clientes al sistema");
@@ -199,6 +202,9 @@ public VentanaUsuario() {
 	   funcionalidad2.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent event) {
+				VentanaUsuario.resultadoFuncionalidad.setText("");
+				Main.resultado = "";
+				VentanaUsuario.resultadoFuncionalidad.setText("");
 				proceso.getChildren().clear();
 				Label titulo = new Label("Devolver Producto");
 				TextArea descripcion = new TextArea("Esta funcionalidad se encarga de devolver un producto de una factura de un cliente");
@@ -225,6 +231,9 @@ public VentanaUsuario() {
 	   funcionalidad3.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent event) {
+				VentanaUsuario.resultadoFuncionalidad.setText("");
+				Main.resultado = "";
+				VentanaUsuario.resultadoFuncionalidad.setText("");
 				proceso.getChildren().clear();
 				Label titulo = new Label("Vender Producto");
 				TextArea descripcion = new TextArea("Esta funcionalidad se encarga de vender un producto a un cliente");
@@ -254,6 +263,9 @@ public VentanaUsuario() {
 	   funcionalidad4.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent event) {
+				VentanaUsuario.resultadoFuncionalidad.setText("");
+				Main.resultado = "";
+				VentanaUsuario.resultadoFuncionalidad.setText("");
 				proceso.getChildren().clear();
 				Label titulo = new Label("Hacer pedido");
 				TextArea descripcion = new TextArea("Esta funcionalidad se encarga de hacer el pedido de productos al proveedor");
@@ -284,6 +296,8 @@ public VentanaUsuario() {
 	   funcionalidad5.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent event) {
+				VentanaUsuario.resultadoFuncionalidad.setText("");
+				Main.resultado = "";
 				proceso.getChildren().clear();
 				Label titulo = new Label("Ganancias netas por mes");
 				TextArea descripcion = new TextArea("Esta funcionalidad muestra el estado de cuenta de la ferreteria en un año ");
@@ -302,6 +316,7 @@ public VentanaUsuario() {
 				proceso.getChildren().add(f1.getRaiz());
 				proceso.getChildren().add(resultadoFuncionalidad);
 				resultadoFuncionalidad.setText(Main.resultado);
+				
 				
 				
 			}

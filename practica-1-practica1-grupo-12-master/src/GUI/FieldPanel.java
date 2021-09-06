@@ -86,6 +86,7 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 		@Override
 		public void handle(ActionEvent arg0) {
 			if(arregloTextos.size()==6) { //funcionalidad 1. Define la funcionalidad de acuerdo al numero de textfields
+				//VentanaUsuario.resultadoFuncionalidad.setText("");
 				for (int i=0;i < arregloTextos.size();i++) {
 					resultados.add(arregloTextos.get(i).getText());//agrega los valores de los textfields a un arreglo de strings
 					
@@ -94,12 +95,14 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 				for (int i=0;i < resultados.size();i++) {
 					System.out.println("dato"+(i+1)+" "+resultados.get(i));
 				}
-				
-				
+				Main.registrarCliente(Main.ferr,  resultados.get(0),Integer.parseInt(resultados.get(1)),Integer.parseInt(resultados.get(2)),resultados.get(3),Integer.parseInt(resultados.get(4)),resultados.get(5));
+				VentanaUsuario.resultadoFuncionalidad.setText(Main.resultado);
+				Main.salirDelPrograma(Main.ferr);
 				
 			}
 			
 			else if(arregloTextos.size()==3) {//funcionalidad 2 tiene 3 criterios
+				//VentanaUsuario.resultadoFuncionalidad.setText("");
 				for (int i=0;i < 1;i++) {
 					resultados.add(arregloTextos.get(i).getText());
 					
@@ -115,6 +118,7 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 			
 			
 			else if(arregloTextos.size()==5) { //funcionalidad 3 tiene 5 criterios
+				//VentanaUsuario.resultadoFuncionalidad.setText("");
 				for (int i=0;i < 3;i++) {
 					resultados.add(arregloTextos.get(i).getText());
 					
@@ -129,6 +133,8 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 			
 			
 			else if(arregloTextos.size()==4) { //funcionalidad 4 
+				//VentanaUsuario.resultadoFuncionalidad.setText("");
+				Main.resultado = "";	
 				for (int i=0;i < 2;i++) {
 					resultados.add(arregloTextos.get(i).getText());
 					
@@ -141,6 +147,7 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 			
 			
 			else if(arregloTextos.size()==1) { // funcionalidad 5
+				//VentanaUsuario.resultadoFuncionalidad.setText("");
 				for (int i=0;i < arregloTextos.size();i++) {
 					resultados.add(arregloTextos.get(i).getText());
 					
@@ -149,8 +156,11 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 				for (int i=0;i < resultados.size();i++) {
 					System.out.println("dato"+(i+1)+" "+resultados.get(i));
 				}
-				Main.GananciasNetasMensuales(new Ferreteria(),  Integer.parseInt(resultados.get(0)));
+				Main.GananciasNetasMensuales(Main.ferr,  Integer.parseInt(resultados.get(0)));
 				VentanaUsuario.resultadoFuncionalidad.setText(Main.resultado);
+				Main.salirDelPrograma(Main.ferr);
+				
+							
 			}
 			
 	

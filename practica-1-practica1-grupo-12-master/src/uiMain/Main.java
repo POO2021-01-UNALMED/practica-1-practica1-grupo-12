@@ -15,7 +15,7 @@ import gestorAplicación.Ventas.Cliente;
 import gestorAplicación.Ventas.Factura;
 public class Main implements Serializable{
 	public static int opcion = 0;
-	static Ferreteria ferr;
+	public static Ferreteria ferr = new Ferreteria();
 	public static String resultado = "";
 	public static void main(String[] args){
 		ferr = new Ferreteria();
@@ -50,7 +50,7 @@ public class Main implements Serializable{
 
 
 			case 1: System.out.println("funcionalidad 1");
-					registrarCliente(ferr);
+					registrarCliente(ferr,null,0,0,null,0,null);
 					break;
 			case 2:
 					System.out.println("funcionalidad 2");
@@ -79,32 +79,32 @@ public class Main implements Serializable{
 	
 	}
 	//funicionalidad1
-		static void registrarCliente(Ferreteria f){
+		public static void registrarCliente(Ferreteria f,String fecha1,int cedulaEmpleado,int cedulaCliente,String nombre1,int telefono1,String Direccion1){
 			
 			//
 			Scanner input = new Scanner(System.in);
 			
 			System.out.println("Digite la fecha en el siguiente formato: DIA/MES/AÑO");
-			String fecha = input.next();
+			String fecha = fecha1;
 			
 			System.out.println("digite el número de la cédula del empleado");
 			Empleado empleadoEncargado = null;
 			boolean a = true;
-			do {
-				int empleado = input.nextInt();
+			
+				int empleado = cedulaEmpleado;
 				a = Empleado.buscarCedulaEmpleado(empleado);
 				empleadoEncargado = f.buscarEmpleado(empleado);
-				if (a == false) {
+				if (a == false || empleadoEncargado instanceof  Empleado) {
 					System.out.println("Empleado no encontrado, digite otra cedula");
 				}
-			} while (!a);
+			
 			
 			System.out.println("digite el número de la cédula del nuevo cliente");
 			int cedula = 0;
 			Cliente clienteBuscar = null;
 			boolean a1 = true;
-			do {
-				cedula = input.nextInt();
+			
+				cedula = cedulaCliente;
 				a = Cliente.buscarCedula(cedula);
 				clienteBuscar = Cliente.buscarCedula((long)cedula);  //sobrecarga
 				//System.out.println("entro");
@@ -112,18 +112,18 @@ public class Main implements Serializable{
 				if (a == true) {
 					System.out.println("Cliente ya registrado, digite otra cedula");
 				}
-			} while (a);
+			
 			
 			
 			System.out.println("digite el nombre completo del nuevo cliente");
-			input.nextLine();
-			String nombre = input.nextLine();
+			//input.nextLine();
+			String nombre = nombre1;
 			
 			System.out.println("digite el teléfono del nuevo cliente,cero en caso contrario");
-			int telefono = input.nextInt();
+			int telefono = telefono1;
 			
 			System.out.println("digite la dirección del nuevo cliente,cero en caso contrario");
-			String direccion = input.next();
+			String direccion = Direccion1;
 			
 			if(direccion.equals("0") && telefono == 0  ){
 				clienteBuscar  = new Cliente(cedula,nombre);
@@ -189,7 +189,7 @@ public class Main implements Serializable{
 			
 			
 			
-			System.out.println("Dijite el código de otra funcionalidad");
+			resultado = "Cliente creado con exito";
 
 		}
 	
@@ -520,7 +520,7 @@ public class Main implements Serializable{
  	public static void salirDelPrograma(Ferreteria f){
 			System.out.println("Sistema cerrado");
 			Serializador.serializar(f);
-			System.exit(0);
+			//System.exit(0);
 		}
 	public Ferreteria getFerr() {
 		return ferr;
