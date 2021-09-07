@@ -203,7 +203,7 @@ public VentanaUsuario() {
 			@Override
 			public void handle(ActionEvent event) {
 				VentanaUsuario.resultadoFuncionalidad.setText("");
-				Main.resultado = "";
+				Main.resultado = "  ";
 				VentanaUsuario.resultadoFuncionalidad.setText("");
 				proceso.getChildren().clear();
 				Label titulo = new Label("Devolver Producto");
@@ -222,6 +222,7 @@ public VentanaUsuario() {
 				proceso.getChildren().addAll(titulo, descripcion);
 				proceso.getChildren().add(f1.getRaiz());
 				proceso.getChildren().add(resultadoFuncionalidad);
+				resultadoFuncionalidad.setText(Main.resultado);
 				
 			}
 			
@@ -298,6 +299,7 @@ public VentanaUsuario() {
 			public void handle(ActionEvent event) {
 				VentanaUsuario.resultadoFuncionalidad.setText("");
 				Main.resultado = "";
+				VentanaUsuario.resultadoFuncionalidad.setText("");
 				proceso.getChildren().clear();
 				Label titulo = new Label("Ganancias netas por mes");
 				TextArea descripcion = new TextArea("Esta funcionalidad muestra el estado de cuenta de la ferreteria en un año ");

@@ -1,6 +1,9 @@
 package uiMain;
 import GUI.*;
 import java.util.*;
+
+import Errores.ExceptionC1;
+
 import java.io.Serializable;
 import java.lang.Math;
 import baseDatos.*;
@@ -17,7 +20,7 @@ public class Main implements Serializable{
 	public static int opcion = 0;
 	public static Ferreteria ferr = new Ferreteria();
 	public static String resultado = "";
-	public static void main(String[] args){
+	public static void main(String[] args) throws ExceptionC1{
 		ferr = new Ferreteria();
 		
 		
@@ -54,15 +57,15 @@ public class Main implements Serializable{
 					break;
 			case 2:
 					System.out.println("funcionalidad 2");
-					devolucion(ferr,0,0,0);
+					devolucion(ferr,0,null);
 					break;
 			case 3: 
 					System.out.println("funcionalidad 3");
-					VenderProductos(ferr);
+					VenderProductos(ferr,0,0,null,null);
 					break;
 			case 4: 
 					System.out.println("funcionalidad 4");
-			        pedido(ferr);break;
+			        pedido(ferr,null,0,null);break;
 			case 5: System.out.println("funcionalidad 5");
 					GananciasNetasMensuales(ferr, opcion);
 					break;
@@ -79,7 +82,7 @@ public class Main implements Serializable{
 	
 	}
 	//funicionalidad1
-		public static void registrarCliente(Ferreteria f,String fecha1,int cedulaEmpleado,int cedulaCliente,String nombre1,int telefono1,String Direccion1){
+		public static void registrarCliente(Ferreteria f,String fecha1,int cedulaEmpleado,int cedulaCliente,String nombre1,int telefono1,String Direccion1) throws ExceptionC1 {
 			
 			//
 			Scanner input = new Scanner(System.in);
@@ -94,8 +97,11 @@ public class Main implements Serializable{
 				int empleado = cedulaEmpleado;
 				a = Empleado.buscarCedulaEmpleado(empleado);
 				empleadoEncargado = f.buscarEmpleado(empleado);
+				System.out.println("booleano empleado" + a);
 				if (a == false || empleadoEncargado instanceof  Empleado) {
-					System.out.println("Empleado no encontrado, digite otra cedula");
+					System.out.print("entro a empleado ");
+					throw new ExceptionC1("valor de criterio erróneo:empleado no encontrado","Empleado");
+					
 				}
 			
 			
@@ -105,12 +111,15 @@ public class Main implements Serializable{
 			boolean a1 = true;
 			
 				cedula = cedulaCliente;
-				a = Cliente.buscarCedula(cedula);
+				boolean b = Cliente.buscarCedula(cedula);
 				clienteBuscar = Cliente.buscarCedula((long)cedula);  //sobrecarga
 				//System.out.println("entro");
 				//System.out.println(clienteBuscar);
-				if (a == true) {
-					System.out.println("Cliente ya registrado, digite otra cedula");
+				if (b == true) {
+					//resultado = ("Cliente ya registrado, digite otra cedula");
+					System.out.print("entro a cliente");
+					throw new ExceptionC1("valor de criterio erróneo:Cliente ya registrado","Cliente");
+					
 				}
 			
 			
@@ -194,31 +203,31 @@ public class Main implements Serializable{
 		}
 	
 		// Funcionalidad 2
-		public static void devolucion(Ferreteria f,int pedido1, int referencia1, int cantidad1) {
+		public static void devolucion(Ferreteria f,int pedido1, ArrayList<Object[]> productos) throws ExceptionC1{
 			Scanner input = new Scanner(System.in);
 			
 				System.out.println("DEVOLUCIÓN");
 				System.out.println("----------");
-			
+				double devolver =0;
 				
 				System.out.println("digite el número de la factura:");
 				int pedido=1;
-				while(pedido != 0) {
+				
 				pedido = pedido1;	
 				 
 				Factura facturabuscar=Ferreteria.buscarFactura(pedido);
 				
 				if(facturabuscar instanceof Factura) {
-					System.out.println("Referencia"+"      "+"nombre"+"                 "+"Cantidad");
+					resultado = resultado +("Referencia"+"      "+"nombre"+"                 "+"Cantidad");
 					
 				   for(Object[] p: facturabuscar.getProductosFactura()) {
 					  
 							Producto producto = (Producto) p[0];
-							System.out.println(producto.getReferencia()+"           "+producto.getNombre()+"                     "+p[1]);
+							resultado = resultado + (producto.getReferencia()+"           "+producto.getNombre()+"                     "+p[1]) + "\n";
 							
 				   }
 				   int referencia=1;
-				   while (referencia!=0) {
+				   /*while (referencia!=0) {
 					   double devolver =0;
 					   System.out.println("Digite la referencia del producto que se desea devolver o 0 para finalizar");
 					   referencia = referencia1;
@@ -228,21 +237,26 @@ public class Main implements Serializable{
 						devolver = facturabuscar.RetirarProducto(referencia, cantidad);
 						System.out.println(" ");
 						System.out.println("valor a devolver al cliente: " + devolver);	
+				   }*/
+				   for(Object[] producto: productos) {
+					   devolver += facturabuscar.RetirarProducto(Integer.parseInt((String)producto[0]), Integer.parseInt((String)producto[1]));
+					   
 				   }
 				   
+				   resultado = resultado + "valor a devolver al cliente: " + devolver + "\n";
 				   
-				   System.out.println("proceso finalizado");
+				   resultado = resultado + ("proceso finalizado")+ "\n";
 				   for(Object[] p: facturabuscar.getProductosFactura()) {
 						Producto producto = (Producto) p[0];
-						System.out.println(producto.getReferencia()+"           "+producto.getNombre()+"                     "+p[1]);
+						resultado = resultado + (producto.getReferencia()+"           "+producto.getNombre()+"                     "+p[1]) + "\n";
 				   }
-				break;
+				//break;
 				}
 				
 				
 				else if( facturabuscar== (null) ) {
-					System.out.println("La factura no existe en el sistema, por favor ingrese un numero de factura válido");
-					
+					//resultado = ("La factura no existe en el sistema, por favor ingrese un numero de factura válido");
+					throw new ExceptionC1("valor de criterio erróneo:factura no encontrada","Factura");
 				}
 				
 				 
@@ -255,50 +269,81 @@ public class Main implements Serializable{
 				
 		    }
 				
-				System.out.println("Dijite el código de otra funcionalidad");
+				//System.out.println("Dijite el código de otra funcionalidad");
 
-		}
+		
 
 
 	// Funcionalidad 3
 	// Funcionalidad 3
-	static void VenderProductos(Ferreteria f) {
+	public static void VenderProductos(Ferreteria f,int cedulaComprador1,int cedulaEmpleado1,String fecha1,ArrayList<Object[]> productos) throws ExceptionC1 {
 		Scanner input = new Scanner(System.in);
 
 		System.out.println("Digite la cedula del comprador");
-		int cedulaComprador = input.nextInt();
+		int cedulaComprador = cedulaComprador1;
 
 		if (Cliente.buscarCedula(cedulaComprador) == true) {
 			System.out.println("Digite la cedula del empleado que lo atendió"); 
 			Empleado empleadoEncargado = null;
 			boolean a = true;
-			do {
+			
+			
+			/*do {
 				int empleado = input.nextInt();
 				a = Empleado.buscarCedulaEmpleado(empleado);
 				empleadoEncargado = f.buscarEmpleado(empleado);
 				if (a == false) {
 					System.out.println("Empleado no encontrado, digite otra cedula");
 				}
-			} while (!a);
-
+			} while (!a);*/
+			int empleado = cedulaEmpleado1;
+			a = Empleado.buscarCedulaEmpleado(empleado);
+			empleadoEncargado = f.buscarEmpleado(empleado);
+			if (a == false) {
+				System.out.println("Empleado no encontrado, digite otra cedula");
+				throw new ExceptionC1("valor de criterio erróneo:empleado no encontrado","Cliente");
+				
+			}
+			
 			System.out.println("Digite la fecha en el siguiente formato: DIA/MES/AÑO");
-			String fecha = input.next();
-			String producto = "hola";
+			String fecha = fecha1;
+			//String producto = "hola";
 
 			ArrayList<Object[]> productosPedidos = new ArrayList<Object[]>();
-			do {
+			
 				System.out.println("Digite el producto de la siguiente manera: referencia,cantidad");
-				producto = input.next();
+				//producto = input.next();
 
-				String producto2[] = producto.split(",");
-				int referencia = Integer.parseInt(producto2[0]);
-				int cantidadPedida = Integer.parseInt(producto2[1]);
-
+				//String producto2[] = producto.split(",");
+				//int referencia = Integer.parseInt(producto2[0]);
+				//int cantidadPedida = Integer.parseInt(producto2[1]);
+				
+				 for(Object[] producto: productos) {
+					 f.getInventario().restarProducto(Integer.parseInt((String)producto[0]), Integer.parseInt((String)producto[1]));
+					 Object productoYcantidad[] = { f.getInventario().buscarProducto(Integer.parseInt((String)producto[0])),Integer.parseInt((String)producto[1]) };
+					 productosPedidos.add(productoYcantidad);  
+				 }
+				 
+				 Factura facturaNueva = new Factura(fecha, productosPedidos, "Venta", empleadoEncargado,Cliente.buscarCedula((long)cedulaComprador));
+				 
+				 resultado = resultado + ("-----------FACTURA-----------") + "\n";
+				 resultado = resultado + ("Fecha: " + facturaNueva.getFecha()) + "\n";
+				 resultado = resultado + ("Dirección Ferreteria: " + f.getDireccion()) + "\n";
+				 resultado = resultado + ("Número factura: " + facturaNueva.getNumerofactura()) + "\n";
+				 resultado = resultado + ("Cedula Cliente: " + facturaNueva.getCliente().getCedula())+ "\n";
+				 resultado = resultado + ("Nombre Cliente: " + facturaNueva.getCliente().getNombre()) + "\n";
+				 resultado = resultado + ("Productos comprados:") + "\n";
+				 resultado = resultado + ("Referencia    Nombre    Cantidad   PrecioUnidad") + "\n";
+				 
+				 for (Object[] p : productosPedidos) {
+						
+					 resultado = resultado + (facturaNueva.Mostrar(p)) + "\n";
+					}
 				// este if se encarga de determinar de parar la funcionalidad (de que ya no se
 				// pida más productos para vender)
-				if (producto.equals("0,0")) {
+				/*if (producto.equals("0,0")) {
 
-					Factura facturaNueva = new Factura(fecha, productosPedidos, "Venta", empleadoEncargado,Cliente.buscarCedula((long)cedulaComprador));   //sobrecarga
+					   //sobrecarga
 					System.out.println("-----------FACTURA-----------");
 					System.out.println("Fecha: " + facturaNueva.getFecha());
 					System.out.println("Dirección Ferreteria: " + f.getDireccion());
@@ -315,11 +360,11 @@ public class Main implements Serializable{
 					//f.getFacturas().add(facturaNueva); //<---- posiblemente tenga que quitar esta linea
 
 					System.out.println("Valor total " + facturaNueva.CalcularValorTotal());
-					break;
-				}
+					
+				}*/
 
-				boolean existenciaProducto = f.getInventario().buscarExistenciaProducto(referencia);
-
+				//boolean existenciaProducto = f.getInventario().buscarExistenciaProducto(referencia);
+				/*
 				if (existenciaProducto) {
 
 					ArrayList<Object[]> inventario = f.getInventario().getProductos();
@@ -356,13 +401,14 @@ public class Main implements Serializable{
 
 					// este for se encarga de buscar las cantidades disponibles del producto
 
-				}
+				}*/
 
-			} while (true);
+			
 		}
 
 		else {
-			System.out.println("Cliente no registrado, precione la opcion 1");
+			
+			throw new ExceptionC1("valor de criterio erróneo:Cliente no registrado","Cliente");
 
 		}
 		System.out.println("Dijite el código de otra funcionalidad");
@@ -374,14 +420,14 @@ public class Main implements Serializable{
 
 
 	
-	   static void pedido (Ferreteria f) {
+	   public static void pedido (Ferreteria f,String fecha,int cedulaProveedor,ArrayList<Object[]> productos) throws ExceptionC1 {
 		   
 		   Scanner input = new Scanner(System.in);
 		   System.out.println("HACER PEDIDO");
 			System.out.println("------------");
 			
 			System.out.println("Digite la fecha en el siguiente formato: DIA/MES/AÑO");
-			String fechaf= input.next();
+			String fechaf= fecha;
 			
 			System.out.println("total proveedores= "+Proveedores.proveedores.size());
 			System.out.println(" ");
@@ -397,23 +443,50 @@ public class Main implements Serializable{
 
 			
 		    int confirmacion = 1;
-		    while(confirmacion!=0) {
-		    	System.out.println("Digite la cedula o el Nit del proveedor");
-			    int x=input.nextInt();
+		    
+		    System.out.println("Digite la cedula o el Nit del proveedor");
+			int x= cedulaProveedor;
 		    confirmacion = Proveedores.buscarIdent(x);
 		    if(confirmacion==0) {
 		    	System.out.println("proveedor encontrado");
 		    }
 		    else {
-		    	System.out.println("proveedor no encontrado");
+		    	throw new ExceptionC1("valor de criterio erróneo:Proveedor no encontrado","Cliente");
+		    	//System.out.println("proveedor no encontrado");
 		    }
 		    
-		    }
-		    
-		    
-		    double acumulado = 0;
-		    int y = 1,z=1;
+		    int acumulado = 0;
 		    ArrayList<Object[]> lista = new ArrayList<Object[]>();
+		    for(Object[] producto: productos) {
+				 int producto1 = Integer.parseInt((String)producto[0]);
+				 int cantidad = Integer.parseInt((String)producto[1]);
+				 System.out.println(producto1);
+				 System.out.println(cantidad);
+				 Object[] a = new Object[2];
+				 a[0] = f.getInventario().buscarProducto(producto1);
+				 a[1] = cantidad;
+				 acumulado += Inventario.agregarProducto(producto1, cantidad);
+				 lista.add(a);
+				 
+		    }
+		    
+		    
+		    Factura facturaNueva = new Factura(fechaf, lista,"compra",acumulado );
+		    resultado = resultado + ("proceso finalizado") +"\n";
+		    resultado = resultado + ("-----------FACTURA-----------");
+		    resultado = resultado + ("Número de factura:"+ facturaNueva.getNumerofactura())+ "\n";
+		    resultado = resultado + ("fecha: "+ fechaf) +"\n";
+		    resultado = resultado + ("Productos comprados:")+"\n";
+		    resultado = resultado + ("Referencia   Cantidad   valor")+"\n";
+			for(Object[] p : lista) {
+				
+				
+				resultado = resultado +( (((Producto)p[0]).getReferencia()) + "            "+ p[1] +" "+((Producto) p[0]).FormadeVenta()+"         "+ ((((Producto)p[0]).getPrecio()/10)*7)) +"\n";
+			 }
+		    /*
+		    //double acumulado = 0;
+		    int y = 1,z=1;
+		    //ArrayList<Object[]> lista = new ArrayList<Object[]>();
 		   
 		    while(y!=0 || z!=0) {
 		    		
@@ -469,6 +542,7 @@ public class Main implements Serializable{
 					System.out.println( "total                   "+ acumulado);
 					
 					System.out.println("Dijite el código de otra funcionalidad");
+					*/
    
 	   }
 
