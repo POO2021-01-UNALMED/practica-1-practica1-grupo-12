@@ -284,13 +284,13 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 			
 			else if(arregloTextos.size()==1) { // funcionalidad 5
 				//VentanaUsuario.resultadoFuncionalidad.setText("");
-				for (int i=0;i < arregloTextos.size();i++) {
-					resultados.add(arregloTextos.get(i).getText());
+				
+				resultados.add(arregloTextos.get(0).getText());
 					/*try {
 						
-						if(Integer.parseInt(arregloTextos.get(i).getText())>2021) {
+						if(Integer.parseInt(arregloTextos.get(0).getText())>2021) {
 							
-							throw new ExceptionC2("Año no disponible",Integer.parseInt(arregloTextos.get(i).getText()));
+							throw new ExceptionC2("Año no disponible",Integer.parseInt(arregloTextos.get(0).getText()));
 						}
 						
 					}
@@ -301,21 +301,35 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 							a.setHeaderText("El año no se encuentra disponible");
 							a.show();
 							}
-					}
-				*/	
+					}*/
 					
-				}
+					
+				
 				System.out.println("funcionalidad 5");
 				for (int i=0;i < resultados.size();i++) {
 					System.out.println("dato"+(i+1)+" "+resultados.get(i));
 				}
 				try {
+					if(Integer.parseInt(arregloTextos.get(0).getText())>2021) {
+						throw new ExceptionC2("Año no disponible",Integer.parseInt(arregloTextos.get(0).getText()));
+					}
 					Main.GananciasNetasMensuales(Main.ferr,  Integer.parseInt(resultados.get(0)));
 					VentanaUsuario.resultadoFuncionalidad.setText(Main.resultado);
 					Main.salirDelPrograma(Main.ferr);
 					Main.resultado = "";
 					resultados.clear();
 				}
+				catch(ExceptionC2 e2 ){
+					if((e2.getMessage()).equals("Manejo de errores de la Aplicación:Año no disponible")){
+						Alert a = new Alert(AlertType.ERROR);
+						a.setTitle(e2.getMessage());
+						a.setHeaderText("El año no se encuentra disponible");
+						a.show();
+						resultados.clear();
+						}
+				}
+				
+				
 				catch(Exception e){
 					throw new ExceptionC1("faltan atributos");
 				
@@ -341,7 +355,7 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 				// TODO Auto-generated catch block
 				if((e.getMessage()).equals("Manejo de errores de la Aplicación:faltan atributos")) {
 					Alert a = new Alert(AlertType.ERROR);
-					int posicion = 0;
+					
 					String criterioFaltante = "";
 					a.setTitle(e.getMessage());
 					a.setHeaderText("Faltan los siguientes atributos:" + "\n");
@@ -350,7 +364,7 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 					for(int i = 0; i<resultados.size();i++){
 						System.out.println("hola " +resultados.get(i));
 						if(resultados.get(i).equals("")){
-							//System.out.println(resultados.get(i));
+							System.out.println(criterios2.get(i));
 							criterioFaltante = criterioFaltante+ criterios2.get(i) + "\n" ;
 							
 							
@@ -423,7 +437,7 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 				}
 				for (int i = 0; i < Main.ferr.getInventario().getProductos().size(); i++) {
 					if ( ((Producto)  Main.ferr.getInventario().getProductos().get(i)[0]).getReferencia() ==  Integer.parseInt(arregloTextos.get(3).getText())) {
-						if (Integer.parseInt((String)arregloTextos.get(4).getText())> ((int)(Main.ferr.getInventario().getProductos().get(i)[1]))) {
+						if (Integer.parseInt((String)arregloTextos.get(4).getText())< ((int)(Main.ferr.getInventario().getProductos().get(i)[1]))) {
 							System.out.println("entro");
 							throw new ExceptionC2("cantidades no suficientes");
 							
@@ -437,6 +451,7 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 				lista.getItems().add("Referencia producto:"+arregloTextos.get(3).getText() + " " + "Cantidad:"+arregloTextos.get(4).getText());
 				arregloTextos.get(3).clear();
 				arregloTextos.get(4).clear();
+				listaobj.add(producto);
 				}
 				catch(ExceptionC2 e2){
 					if((e2.getMessage()).equals("Manejo de errores de la Aplicación:producto no encontrado")){
@@ -454,7 +469,7 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 				
 				
 				
-				listaobj.add(producto);
+				
 				
 			}
 			}
