@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import Errores.ExceptionC1;
 import Errores.ExceptionC2;
-import gestorAplicaci髇.Almacen.Ferreteria;
-import gestorAplicaci髇.Almacen.Producto;
+import gestorAplicaci贸n.Almacen.Ferreteria;
+import gestorAplicaci贸n.Almacen.Producto;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -127,16 +127,16 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 				
 				catch(ExceptionC1 e) {
 					System.out.println(e.getMessage());
-					if((e.getMessage()).equals("Manejo de errores de la Aplicaci髇:valor de criterio err髇eo:empleado no encontrado")){
+					if((e.getMessage()).equals("Manejo de errores de la Aplicaci贸n:valor de criterio err贸neo:empleado no encontrado")){
 						Alert a = new Alert(AlertType.ERROR);
-						a.setTitle("Error de la aplicaci髇"+ "\n");
+						a.setTitle("Error de la aplicaci贸n"+ "\n");
 						a.setHeaderText(e.getMessage());
 						a.show();
 						resultados.clear();
 					}
-					else if((e.getMessage()).equals("Manejo de errores de la Aplicaci髇:valor de criterio err髇eo:Cliente ya registrado")){
+					else if((e.getMessage()).equals("Manejo de errores de la Aplicaci贸n:valor de criterio err贸neo:Cliente ya registrado")){
 						Alert a = new Alert(AlertType.ERROR);
-						a.setTitle("Error de la aplicaci髇"+ "\n");
+						a.setTitle("Error de la aplicaci贸n"+ "\n");
 						a.setHeaderText(e.getMessage());
 						a.show();
 						resultados.clear();
@@ -177,9 +177,9 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 					listaobj.clear();
 				}
 				catch(ExceptionC1 e) {
-					if((e.getMessage()).equals("Manejo de errores de la Aplicaci髇:valor de criterio err髇eo:factura no encontrada")){
+					if((e.getMessage()).equals("Manejo de errores de la Aplicaci贸n:valor de criterio err贸neo:factura no encontrada")){
 						Alert a = new Alert(AlertType.ERROR);
-						a.setTitle("Error de la aplicaci髇"+ "\n");
+						a.setTitle("Error de la aplicaci贸n"+ "\n");
 						a.setHeaderText(e.getMessage());
 						a.show();
 						resultados.clear();
@@ -188,7 +188,7 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 				}
 				catch(Exception e){
 					throw new ExceptionC1("faltan atributos");
-					//valor de criterio err髇eo:factura no encontrada
+					//valor de criterio err贸neo:factura no encontrada
 				}
 				
 			}
@@ -214,16 +214,16 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 				}
 				catch(ExceptionC1 e) {
 					System.out.println(e.getMessage());
-					if((e.getMessage()).equals("Manejo de errores de la Aplicaci髇:valor de criterio err髇eo:empleado no encontrado")){
+					if((e.getMessage()).equals("Manejo de errores de la Aplicaci贸n:valor de criterio err贸neo:empleado no encontrado")){
 						Alert a = new Alert(AlertType.ERROR);
-						a.setTitle("Error de la aplicaci髇"+ "\n");
+						a.setTitle("Error de la aplicaci贸n"+ "\n");
 						a.setHeaderText(e.getMessage());
 						a.show();
 						resultados.clear();
 					}
-					else if((e.getMessage()).equals("Manejo de errores de la Aplicaci髇:valor de criterio err髇eo:Cliente no registrado")){
+					else if((e.getMessage()).equals("Manejo de errores de la Aplicaci贸n:valor de criterio err贸neo:Cliente no registrado")){
 						Alert a = new Alert(AlertType.ERROR);
-						a.setTitle("Error de la aplicaci髇"+ "\n");
+						a.setTitle("Error de la aplicaci贸n"+ "\n");
 						a.setHeaderText(e.getMessage());
 						a.show();
 						resultados.clear();
@@ -264,9 +264,9 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 					listaobj.clear();
 				}
 				catch(ExceptionC1 e) {
-					if((e.getMessage()).equals("Manejo de errores de la Aplicaci髇:valor de criterio err髇eo:Proveedor no encontrado")){
+					if((e.getMessage()).equals("Manejo de errores de la Aplicaci贸n:valor de criterio err贸neo:Proveedor no encontrado")){
 						Alert a = new Alert(AlertType.ERROR);
-						a.setTitle("Error de la aplicaci髇"+ "\n");
+						a.setTitle("Error de la aplicaci贸n"+ "\n");
 						a.setHeaderText(e.getMessage());
 						a.show();
 						resultados.clear();
@@ -290,15 +290,15 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 						
 						if(Integer.parseInt(arregloTextos.get(0).getText())>2021) {
 							
-							throw new ExceptionC2("A駉 no disponible",Integer.parseInt(arregloTextos.get(0).getText()));
+							throw new ExceptionC2("A帽o no disponible",Integer.parseInt(arregloTextos.get(0).getText()));
 						}
 						
 					}
 					catch(ExceptionC2 e2 ){
-						if((e2.getMessage()).equals("Manejo de errores de la Aplicaci髇:A駉 no disponible")){
+						if((e2.getMessage()).equals("Manejo de errores de la Aplicaci贸n:A帽o no disponible")){
 							Alert a = new Alert(AlertType.ERROR);
 							a.setTitle(e2.getMessage());
-							a.setHeaderText("El a駉 no se encuentra disponible");
+							a.setHeaderText("El a帽o no se encuentra disponible");
 							a.show();
 							}
 					}*/
@@ -311,7 +311,7 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 				}
 				try {
 					if(Integer.parseInt(arregloTextos.get(0).getText())>2021) {
-						throw new ExceptionC2("A駉 no disponible",Integer.parseInt(arregloTextos.get(0).getText()));
+						throw new ExceptionC2("A帽o no disponible",Integer.parseInt(arregloTextos.get(0).getText()));
 					}
 					Main.GananciasNetasMensuales(Main.ferr,  Integer.parseInt(resultados.get(0)));
 					VentanaUsuario.resultadoFuncionalidad.setText(Main.resultado);
@@ -320,10 +320,10 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 					resultados.clear();
 				}
 				catch(ExceptionC2 e2 ){
-					if((e2.getMessage()).equals("Manejo de errores de la Aplicaci髇:A駉 no disponible")){
+					if((e2.getMessage()).equals("Manejo de errores de la Aplicaci贸n:A帽o no disponible")){
 						Alert a = new Alert(AlertType.ERROR);
 						a.setTitle(e2.getMessage());
-						a.setHeaderText("El a駉 no se encuentra disponible");
+						a.setHeaderText("El a帽o no se encuentra disponible");
 						a.show();
 						resultados.clear();
 						}
@@ -353,7 +353,7 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 				
 				System.out.println(e.getMessage());
 				// TODO Auto-generated catch block
-				if((e.getMessage()).equals("Manejo de errores de la Aplicaci髇:faltan atributos")) {
+				if((e.getMessage()).equals("Manejo de errores de la Aplicaci贸n:faltan atributos")) {
 					Alert a = new Alert(AlertType.ERROR);
 					
 					String criterioFaltante = "";
@@ -384,7 +384,7 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 					e.printStackTrace();
 			
 					}
-				else if((e.getMessage()).equals("Manejo de errores de la Aplicaci髇:valor de criterio err髇eo:")){
+				else if((e.getMessage()).equals("Manejo de errores de la Aplicaci贸n:valor de criterio err贸neo:")){
 					Alert a = new Alert(AlertType.ERROR);
 					int posicion = 0;
 					
@@ -437,7 +437,7 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 				}
 				for (int i = 0; i < Main.ferr.getInventario().getProductos().size(); i++) {
 					if ( ((Producto)  Main.ferr.getInventario().getProductos().get(i)[0]).getReferencia() ==  Integer.parseInt(arregloTextos.get(3).getText())) {
-						if (Integer.parseInt((String)arregloTextos.get(4).getText())< ((int)(Main.ferr.getInventario().getProductos().get(i)[1]))) {
+						if (Integer.parseInt((String)arregloTextos.get(4).getText())> ((int)(Main.ferr.getInventario().getProductos().get(i)[1]))) {
 							System.out.println("entro");
 							throw new ExceptionC2("cantidades no suficientes");
 							
@@ -454,13 +454,13 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 				listaobj.add(producto);
 				}
 				catch(ExceptionC2 e2){
-					if((e2.getMessage()).equals("Manejo de errores de la Aplicaci髇:producto no encontrado")){
+					if((e2.getMessage()).equals("Manejo de errores de la Aplicaci贸n:producto no encontrado")){
 					Alert a = new Alert(AlertType.ERROR);
 					a.setTitle(e2.getMessage());
 					a.setHeaderText("no existe producto con esa referencia");
 					a.show();
 					}
-					else if((e2.getMessage()).equals("Manejo de errores de la Aplicaci髇:cantidades no suficientes")){
+					else if((e2.getMessage()).equals("Manejo de errores de la Aplicaci贸n:cantidades no suficientes")){
 						Alert a = new Alert(AlertType.ERROR);
 						a.setTitle(e2.getMessage());
 						a.setHeaderText("no existen las cantidades solicitadas del producto");
