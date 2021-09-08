@@ -49,7 +49,7 @@ public class Inicio extends Application {
 	   	barramenu.getMenus().add(inicio);
 	   	Menu descripcion = new Menu("Descripción");
 	   	MenuItem salir = new MenuItem("Salir");
-	   	MenuItem texto = new MenuItem("Descripcion del sistemasffffffffffffffffffffffffffffffff \n descripcion del sistema");
+	   	MenuItem texto = new MenuItem("Descripcion del sistema: \n Este sistema se basa en la elaboración de un programa para una ferretería \n donde podemos vender los productos del almacen, comprar productos \n a los proveedores, registrar clientes y ver el estado financiero.");
 	   	
 	   	descripcion.getItems().add(texto);
 	   	inicio.getItems().addAll(descripcion,salir);
@@ -73,13 +73,13 @@ public class Inicio extends Application {
 
 		//Se crea la imagen y el boton en p4
 		
-		Image imagen1 = new Image(getClass().getResourceAsStream("./imagenes/img1.jpg"),300,300,false,false);
+		Image imagen1 = new Image(getClass().getResourceAsStream("./../imagenes/img1.jpg"),300,300,false,false);
 		Label img1 = new Label("", new ImageView(imagen1));
-		Image imagen2 = new Image(getClass().getResourceAsStream("./imagenes/img2.jpg"),300,300,false,false);
+		Image imagen2 = new Image(getClass().getResourceAsStream("./../imagenes/img2.jpg"),300,300,false,false);
 		Label img2 = new Label("", new ImageView(imagen2));
-		Image imagen3 = new Image(getClass().getResourceAsStream("./imagenes/img3.jpg"),300,300,false,false);
+		Image imagen3 = new Image(getClass().getResourceAsStream("./../imagenes/img3.jpg"),300,300,false,false);
 		Label img3 = new Label("", new ImageView(imagen3));
-		Image imagen4 = new Image(getClass().getResourceAsStream("./imagenes/img4.jpg"),300,300,false,false);
+		Image imagen4 = new Image(getClass().getResourceAsStream("./../imagenes/img4.jpg"),300,300,false,false);
 		Label img4 = new Label("", new ImageView(imagen4));
 		FlowPane p4 = new FlowPane();
 		p4.setVgap(40);
@@ -122,23 +122,23 @@ public class Inicio extends Application {
 		
 		
 		//Fotos Santiago
-		Image foto1 = new Image(getClass().getResourceAsStream("./imagenes/foto1.jpg"),150,150,false,false);
+		Image foto1 = new Image(getClass().getResourceAsStream("./../imagenes/foto1.jpg"),150,150,false,false);
 		Label fot1 = new Label("", new ImageView(foto1));
-		Image foto2 = new Image(getClass().getResourceAsStream("./imagenes/foto2.jpg"),150,150,false,false);
+		Image foto2 = new Image(getClass().getResourceAsStream("./../imagenes/foto2.jpg"),150,150,false,false);
 		Label fot2 = new Label("", new ImageView(foto2));
-		Image foto3 = new Image(getClass().getResourceAsStream("./imagenes/foto3.jpg"),150,150,false,false);
+		Image foto3 = new Image(getClass().getResourceAsStream("./../imagenes/foto3.jpg"),150,150,false,false);
 		Label fot3 = new Label("", new ImageView(foto3));
-		Image foto4 = new Image(getClass().getResourceAsStream("./imagenes/foto4.jpg"),150,150,false,false);
+		Image foto4 = new Image(getClass().getResourceAsStream("./../imagenes/foto4.jpg"),150,150,false,false);
 		Label fot4 = new Label("", new ImageView(foto4));
 		//Fotos Jose Daniel
-		Image foto5 = new Image(getClass().getResourceAsStream("./imagenes/java.png"),150,150,false,false);
+		Image foto5 = new Image(getClass().getResourceAsStream("./../imagenes/foto5.jpg"),150,150,false,false);
 		Label fot5 = new Label("", new ImageView(foto5));
-		Image foto6 = new Image(getClass().getResourceAsStream("./imagenes/java.png"),150,150,false,false);
-		Label fot6 = new Label("", new ImageView(foto5));
-		Image foto7 = new Image(getClass().getResourceAsStream("./imagenes/java.png"),150,150,false,false);
-		Label fot7 = new Label("", new ImageView(foto5));
-		Image foto8 = new Image(getClass().getResourceAsStream("./imagenes/java.png"),150,150,false,false);
-		Label fot8 = new Label("", new ImageView(foto5));
+		Image foto6 = new Image(getClass().getResourceAsStream("./../imagenes/foto6.jpg"),150,150,false,false);
+		Label fot6 = new Label("", new ImageView(foto6));
+		Image foto7 = new Image(getClass().getResourceAsStream("./../imagenes/foto7.jpg"),150,150,false,false);
+		Label fot7 = new Label("", new ImageView(foto7));
+		Image foto8 = new Image(getClass().getResourceAsStream("./../imagenes/foto8.jpg"),150,150,false,false);
+		Label fot8 = new Label("", new ImageView(foto8));
 		GridPane fotos=new GridPane();
 	    GridPane.setConstraints(fot1,0,0);
 	    GridPane.setConstraints(fot2,0,1);

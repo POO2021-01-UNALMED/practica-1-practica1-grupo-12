@@ -148,8 +148,8 @@ public class Main implements Serializable{
 			}
 			//System.out.println(clienteBuscar);
 			
-			System.out.println("Cliente creado con exito ");
-			System.out.println("Por ser cliente nuevo se le regala el siguiente producto: ");
+			resultado = resultado +("Cliente creado con exito ")+ "\n";
+			resultado = resultado + ("Por ser cliente nuevo se le regala el siguiente producto: ") + "\n";
 			  
 			  //4
 			  //[2,3] cantidad > 0
@@ -174,18 +174,18 @@ public class Main implements Serializable{
 					productosFactura.add(productosPedidos);
 					Factura facturaNueva = new Factura(fecha , productosFactura, "Venta",empleadoEncargado,clienteBuscar);
 					
-					System.out.println("-----------FACTURA-----------");
-					System.out.println("Fecha: " + facturaNueva.getFecha());
-					System.out.println("Dirección Ferreteria: " + f.getDireccion());
-					System.out.println("Número factura: " + facturaNueva.getNumerofactura());
-					System.out.println("Cedula Cliente: " + facturaNueva.getCliente().getCedula());
-					System.out.println("Nombre Cliente: " + facturaNueva.getCliente().getNombre());
-					System.out.println("Producto regaldo:");
-					System.out.println("Referencia    Nombre    Cantidad   PrecioUnidad");
+					resultado = resultado +("-----------FACTURA-----------") + "\n";
+					resultado = resultado +("Fecha: " + facturaNueva.getFecha())+ "\n";
+					resultado = resultado +("Dirección Ferreteria: " + f.getDireccion())+ "\n";
+					resultado = resultado +("Número factura: " + facturaNueva.getNumerofactura())+ "\n";
+					resultado = resultado +("Cedula Cliente: " + facturaNueva.getCliente().getCedula())+ "\n";
+					resultado = resultado +("Nombre Cliente: " + facturaNueva.getCliente().getNombre())+ "\n";
+					resultado = resultado +("Producto regaldo:")+ "\n";
+					resultado = resultado +("Referencia    Nombre    Cantidad   PrecioUnidad")+ "\n";
 					for (Object[] p : productosFactura) {
-						System.out.println(facturaNueva.Mostrar(p));
+						resultado = resultado +(facturaNueva.Mostrar(p))+ "\n";
 					}
-					System.out.println("valor total 0");
+					resultado = resultado +("valor total 0")+ "\n";
 					
 					break;
 				
@@ -198,7 +198,7 @@ public class Main implements Serializable{
 			
 			
 			
-			resultado = "Cliente creado con exito";
+			
 
 		}
 	
@@ -319,8 +319,10 @@ public class Main implements Serializable{
 				//int cantidadPedida = Integer.parseInt(producto2[1]);
 				
 				 for(Object[] producto: productos) {
-					 f.getInventario().restarProducto(Integer.parseInt((String)producto[0]), Integer.parseInt((String)producto[1]));
 					 Object productoYcantidad[] = { f.getInventario().buscarProducto(Integer.parseInt((String)producto[0])),Integer.parseInt((String)producto[1]) };
+					 f.getInventario().restarProducto(Integer.parseInt((String)producto[0]), Integer.parseInt((String)producto[1]));
+					 
+					 System.out.println("producto" + f.getInventario().buscarProducto(Integer.parseInt((String)producto[0])));
 					 productosPedidos.add(productoYcantidad);  
 				 }
 				 
@@ -362,8 +364,11 @@ public class Main implements Serializable{
 					System.out.println("Valor total " + facturaNueva.CalcularValorTotal());
 					
 				}*/
-
-				//boolean existenciaProducto = f.getInventario().buscarExistenciaProducto(referencia);
+				 for (Object[] producto : productos) {
+				boolean existenciaProducto = f.getInventario().buscarExistenciaProducto(Integer.parseInt((String)producto[0]));
+				
+			
+				 }
 				/*
 				if (existenciaProducto) {
 

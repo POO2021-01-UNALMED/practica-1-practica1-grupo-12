@@ -3,7 +3,9 @@ package GUI;
 import java.util.ArrayList;
 
 import Errores.ExceptionC1;
+import Errores.ExceptionC2;
 import gestorAplicación.Almacen.Ferreteria;
+import gestorAplicación.Almacen.Producto;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -83,11 +85,19 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 	
 	
 	}
-	
-	//[numero,cedula]
-	//[02331,""]
-	
-	// acciones del boton aceptar
+	borrar.setOnAction(new EventHandler<ActionEvent>(){
+
+		@Override
+		public void handle(ActionEvent arg0) {
+			for(int i=0;i < arregloTextos.size();i++){
+				arregloTextos.get(i).setText("");
+			}
+			
+		}
+		
+		
+		
+	});
 	aceptar.setOnAction(new EventHandler<ActionEvent>(){
 		public void botonAceptar() throws ExceptionC1{
 			if(arregloTextos.size()==6) {
@@ -274,25 +284,59 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 			
 			else if(arregloTextos.size()==1) { // funcionalidad 5
 				//VentanaUsuario.resultadoFuncionalidad.setText("");
-				for (int i=0;i < arregloTextos.size();i++) {
-					resultados.add(arregloTextos.get(i).getText());
+				
+				resultados.add(arregloTextos.get(0).getText());
+					/*try {
+						
+						if(Integer.parseInt(arregloTextos.get(0).getText())>2021) {
+							
+							throw new ExceptionC2("Año no disponible",Integer.parseInt(arregloTextos.get(0).getText()));
+						}
+						
+					}
+					catch(ExceptionC2 e2 ){
+						if((e2.getMessage()).equals("Manejo de errores de la Aplicación:Año no disponible")){
+							Alert a = new Alert(AlertType.ERROR);
+							a.setTitle(e2.getMessage());
+							a.setHeaderText("El año no se encuentra disponible");
+							a.show();
+							}
+					}*/
 					
-				}
+					
+				
 				System.out.println("funcionalidad 5");
 				for (int i=0;i < resultados.size();i++) {
 					System.out.println("dato"+(i+1)+" "+resultados.get(i));
 				}
 				try {
+					if(Integer.parseInt(arregloTextos.get(0).getText())>2021) {
+						throw new ExceptionC2("Año no disponible",Integer.parseInt(arregloTextos.get(0).getText()));
+					}
 					Main.GananciasNetasMensuales(Main.ferr,  Integer.parseInt(resultados.get(0)));
 					VentanaUsuario.resultadoFuncionalidad.setText(Main.resultado);
 					Main.salirDelPrograma(Main.ferr);
 					Main.resultado = "";
 					resultados.clear();
 				}
+				catch(ExceptionC2 e2 ){
+					if((e2.getMessage()).equals("Manejo de errores de la Aplicación:Año no disponible")){
+						Alert a = new Alert(AlertType.ERROR);
+						a.setTitle(e2.getMessage());
+						a.setHeaderText("El año no se encuentra disponible");
+						a.show();
+						resultados.clear();
+						}
+				}
+				
+				
 				catch(Exception e){
 					throw new ExceptionC1("faltan atributos");
 				
 				}
+				
+				
+				
 							
 			}
 			
@@ -311,7 +355,7 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 				// TODO Auto-generated catch block
 				if((e.getMessage()).equals("Manejo de errores de la Aplicación:faltan atributos")) {
 					Alert a = new Alert(AlertType.ERROR);
-					int posicion = 0;
+					
 					String criterioFaltante = "";
 					a.setTitle(e.getMessage());
 					a.setHeaderText("Faltan los siguientes atributos:" + "\n");
@@ -320,7 +364,7 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 					for(int i = 0; i<resultados.size();i++){
 						System.out.println("hola " +resultados.get(i));
 						if(resultados.get(i).equals("")){
-							//System.out.println(resultados.get(i));
+							System.out.println(criterios2.get(i));
 							criterioFaltante = criterioFaltante+ criterios2.get(i) + "\n" ;
 							
 							
@@ -366,10 +410,9 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 	
 	//eventos del boton agregar para las funcionalidades que lo tengan
 	agregar.setOnAction(new EventHandler<ActionEvent>(){
-
-		@Override
-		public void handle(ActionEvent arg1) {
-			
+     
+		
+		public void metodoAgregar () throws ExceptionC2 {
 			if(arregloTextos.size()==3) { //evento en la funcionalidad 2
 				Object[] producto= new Object[2]; //se crea un objeto de dos parametros
 				producto[0]=arregloTextos.get(1).getText();
@@ -385,15 +428,50 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 			
 			else if (arregloTextos.size()==5) { //evento en la funcionalidad 3
 				Object[] producto= new Object[2];
+				
+				try {
+				boolean existenciaProducto = Main.ferr.getInventario().buscarExistenciaProducto(Integer.parseInt(arregloTextos.get(3).getText()));
+				if(existenciaProducto==false) {
+					throw new ExceptionC2("producto no encontrado");
+					
+				}
+				for (int i = 0; i < Main.ferr.getInventario().getProductos().size(); i++) {
+					if ( ((Producto)  Main.ferr.getInventario().getProductos().get(i)[0]).getReferencia() ==  Integer.parseInt(arregloTextos.get(3).getText())) {
+						if (Integer.parseInt((String)arregloTextos.get(4).getText())< ((int)(Main.ferr.getInventario().getProductos().get(i)[1]))) {
+							System.out.println("entro");
+							throw new ExceptionC2("cantidades no suficientes");
+							
+						}
+					}
+							
+						}
+				
 				producto[0]=arregloTextos.get(3).getText();
-				producto[1]=arregloTextos.get(4).getText();
+			    producto[1]=arregloTextos.get(4).getText();
 				lista.getItems().add("Referencia producto:"+arregloTextos.get(3).getText() + " " + "Cantidad:"+arregloTextos.get(4).getText());
 				arregloTextos.get(3).clear();
 				arregloTextos.get(4).clear();
-				
-				
 				listaobj.add(producto);
+				}
+				catch(ExceptionC2 e2){
+					if((e2.getMessage()).equals("Manejo de errores de la Aplicación:producto no encontrado")){
+					Alert a = new Alert(AlertType.ERROR);
+					a.setTitle(e2.getMessage());
+					a.setHeaderText("no existe producto con esa referencia");
+					a.show();
+					}
+					else if((e2.getMessage()).equals("Manejo de errores de la Aplicación:cantidades no suficientes")){
+						Alert a = new Alert(AlertType.ERROR);
+						a.setTitle(e2.getMessage());
+						a.setHeaderText("no existen las cantidades solicitadas del producto");
+						a.show();
+				}
 				
+				
+				
+				
+				
+			}
 			}
 			else if (arregloTextos.size()==4) { //evento en la funcionalidad 4
 				Object[] producto= new Object[2];
@@ -407,12 +485,21 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 			}
 			
 		
+	   }
+		@Override
+		public void handle(ActionEvent arg1)  {
+			
+			try {
+				metodoAgregar();
+			} catch (ExceptionC2 e2) {
+		
 			
 		}
 		
 	}
+	}
 	);
-	
+
 	
 }
 
@@ -421,13 +508,7 @@ public FieldPanel(String tituloCriterios, String[] criterios, String tituloValor
 public ListView<String> getLista() {
 	return lista;
 }
-/**
-@arg criterio el criterio cuyo valor se quiere obtener
-@return el valor del criterio cuyo nombre es 'criterio'
-public String getValue(String criterio) {
-...
-}
-*/
+
 public HBox getRaiz() {
 	return raiz1;
 }

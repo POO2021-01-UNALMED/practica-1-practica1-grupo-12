@@ -55,7 +55,7 @@ public void setSalir(MenuItem salir) {
 
 
 public VentanaUsuario() {
-	   Image log = new Image(getClass().getResourceAsStream("./imagenes/logo.png"),110,110,false,false);
+	   Image log = new Image(getClass().getResourceAsStream("./../imagenes/logo.png"),110,110,false,false);
 		Label logo = new Label("", new ImageView(log));
 		BorderPane panel0= new BorderPane();
 	   panel0.setStyle("-fx-background-color: #DAF2F5;");
@@ -136,6 +136,7 @@ public VentanaUsuario() {
 			diag.setAlertType(AlertType.INFORMATION);
 			diag.setTitle("Aplicación");
 			diag.setHeaderText("descripcion de la aplicación");
+			diag.setContentText("la aplicación cuenta con un menú de 5 funcionalidades las cuales \n puede acceder desde el botón de procesos y consultas,\n recuerde llenar las casillas con la informacón requerida." );
 			diag.show();
 		}
 		
@@ -178,7 +179,7 @@ public VentanaUsuario() {
 				VentanaUsuario.resultadoFuncionalidad.setText("");
 				proceso.getChildren().clear();
 				Label titulo = new Label("Registrar Clientes");
-				TextArea descripcion = new TextArea("Esta funcionalidad se encarga de registrar clientes al sistema");
+				TextArea descripcion = new TextArea("Esta funcionalidad se encarga de registrar clientes al sistema, al nuevo cliente\n se le piden datos personales como nombre, identificacón, telefóno y dirección ");
 				descripcion.setEditable(false);
 				titulo.setFont(Font.font ("Georgia",FontWeight.BOLD, 20));
 				titulo.setPadding(new Insets(20,2, 20, 460));
@@ -207,7 +208,7 @@ public VentanaUsuario() {
 				VentanaUsuario.resultadoFuncionalidad.setText("");
 				proceso.getChildren().clear();
 				Label titulo = new Label("Devolver Producto");
-				TextArea descripcion = new TextArea("Esta funcionalidad se encarga de devolver un producto de una factura de un cliente");
+				TextArea descripcion = new TextArea("Esta funcionalidad se encarga de devolver un producto de una factura de un cliente, \n el cliente recibirá un reembolso total por el valor del producto y se le  \n entrega una nueva factura.   ");
 				descripcion.setEditable(false);
 				titulo.setFont(Font.font ("Georgia",FontWeight.BOLD, 20));
 				titulo.setPadding(new Insets(20,2, 20, 460));
@@ -237,7 +238,7 @@ public VentanaUsuario() {
 				VentanaUsuario.resultadoFuncionalidad.setText("");
 				proceso.getChildren().clear();
 				Label titulo = new Label("Vender Producto");
-				TextArea descripcion = new TextArea("Esta funcionalidad se encarga de vender un producto a un cliente");
+				TextArea descripcion = new TextArea("Esta funcionalidad se encarga de vender uno o mas productos a un cliente, \n al finalizar se mostrará la factura de venta.");
 				descripcion.setEditable(false);
 				titulo.setFont(Font.font ("Georgia",FontWeight.BOLD, 20));
 				titulo.setPadding(new Insets(20,2, 20, 460));
